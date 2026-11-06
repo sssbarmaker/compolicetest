@@ -1,0 +1,1201 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>แฟลชการ์ดคอมพิวเตอร์ นายสิบตำรวจ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9eef5;--card:#fff;--ink:#14243d;--mut:#5b6b82;--acc:#1b4fd8;--gold:#f0b429;--ok:#18a058;--line:#c9d3e2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1626;--card:#18233a;--ink:#eaf0fb;--mut:#9fb0c9;--acc:#6e97ff;--gold:#f0b429;--ok:#3ccf8a;--line:#2b3a57}}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai",system-ui,sans-serif}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+main{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:20px;font-weight:800;margin:4px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
+.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:13px}
+.chips button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.bar{height:6px;background:var(--line);border-radius:9px;margin:8px 0;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--mut)}
+.scene{perspective:1000px;margin:14px 0}
+.card{position:relative;height:300px;transform-style:preserve-3d;transition:transform .45s;cursor:pointer}
+.card.f{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+.back{transform:rotateY(180deg);border-top:6px solid var(--gold)}
+.front{border-top:6px solid var(--acc)}
+.card.mc{height:480px}.card.mc .face{justify-content:flex-start}.card.mc .q{font-size:17px;margin-bottom:6px}.fopts{width:100%;margin-top:8px}.fopt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 12px;margin-top:6px;font:inherit;font-size:14px;line-height:1.4}.fopt.right{border-color:var(--ok);background:rgba(46,160,67,.18)}.fopt.wrong{border-color:#d4473d;background:rgba(212,71,61,.18)}.fopt:disabled{color:var(--ink)}.fres{font-size:13px;margin-top:8px;color:var(--mut)}
+.tag{font-size:12px;color:var(--mut);margin-bottom:10px}
+.q{font-size:22px;font-weight:800;line-height:1.4;white-space:pre-line}
+.a{font-size:18px;line-height:1.6;white-space:pre-line}
+.row{display:flex;gap:8px}
+.row button{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-weight:600;font-size:15px;background:var(--card)}
+.no{color:#d4473d}.no:hover,.no:active{border-color:#d4473d;background:rgba(212,71,61,.1)}.yes{color:var(--ok)}.yes:hover,.yes:active{border-color:var(--ok);background:rgba(46,160,67,.12)}
+.tools{display:flex;justify-content:center;gap:2px;margin:10px 0 4px;flex-wrap:wrap}
+.tools button{border:0;background:none;color:var(--mut);font:inherit;font-size:13px;padding:6px 10px;border-radius:8px}
+.tools button:hover{color:var(--ink);background:var(--line)}.tools button.on{color:var(--acc);font-weight:700}
+.sec{font-size:12px;color:var(--mut);letter-spacing:.04em;margin:18px 0 8px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rvb,.qzb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;background:var(--card);color:var(--ink)}
+.rvb b,.qzb b{font-size:14px;font-weight:700}.rvb small,.qzb small{font-size:12px;color:var(--mut);line-height:1.3}
+.rvb:hover,.qzb:hover{border-color:var(--acc)}
+.qzb{width:100%;margin-top:8px;background:var(--acc);border-color:var(--acc);color:#fff}.qzb small{color:rgba(255,255,255,.8)}.qzb:hover{filter:brightness(1.08)}
+#rv{position:fixed;inset:0;background:var(--bg);overflow:auto;padding:16px;z-index:10}
+#rv[hidden]{display:none}
+#rv .in{max-width:560px;margin:0 auto}
+#rv .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+#rv .top button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit}
+#rv .box{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--acc);border-radius:18px;padding:20px;margin:12px 0}
+#rv .box.ans{border-top-color:var(--gold)}
+#rv textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;background:var(--bg);color:var(--ink)}
+#rv .big{width:100%;border:0;border-radius:12px;padding:13px;font:inherit;font-weight:700;font-size:15px;background:var(--acc);color:#fff;margin-top:8px}
+#rv .grade{display:flex;gap:8px;margin-top:10px}
+#rv .grade button{flex:1;border:0;border-radius:12px;padding:12px 6px;font:inherit;font-weight:600;color:#fff;font-size:14px}
+#rv .g0{background:#d4473d}#rv .g1{background:#c98a00}#rv .g2{background:var(--ok)}
+#rv .opts{display:flex;flex-direction:column;gap:8px;margin:8px 0}#rv .opt{text-align:left;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;line-height:1.4}#rv .opt.right{border-color:var(--ok);background:rgba(46,160,67,.15);opacity:1}#rv .opt.wrong{border-color:#d4473d;background:rgba(212,71,61,.15);opacity:1}#rv .opt:disabled{color:var(--ink)}
+#rv .mine{font-size:14px;color:var(--mut);white-space:pre-line;margin-bottom:8px}
+#rv .hint{font-size:13px;color:var(--mut);margin:6px 0}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style></head><body><main>
+<h1>แฟลชการ์ดคอมพิวเตอร์ นายสิบตำรวจ</h1>
+<div class="chips" id="chips"></div>
+<div class="bar"><i id="pb"></i></div>
+<div class="meta"><span id="pos"></span><span id="kn"></span></div>
+<div class="scene"><div class="card" id="card" tabindex="0" role="button" aria-label="พลิกการ์ด">
+<div class="face front"><div class="tag" id="tg"></div><div class="q" id="q"></div><div class="fopts" id="fo"></div></div>
+<div class="face back"><div class="a" id="a"></div></div></div></div>
+<div class="row"><button class="no" id="no">ยังไม่จำ</button><button class="yes" id="yes">จำได้แล้ว</button></div>
+<div class="tools"><button id="prev">‹ ก่อนหน้า</button><button id="shuf">สลับลำดับ</button><button id="hide">ซ่อนที่จำได้</button><button id="rst">เริ่มใหม่</button></div>
+<div class="sec">ทบทวนและทดสอบ</div>
+<div class="duo"><button class="rvb" id="rvb"><b>ทบทวนที่จำได้</b><small id="rvc"></small></button><button class="rvb" id="rvn"><b>ทบทวนที่ยังจำไม่ได้</b><small id="rvnc"></small></button></div>
+<button class="qzb" id="qzb"><b>แบบทดสอบท้ายบท</b><small>ช้อยส์ สร้างจากเนื้อหาการ์ด + ข้อสอบเดิม</small></button>
+</main>
+<div id="rv" hidden><div class="in"><div class="top"><b id="rvt">ทบทวนด้วย Active Recall</b><button id="rvx">ปิด</button></div><div id="rvbody"></div></div></div>
+<script>
+const CH=["ทั้งหมด","1 วิวัฒนาการ","2 ข้อมูล","3-4 องค์ประกอบ","5 เครือข่าย","6 อินเทอร์เน็ต","7 พาณิชย์ฯ","8 ความปลอดภัย","9-11 Office","12 โซเชียล/คลาวด์"];
+const D=`1|เนเปียร์ (Napier)|กระดูกเนเปียร์ ช่วยคูณหาร
+1|วิลเลียม ออเทรด|ไม้บรรทัดคำนวณ (Slide Rule) ต้นกำเนิดอนาล็อกคอมพิวเตอร์
+1|ปาสกาล (Pascal)|Pascaline เฟืองจักร บวก ลบ เครื่องคำนวณเชิงกลเครื่องแรก
+1|ไลบ์นิซ (Leibniz)|Stepped Reckoner บวก ลบ คูณ หาร สแควรูท ใช้เลขฐานสอง
+1|แจ็กการ์ด (Jacquard)|เครื่องทอผ้า ใช้บัตรเจาะรู (Punched Card)
+1|แบบเบจ (Babbage)|บิดาแห่งคอมพิวเตอร์ Analytical Engine มี 5 หน่วย: รับเข้า ความจำ คำนวณ ควบคุม แสดงผล
+1|เอดา เลิฟเลซ|โปรแกรมเมอร์คนแรกของโลก (เขียนชุดคำสั่งให้เครื่องของแบบเบจ)
+1|ENIAC|คอมพิวเตอร์ดิจิทัลอิเล็กทรอนิกส์เครื่องแรกของโลก ปี 1946 คำนวณวิถีกระสุนปืนใหญ่
+1|EDVAC|เก็บโปรแกรมไว้ในเครื่องได้ (แนวคิดวอน นอยแมน)
+1|UNIVAC|เครื่องแรกที่ผลิตเชิงพาณิชย์ (ขาย)
+1|MARK I|คอมพิวเตอร์กลไกไฟฟ้าของ IBM (พ่อคือ IBM)
+1|ยุค 1 (1946-1958)|หลอดสุญญากาศ ใหญ่ ร้อน ภาษาเครื่อง (0/1) เช่น ENIAC
+1|ยุค 2 (1959-1964)|ทรานซิสเตอร์ เล็กลง ประหยัดไฟ ภาษา FORTRAN, COBOL
+1|ยุค 3 (1965-1970)|วงจรรวม IC (ชิป) เริ่มมีระบบปฏิบัติการ
+1|ยุค 4 (1971-ปัจจุบัน)|VLSI / Microprocessor (CPU) เกิด PC
+1|ยุค 5 (อนาคต)|ปัญญาประดิษฐ์ AI, NLP, หุ่นยนต์, Expert System
+1|Analog Computer|ประมวลผลข้อมูลต่อเนื่อง เช่น มาตรวัดความเร็วรถ เครื่องตรวจคลื่นหัวใจ
+1|Digital / Hybrid Computer|Digital = เลข 0/1 (PC มือถือ) | Hybrid = ผสม เช่น เครื่อง ICU ระบบควบคุมยานอวกาศ
+1|Supercomputer / Mainframe|Super = แรงสุด งานวิจัย พยากรณ์อากาศ | Mainframe = ผู้ใช้พร้อมกันมาก ธนาคาร ทะเบียนราษฎร์
+1|Minicomputer / Microcomputer|Mini = ขนาดกลาง เซิร์ฟเวอร์องค์กร | Micro = PC CPU ตัวเดียว โน้ตบุ๊ก แท็บเล็ต
+1|ERP|วางแผนทรัพยากรองค์กร เชื่อมทุกแผนก (บัญชี จัดซื้อ คลัง) real-time
+1|CAI / MOOCs / E-Learning|CAI = คอมช่วยสอน | MOOCs = หลักสูตรออนไลน์เปิดฟรี ผู้เรียนจำนวนมาก | E-Learning = เรียนผ่านสื่ออิเล็กทรอนิกส์
+1|E-Filing / CRM / MIS|E-Filing = ยื่นแบบ/เอกสารผ่านเน็ต | CRM = บริหารความสัมพันธ์ลูกค้า | MIS = ระบบสารสนเทศเพื่อจัดการ
+2|ข้อมูล vs สารสนเทศ|ข้อมูล = ของดิบ | สารสนเทศ = ผลที่ผ่านการประมวลผลแล้ว พร้อมใช้
+2|DIKW เรียงลำดับ|Data > Information > Knowledge > Wisdom (ภูมิปัญญา = ขั้นสูงสุด วางยุทธศาสตร์)
+2|วัฏจักรประมวลผลข้อมูล|Input > Processing > Output
+2|Batch Processing|สะสมแล้วทำทีเดียว เช่น รายงานสถิติคดีประจำปี เงินเดือน
+2|Real-time Processing|ทำทันที เช่น ตรวจทะเบียนรถหาย ATM
+2|เทคโนโลยีสารสนเทศ (IT)|คอมพิวเตอร์ + การสื่อสาร + การจัดการข้อมูล
+2|TPS|ระดับปฏิบัติการ บันทึกงานประจำวัน เช่น รับแจ้งความ
+2|MIS|ผู้บริหารระดับกลาง รายงานสรุป เช่น สรุปคดีประจำเดือน
+2|DSS|ช่วยตัดสินใจ มีโมเดลวิเคราะห์ ผู้กำกับ/ผบก.
+2|EIS / ESS|ผู้บริหารระดับสูง ภาพรวม Dashboard ยุทธศาสตร์
+2|IPOS Model|Input รับเข้า > Process สมอง (CPU) > Output ส่งออก | Storage = เซฟงาน (HDD, SSD)
+3|5 องค์ประกอบคอมพิวเตอร์|Hardware, Software, Peopleware, Data, Procedure
+3|ฮาร์ดแวร์ 4 หน่วย|หน่วยรับเข้า, CPU, หน่วยความจำ, หน่วยแสดงผล
+3|ALU|คำนวณ + ตรรกะ (เปรียบเทียบ มากกว่า/น้อยกว่า/เท่ากับ)
+3|CU|หน่วยควบคุม สั่งการ ประสานงาน
+3|RAM|หน่วยความจำหลัก ชั่วคราว ไฟดับข้อมูลหาย
+3|ROM|อ่านได้อย่างเดียว ไฟดับไม่หาย เก็บโปรแกรมเริ่มต้น (BIOS)
+3|หน่วยความจำสำรอง|เก็บถาวร: HDD, SSD, Flash Drive, Memory Card
+3|ซอฟต์แวร์ระบบ 4 กลุ่ม|OS (Windows, Linux, Android) | Utility (แอนตี้ไวรัส, Defrag, WinRAR) | Translator | Driver
+3|ซอฟต์แวร์ประยุกต์|ทำงานเฉพาะทางให้คน ทั่วไป (Word, Chrome) / เฉพาะงาน (POLIS, CRIMES)
+3|ระบบ vs ประยุกต์|ระบบ = จัดการเครื่อง | ประยุกต์ = จัดการงาน
+3|นามสกุลไฟล์: ตัวอักษร/ภาพ|.txt ข้อความล้วน | .pdf เอกสาร | .jpg ภาพถ่ายบีบอัด | .png พื้นหลังโปร่งใส | .gif เคลื่อนไหว 256 สี
+3|นามสกุลไฟล์: เสียง/วิดีโอ/ตัวเลข|.mp3 บีบอัด | .wav คุณภาพสูง ใหญ่ | .mp4 .avi .mkv วิดีโอ | .xlsx ตัวเลข
+3|หน่วยข้อมูล|1 KB = 1,024 B | MB = 1,024 KB | GB = 1,024 MB | TB = 1,024 GB (ขับ K - M - G เที่ยว T) 4 GB = 4,096 MB
+3|โครงสร้างข้อมูล เล็กไปใหญ่|บิต (0/1) > ไบต์ (8 บิต = 1 ตัวอักษร) > ฟิลด์ > เรคคอร์ด > ไฟล์ > ฐานข้อมูล
+3|Peopleware สูงไปต่ำ|DBA (ดูแลฐานข้อมูล) > SA (วิเคราะห์ออกแบบระบบ) > Programmer (เขียนโค้ด) > User
+3|Procedure (กระบวนงาน)|คู่มือ/กฎ/ขั้นตอน เช่น เปลี่ยนรหัสผ่านทุก 90 วัน สำรองข้อมูลทุกวัน
+3|สัญลักษณ์ผังงาน|แคปซูล = เริ่ม/จบ | สี่เหลี่ยมผืนผ้า = ประมวลผล | ข้าวหลามตัด = ตัดสินใจ | สี่เหลี่ยมด้านขนาน = รับเข้า/แสดงผล | วงกลม = จุดเชื่อมต่อ | ลูกศร = ทิศทาง
+4|องค์ประกอบสื่อสารข้อมูล 5 อย่าง|ผู้ส่ง, ข่าวสาร, สื่อกลาง, โปรโตคอล, ผู้รับ
+4|Protocol|ข้อตกลง/ภาษากลาง เช่น HTTP, TCP/IP, FTP
+4|สายคู่บิดเกลียว UTP|สายแลน ราคาถูก ไม่เกิน 100 ม.
+4|สายโคแอกเชียล|สายกลมหนา ใช้กับทีวี จานดาวเทียม CCTV (ยุคเก่า)
+4|สายใยแก้วนำแสง|ใช้แสง เร็วสุด เสถียร ไกลหลาย กม. ไม่โดนรบกวนแม่เหล็กไฟฟ้า แพงสุด
+4|คลื่นวิทยุ / ไมโครเวฟ|วิทยุ = ทะลุกำแพง กระจายรอบทิศ (Wi-Fi, วอ) | ไมโครเวฟ = เส้นตรง ฝนตกหนักสัญญาณลด
+4|อินฟราเรด / ดาวเทียม|อินฟราเรด = ระยะใกล้ ทะลุสิ่งกีดขวางไม่ได้ (รีโมต) | ดาวเทียม = ครอบคลุมทั่วโลก GPS
+4|Baseband vs Broadband|Baseband = ดิจิทัล ช่องเดียว (LAN) | Broadband = อนาล็อก หลายช่องพร้อมกัน
+4|ทิศทางสื่อสาร|Simplex = ทางเดียว (วิทยุ FM) | Half-Duplex = สลับกัน (วอ) | Full-Duplex = พร้อมกัน (โทรศัพท์)
+4|NIC / Hub|NIC = การ์ดเครือข่าย (MAC Address) | Hub = ส่งกระจายทุกพอร์ต ชนกันบ่อย
+4|Switch / Repeater|Switch = ดูที่อยู่ MAC ส่งตรงเครื่องเป้าหมาย | Repeater = ทวนสัญญาณ ขยายระยะ
+4|Modem / Router|Modem = แปลงอนาล็อก-ดิจิทัล | Router = หาเส้นทางตาม IP Address (Routing)
+4|Bridge / Gateway / AP|Bridge = เชื่อม LAN เดียวกัน | Gateway = เชื่อมเครือข่ายต่างระบบ แปลงภาษา | AP = จุดกระจาย Wi-Fi
+4|VGA / DVI|VGA = อนาล็อก สีน้ำเงิน 15 พิน ไม่มีเสียง | DVI = สีขาว ดิจิทัล (บางรุ่นอนาล็อกด้วย) ไม่มีเสียง
+4|HDMI / DisplayPort|HDMI = ดิจิทัล ภาพ+เสียงสายเดียว | DP = ดิจิทัล ประสิทธิภาพสูง ต่อจอหลายจอได้ (Daisy Chain)
+4|USB 2.0 / 3.0|2.0 = ช่องดำ/ขาว 480 Mbps | 3.0 = ช่องสีน้ำเงิน 5 Gbps (เร็วกว่า 10 เท่า)
+4|USB-C / Thunderbolt|USB-C = เสียบได้สองด้าน | Thunderbolt = หัว USB-C มีสัญลักษณ์สายฟ้า รุ่น 3-4 = 40 Gbps, รุ่น 5 = 80/120 Gbps
+4|PAN / LAN|PAN = ส่วนบุคคล ไม่เกิน 10 ม. (บลูทูธ) | LAN = ในอาคาร/สำนักงาน
+4|MAN / WAN|MAN = ระดับเมือง/จังหวัด | WAN = ระดับประเทศ/ทั่วโลก (Internet)
+4|Client-Server vs Peer-to-Peer|Client-Server = มีเครื่องแม่ข่ายให้บริการ ควบคุมศูนย์กลาง (CRIMES) | P2P = ทุกเครื่องเท่าเทียม ไม่มีแม่ข่าย
+4|Topology: Bus / Star|Bus = สายเส้นเดียว (Backbone) สายหลักขาดล่มทั้งหมด | Star = ต่อเข้า Hub/Switch เครื่องหนึ่งเสียไม่กระทบ ศูนย์กลางเสียล่มหมด
+4|Topology: Ring / Mesh|Ring = วงกลม ไปทางเดียว ขาดจุดเดียวมีปัญหา | Mesh = ต่อตรงทุกเครื่อง ทนทานสุด สิ้นเปลืองสาย
+5|ISP|ผู้ให้บริการอินเทอร์เน็ต เช่น True, AIS, NT
+5|FTTH|ไฟเบอร์ถึงบ้าน ใช้แสง เร็วระดับ Gbps เสถียร ดีที่สุดปัจจุบัน
+5|ADSL / Dial-Up|ADSL = สายโทรศัพท์ ยิ่งไกลยิ่งช้า | Dial-Up = เก่าสุด ช้าสุด 56 Kbps ใช้โทรศัพท์พร้อมกันไม่ได้
+5|Mobile Internet|คลื่นวิทยุ 3G/4G/5G และ Wi-Fi สะดวก ความเร็วขึ้นกับสัญญาณ
+5|1G / 2G / 3G|1G = เสียงอนาล็อก | 2G = ดิจิทัล SMS | 3G = เริ่มเล่นเน็ต วิดีโอคอล
+5|4G / 5G|4G = ความเร็วสูง ดูวิดีโอ/Live | 5G = หน่วงต่ำมาก (Low Latency) รองรับ IoT รถไร้คนขับ
+5|IP Address|หมายเลขประจำเครื่องบนเครือข่าย (เหมือนบ้านเลขที่)
+5|IPv4 vs IPv6|IPv4 = 32 บิต 4 ชุด (192.168.1.1) ไม่พอใช้ | IPv6 = 128 บิต 8 ชุด ฐานสิบหก คั่น :
+5|Static vs Dynamic IP|Static = คงที่ ไม่เปลี่ยน (server, เว็บไซต์) | Dynamic = ISP แจกชั่วคราว เปลี่ยนเรื่อยๆ
+5|Domain Name / DNS|Domain = ชื่อเว็บไซต์แทนเลข IP | DNS = สมุดโทรศัพท์แปลงชื่อเป็น IP
+5|ส่วนประกอบ URL|https:// = Protocol | www.police.go.th = Domain Name | /about/ = Path | index.html = File Name
+5|โดเมนสากล|.com ธุรกิจ | .org องค์กรไม่แสวงกำไร | .net เครือข่าย | .edu การศึกษา | .gov รัฐบาล (สหรัฐ)
+5|โดเมนไทย|.co.th เอกชน | .go.th รัฐบาล | .ac.th การศึกษา | .or.th องค์กรไม่แสวงกำไร | .mi.th ทหาร | .in.th บุคคล
+5|เว็บเบราว์เซอร์ / HTML|เบราว์เซอร์ = ซอฟต์แวร์ประยุกต์แสดงเว็บ (Edge, Chrome) | HTML = โครงกระดูกหน้าเว็บ <b> = ตัวหนา
+6|B2B / B2C|B2B = ธุรกิจ-ธุรกิจ | B2C = ธุรกิจ-ผู้บริโภค (Shopee, Lazada)
+6|C2C / B2G / G2C|C2C = ผู้บริโภค-ผู้บริโภค (มือสอง) | B2G = เอกชน-รัฐ (ประมูล) | G2C = รัฐ-ประชาชน (ภาษีออนไลน์)
+6|EDI|แลกเปลี่ยนเอกสารธุรกิจระหว่างคอมพิวเตอร์ด้วยรูปแบบมาตรฐานสากล ลดกระดาษ ลดความผิดพลาด
+6|e-Tax Invoice / e-Receipt|ใบกำกับภาษีอิเล็กทรอนิกส์ / ใบเสร็จรับเงินอิเล็กทรอนิกส์
+6|e-Tax Invoice by Time Stamp|ผู้ประกอบการรายย่อย รายได้ไม่เกิน 30 ล้านบาท ส่ง PDF ไปประทับรับรองเวลา
+6|Digital Signature vs Certificate|Signature = ลายเซ็นล็อกเอกสาร | Certificate = บัตรประชาชนออนไลน์ ออกโดย CA ยืนยันตัวตน
+6|e-Withholding Tax / e-Filing / e-Payment|หักภาษี ณ ที่จ่ายผ่านธนาคาร | ยื่นแบบออนไลน์ | ชำระเงินออนไลน์
+7|Computer Virus|ต้องเกาะไฟล์อื่น ต้องมนุษย์เปิดไฟล์จึงแพร่
+7|Worm|แพร่เองผ่านเครือข่าย ไม่ต้องเกาะไฟล์ ไม่ต้องรอคนกด
+7|Trojan Horse|หลอกว่าเป็นโปรแกรมดี เปิดช่องให้แฮกเกอร์ควบคุมเครื่อง
+7|Ransomware|เข้ารหัสไฟล์ เรียกค่าไถ่ (มักเป็น Bitcoin)
+7|Spyware / Keylogger|Spyware = สอดแนม ขโมยข้อมูลส่วนตัว | Keylogger = บันทึกการกดแป้นพิมพ์ ขโมยรหัสผ่าน
+7|Adware / Rootkit|Adware = โฆษณาป๊อปอัป | Rootkit = ซ่อนตัวลึก คุมสิทธิ์สูงสุด (Root)
+7|Logic Bomb / Phishing|Logic Bomb = ระเบิดเวลา ทำงานเมื่อเข้าเงื่อนไข | Phishing = หลอกลวงให้กรอกข้อมูล (ตกปลา)
+7|Hacker / Cracker / Script Kiddies|Hacker = เจาะเพื่อค้นหาช่องโหว่ ไม่ทำลาย | Cracker = เจาะเพื่อทำลาย/ขโมย | Script Kiddies = มือใหม่ใช้สคริปต์คนอื่น
+7|Com Artist / Cyber Terrorist|Com Artist = นักหลอกลวงออนไลน์ (Romance Scam) | Cyber Terrorist = โจมตีโครงสร้างพื้นฐาน สร้างความหวาดกลัว
+7|Hacktivist / Insider Threat|Hacktivist = แฮกเกอร์ + นักกิจกรรม มีเป้าหมายการเมือง | Insider Threat = คนใน
+7|Data Diddling / Salami / Identity Theft|Diddling = แก้ข้อมูลก่อนเข้าระบบ | Salami = ยักยอกเงินเศษสตางค์ทีละน้อย | Identity Theft = ขโมยตัวตนไปเปิดบัญชี
+7|Firewall / VPN|Firewall = กำแพงไฟ กรองข้อมูลเข้า-ออก | VPN = สร้างอุโมงค์เข้ารหัส ปลอดภัยบน Wi-Fi สาธารณะ
+7|HTTPS / SSL-TLS / WPA2-3|HTTPS = Hypertext Protocol Secure (S = Secure) | SSL/TLS = เข้ารหัสข้อมูล | WPA2/WPA3 = ความปลอดภัย Wi-Fi
+7|ESET NOD32|แอนตี้ไวรัสเบาเครื่อง กินทรัพยากรน้อย (เครื่องเก่า)
+8|Word: ระยะขอบเอกสารราชการ|ซ้าย 3 ซม. ขวา 2 ซม.
+8|Word: Mail Merge / Tab|จดหมายเวียน เนื้อหาเหมือนกัน เปลี่ยนชื่อ-ที่อยู่ | Tab จัดตำแหน่งข้อความ ไม่ใช้ Spacebar
+8|Word: ปุ่มลัด 1|Ctrl+Enter = ขึ้นหน้าใหม่ (Page Break) | Ctrl+K = แทรกลิงก์ | Ctrl+F = ค้นหา | Ctrl+H = ค้นหาและแทนที่
+8|Word: ปุ่มลัด 2|Ctrl+1 = ระยะบรรทัด 1 เท่า | Ctrl+5 = 1.5 เท่า | Ctrl+Shift+> เพิ่มขนาดตัวอักษร | Ctrl+Shift+< ลดขนาด
+8|Word: สูตรในตาราง|Layout > Formula | =SUM(ABOVE) บนลงล่าง | =SUM(LEFT) ซ้าย | ไม่อัปเดตอัตโนมัติ กด F9
+8|Excel: สูตรพื้นฐาน|ขึ้นต้นด้วย = | SUM รวม | AVERAGE ค่าเฉลี่ย | COUNT นับตัวเลข | COUNTA นับไม่ว่าง | MAX / MIN | IF(เงื่อนไข, จริง, เท็จ)
+8|Excel: ปุ่มลัด|Ctrl+N ไฟล์ใหม่ | Ctrl+O เปิดไฟล์ | Ctrl+W ปิดไฟล์ | F4 = ใส่ $ ล็อกเซลล์ (Absolute) | Ctrl+~ (ปุ่มเหนือ Tab) แสดงสูตรทั้งหมด
+8|Excel: รหัสผิดพลาด|##### = คอลัมน์แคบ | #DIV/0! = หารด้วยศูนย์ | #NAME? = พิมพ์ชื่อฟังก์ชันผิด | #VALUE! = ชนิดข้อมูลผิด
+8|PowerPoint: Slide Master / Transition / Animation|Slide Master = สไลด์ต้นแบบ (โลโก้ทุกแผ่น) | Transition = เอฟเฟกต์ข้ามสไลด์ | Animation = เคลื่อนไหววัตถุ
+8|PowerPoint: ปุ่มลัด|F5 = เริ่มตั้งแต่ต้น | Shift+F5 = จากสไลด์ปัจจุบัน | Ctrl+M = สไลด์ใหม่ | Ctrl+D = ทำซ้ำ | Esc = ออก | B = หน้าจอดำ | W = ขาว
+8|PowerPoint: ปัญหาที่พบ|ฟอนต์เพี้ยน = Embed fonts in the file | วิดีโอไม่เล่น = Optimize Media Compatibility
+9|สื่อแบ่งตามประสาทสัมผัส|โสตสื่อ = เสียง (วิทยุกระจายเสียง) | ทัศนสื่อ = ภาพ (โปสเตอร์ หนังสือ) | โสตทัศนสื่อ = ภาพ+เสียง (ทีวี YouTube)
+9|สื่อแบ่งตามกายภาพ/บทบาท|สิ่งพิมพ์ vs อิเล็กทรอนิกส์ | มวลชน (ทางเดียว) | บุคคล | สังคม (สองทางทันที: Facebook, LINE, TikTok, X)
+9|Social Media 5 ประเภท|Social Networking (Facebook, LinkedIn) | Media Sharing (YouTube, TikTok, IG) | Blog/Microblog (WordPress, X) | Forum (Pantip, Reddit) | Instant Messaging (LINE, WhatsApp)
+9|X (Twitter)|Microblog ข้อความสั้น ข่าวไว แฮชแท็ก (#) เรียลไทม์
+9|Social Network 4 กลุ่ม|ส่วนตัว (Facebook) | อาชีพ (LinkedIn) | ความสนใจ (Pinterest) | พื้นที่ Location-Based (Check-in, Google Maps)
+9|Social Media vs Social Network|Media = ภาพใหญ่ สื่อสองทาง | Network = ซับเซต เน้นความสัมพันธ์/โปรไฟล์
+9|Google Workspace เทียบ Office|Docs = Word | Sheets = Excel | Slides = PowerPoint | Forms = เก็บแบบสอบถาม | Drive = ฝากไฟล์คลาวด์ | Gmail = Outlook
+9|Google Meet / Calendar / Chrome / Gemini|ประชุมวิดีโอ | ปฏิทินนัดหมาย | เว็บเบราว์เซอร์ | ผู้ช่วย AI
+9|Chrome คีย์ลัด 1|Ctrl+T แท็บใหม่ | Ctrl+W ปิดแท็บ | Ctrl+Shift+T เปิดแท็บที่เพิ่งปิด | Ctrl+N หน้าต่างใหม่ | Ctrl+Shift+N Incognito
+9|Chrome คีย์ลัด 2|Ctrl+H ประวัติ | Ctrl+J ดาวน์โหลด | Ctrl+D บุ๊กมาร์ก | Ctrl+F ค้นหาคำ | Ctrl+R / F5 รีโหลด | Alt+← ย้อนกลับ | Ctrl+Shift+Delete ล้างข้อมูล
+9|IaaS / PaaS / SaaS|IaaS = เช่าโครงสร้างพื้นฐาน (เครื่อง/เซิร์ฟเวอร์) | PaaS = เช่าแพลตฟอร์มเขียนโค้ด | SaaS = ซอฟต์แวร์สำเร็จรูป (Google Docs)
+9|Private / Public / Hybrid Cloud|Private = ส่วนตัวองค์กร ปลอดภัยสูง | Public = ใช้ร่วมกันทั่วโลก (Google, AWS, Azure) | Hybrid = ผสม
+9|Cloud Computing|ใช้ทรัพยากรผ่านเน็ต จ่ายตามการใช้งานจริง (Pay-per-use) ขยายได้ง่าย
+9|อีเมล To / Cc / Bcc|To = ผู้รับหลัก | Cc = สำเนา ทุกคนเห็น | Bcc = สำเนาลับ คนอื่นมองไม่เห็น
+9|อีเมล: โปรโตคอล|SMTP = ส่ง | POP3 = ดาวน์โหลดอ่านเครื่องเดียว | IMAP = ซิงค์หลายอุปกรณ์
+9|Blockchain|บัญชีแยกประเภทกระจายศูนย์ บล็อกเชื่อมกันด้วยแฮช แก้ไขย้อนหลังยาก (Immutability) ใช้ป้องกันการปลอมแปลงพยานหลักฐานดิจิทัล
+9|Smart Contract / Cryptocurrency|Smart Contract = สัญญาอัจฉริยะ ทำงานอัตโนมัติเมื่อเข้าเงื่อนไข | Cryptocurrency = สกุลเงินดิจิทัล เช่น Bitcoin
+9|AI 3 ระดับ|ANI = แคบ (ChatGPT, สแกนหน้า) ใช้จริงปัจจุบัน | AGI = ทั่วไป ฉลาดเท่าคน | ASI = เหนือมนุษย์
+9|AI 4 ประเภทตามความจำ|Reactive = ตอบสนอง ไม่จำ | Limited Memory = จำจำกัด (รถไร้คนขับ) | Theory of Mind = เข้าใจอารมณ์ | Self-Awareness = รู้ตัวเอง
+9|AI กระบวนการคิด|เรียนรู้ (Learning) > เหตุผล (Reasoning) > แก้ไขตัวเอง (Self-Correction) > สร้างสรรค์ (Creativity)
+1|จอห์น ฟอน นอยมันน์ (John von Neumann)|พัฒนาสถาปัตยกรรมคอมพิวเตอร์ (แนวคิดเก็บโปรแกรมไว้ในเครื่อง)
+1|ชาร์ลส์ แบบเบจ / เอดา เลิฟเลซ / ฟอน นอยมันน์ (สรุป 3 คน)|แบบเบจ = บิดาแห่งคอมพิวเตอร์ | เอดา = ผู้เขียนโปรแกรมคนแรกของโลก | ฟอน นอยมันน์ = สถาปัตยกรรมคอมพิวเตอร์
+1|ยุคของคอมพิวเตอร์ 5 ยุค (ชื่ออังกฤษ)|1 Vacuum Tubes | 2 Transistor | 3 Integrated Circuits (ICs) | 4 Microprocessors | 5 Artificial Intelligence (AI)
+1|ประเภทคอมพิวเตอร์ตามขนาด 7 ชนิด|1 Quantum | 2 Super | 3 Mainframe | 4 Mini | 5 Micro | 6 Wearable | 7 Embedded
+1|Quantum Computer ใช้ทำอะไร|จำลองโมเลกุลและค้นหายาใหม่ ถอดรหัสลับที่ซับซ้อน (ประมวลผลแบบควอนตัม เร็วมหาศาล)
+1|Super Computer ใช้ทำอะไร|งานวิจัยด้านการแพทย์ พยากรณ์อากาศ พลังงานนิวเคลียร์ AI งานสื่อสารดาวเทียม ขีปนาวุธ
+1|Mainframe Computer ใช้ทำอะไร|ประมวลผลข้อมูลจำนวนมาก ธุรกรรมการเงิน (ธนาคารต่อกับตู้ ATM ทั่วประเทศ สายการบิน บริษัทข้ามชาติ)
+1|Mini Computer ใช้ทำอะไร|เซิร์ฟเวอร์สำหรับแผนก/หน่วยงาน ควบคุมกระบวนการทางอุตสาหกรรม (กรม กอง มหาวิทยาลัย โรงแรม โรงพยาบาล โรงงาน)
+1|Micro Computer ตัวอย่าง|Desktop, Laptop, Notebook, Tablet, Smartphone (คอมพิวเตอร์ส่วนบุคคล PC)
+1|Smartphone / Tablet คือคอมพิวเตอร์ประเภทใด|Micro Computer ที่พกพาได้ ต่ออินเทอร์เน็ตด้วย Sim card หรือ Wi-Fi เรียกว่า Mobile Internet Device (MID)
+1|Wearable Computer|คอมพิวเตอร์ขนาดเล็กสวมใส่ได้ เช่น Smart watch สายรัดข้อมือดิจิทัล แว่นตา (Google Glass)
+1|Embedded Computer|ฝังในอุปกรณ์ ขนาดเล็ก พลังงานต่ำ ทำงานเฉพาะอย่าง (ไมโครคอนโทรลเลอร์) เช่น ไมโครเวฟ เครื่องซักผ้า ตู้เย็น ทีวีอัจฉริยะ เครื่องปรับอากาศ รถยนต์ โดรน Smart Home
+1|ประเภทคอมพิวเตอร์ แบ่งตามวัตถุประสงค์|General Purpose = ใช้งานทั่วไป | Special Purpose = ใช้งานเฉพาะด้าน
+1|ประเภทคอมพิวเตอร์ แบ่งตามวิธีการประมวลผล|Analog (แอนะล็อก) | Digital (ดิจิทัล) | Hybrid (ลูกผสม)
+1|Analog Computer (ตามเอกสารกูรู)|สัญญาณต่อเนื่อง (Continuous Signal) เช่น เครื่องวัดอุณหภูมิแบบเข็ม เครื่องวัดความเร็วรถยนต์แบบเข็ม เครื่องคำนวณทางกล
+1|Digital Computer (ตามเอกสารกูรู)|สัญญาณไม่ต่อเนื่อง (Discrete) แทนด้วยเลขฐานสอง 0 และ 1
+1|Hybrid Computer (ตามเอกสารกูรู)|รวมข้อดีของ Analog + Digital เช่น เครื่องมือทางการแพทย์ที่วัดสัญญาณชีพ อัตราการเต้นของหัวใจ
+1|ลูกคิด (Abacus)|เครื่องมือคำนวณที่ชาวจีนประดิษฐ์ ประมาณ 2,600 ปีก่อนคริสตกาล
+1|John Napier (พ.ศ. 2158)|ประดิษฐ์ Napier's Bones (กระดูกเนเปียร์) คล้ายตารางสูตรคูณ
+1|William Oughtred (พ.ศ. 2173)|ประดิษฐ์ไม้บรรทัดคำนวณ (Slide Rule) พื้นฐานของคอมพิวเตอร์แบบอนาล็อก
+1|Blaise Pascal (พ.ศ. 2185)|เครื่องบวกลบ ใช้เฟืองหมุนและทดเลข แสดงเลข 0-9
+1|Leibniz (พ.ศ. 2214)|ปรับปรุงเครื่องของปาสคาล และค้นพบเลขฐานสอง (Binary number)
+1|Charles Babbage (พ.ศ. 2365)|ประดิษฐ์ Difference Engine (เครื่องหาผลต่าง) คำนวณและพิมพ์ค่าตรีโกณมิติ ต้นแบบคอมพิวเตอร์ปัจจุบัน ได้รับยกย่องเป็นบิดาแห่งคอมพิวเตอร์
+1|George Boole (พ.ศ. 2393)|Boolean Algebra ใช้ True/False (On/Off) กับ NOT AND OR เป็นรากฐานวงจรดิจิทัล
+1|เครื่อง ABC (Atanasoff-Berry)|พ.ศ. 2480-2481 โดยดร.จอห์น วินเซนต์ อตานาซอฟ และคลิฟฟอร์ด แบรี่ ใช้หลอดสุญญากาศ เป็นเครื่องคำนวณอิเล็กทรอนิกส์เครื่องแรก (ต้นแบบของ ENIAC)
+1|MARK I (Howard Aiken)|พ.ศ. 2477 เริ่ม เสร็จ พ.ศ. 2487 ร่วมกับ IBM ตามแนวคิดของแบบเบจ เครื่องจักรกลผสมไฟฟ้า ใช้บัตรเจาะรู ชื่ออีกชื่อ IBM Automatic Sequence Controlled Calculator เป็นเครื่องคำนวณอัตโนมัติเครื่องแรกของโลก
+1|ENIAC ย่อมาจาก|Electronic Numerical Integrator and Computer ปี ค.ศ. 1946 โดย John Mauchly และ J. Presper Eckert ต่อยอดจาก ABC ทุนจากกองทัพสหรัฐ คำนวณวิถีกระสุนปืนใหญ่
+1|ยุคที่ 1 ตามหนังสือ (พ.ศ. 2489-2501)|หลอดสุญญากาศ (Vacuum Tube) และรีเลย์เป็นอุปกรณ์หลักแทนแบบจักรกล
+1|ยุคที่ 2 ตามหนังสือ (พ.ศ. 2502-2507)|ทรานซิสเตอร์ แกนเฟอร์ไรท์เป็นหน่วยความจำ มีสื่อบันทึกแม่เหล็กเป็นที่เก็บข้อมูลสำรอง
+1|ยุคที่ 3 ตามหนังสือ (พ.ศ. 2508-2513)|วงจรรวม IC มีทรานซิสเตอร์จำนวนมากในตัวเดียว ออกแบบซับซ้อนขึ้น สร้างโปรแกรมย่อยกำหนดชุดคำสั่ง
+1|ยุคที่ 4 ตามหนังสือ (พ.ศ. 2514-2523)|VLSI (Very Large Scale Integration) พัฒนา Microprocessor
+1|ยุคที่ 5 ตามหนังสือ|AI / ยุคเครือข่าย ช่วยตัดสินใจ แก้ปัญหา เก็บความรอบรู้ไว้ในเครื่อง ผลจากวิชาปัญญาประดิษฐ์
+1|Internet of Things (IoT)|อุปกรณ์อัจฉริยะเชื่อมต่ออินเทอร์เน็ตแบ่งปันข้อมูลกันได้ ตัวอย่าง: สั่งงานสมาร์ตโฟนด้วยเสียง ไฟอัจฉริยะ ควบคุมแอร์ สวิตช์ไฟอัจฉริยะ สตาร์ทรถไร้สาย ระบบรักษาความปลอดภัย
+2|ข้อมูล (Data) ตามเอกสารกูรู|ข้อเท็จจริงดิบ ตัวเลข สัญลักษณ์ รายละเอียดที่ยังไม่มีความหมาย
+2|การประมวลผลข้อมูล (Process)|การทำให้ข้อมูลอยู่ในรูปแบบใหม่
+2|สารสนเทศ (Information)|ข้อมูลที่ได้รับการประมวลผล จัดระเบียบ และมีความหมาย นำไปใช้ตัดสินใจได้
+2|ระบบสารสนเทศเพื่อการจัดการ (MIS) แบ่งย่อย 5 ระบบ|TPS | MRS (Management Reporting System) | DSS | EIS | KMS (Knowledge Management System)
+2|MRS|Management Reporting System สร้างรายงานสรุปข้อมูลช่วยผู้บริหารติดตามผลการดำเนินงาน
+2|KMS|Knowledge Management System ช่วยสร้าง จัดเก็บ และเผยแพร่ความรู้และประสบการณ์ภายในองค์กร
+2|เทคโนโลยี (Technology)|เครื่องมือ กระบวนการ หรือวิธีการต่าง ๆ ที่ช่วยแก้ไขปัญหา
+2|IPOS Cycle เต็ม|Input > Process (CPU, GPU) > Output (Soft copy, Hard copy) | Storage (Primary, Secondary) รับ-ส่งกับ Process
+3|หน่วยประมวลผลกลาง CPU ส่วนประกอบ|ALU คำนวณ+ตรรกะ | CU ควบคุม | Registers เก็บข้อมูล/คำสั่งที่กำลังประมวลผล | Cache เก็บสำเนาข้อมูลที่ใช้บ่อย | Bus เส้นทางสื่อสารภายใน CPU
+3|หน้าที่หลักของ CPU 4 ขั้น|Fetch ดึงข้อมูลจาก RAM | Decode ถอดรหัสคำสั่ง | Execute ประมวลผลด้วย ALU | Store เก็บผลลัพธ์ไว้ในหน่วยความจำหลักหรือส่งอุปกรณ์อื่น
+3|อุปกรณ์นำเข้า (Input Devices) ตัวอย่าง|คีย์บอร์ด เมาส์ ทัชแพด สแกนเนอร์ ไมโครโฟน กล้องดิจิตอล เว็บแคม ปากกาแสง (Light Pen) จอสัมผัส จอยสติ๊ก เครื่องอ่านบาร์โค้ด เครื่องอ่านบัตร (Card Reader)
+3|Output แบบ Hard copy|ผลลัพธ์บนกระดาษ แก้ไขยาก เช่น Laser Printer, Inkjet Printer, Dot Matrix Printer
+3|Output แบบ Soft copy|ผลลัพธ์บนหน้าจอ/ไฟล์ดิจิทัล เช่น Monitor, Projector, Speaker, Headphone
+3|Primary storage|หน่วยความจำหลัก เก็บข้อมูลและคำสั่งที่กำลังใช้งาน: RAM, ROM, Cache Memory
+3|Secondary storage ตัวอย่าง|HDD, SSD, USB Flash Drive (Thumb Drive), Memory Card (SD, MicroSD), Optical Disc (CD, DVD, Blu-ray), External HDD/SSD, NAS, Cloud Storage
+3|ประสิทธิภาพ CPU ขึ้นกับอะไร|ความเร็วสัญญาณนาฬิกา (Clock Speed) วัดเป็นเฮิรตซ์ (Hz) และจำนวนคอร์ (Cores)
+3|RAM มีกี่ประเภท|2 ประเภท: DRAM และ SRAM (ต้องมีกระแสไฟเลี้ยง)
+3|EPROM / EEPROM|EPROM = ลบและเขียนโปรแกรมใหม่ได้ด้วยแสงอัลตราไวโอเลต (UV) | EEPROM = ลบและเขียนใหม่ได้ด้วยสัญญาณไฟฟ้า
+3|ตารางเทียบ RAM กับ ROM|RAM: ชั่วคราว (Volatile) สุ่มเข้าถึง เร็วสูง เก็บข้อมูลที่กำลังใช้ เปลี่ยนแปลงได้ ตัวอย่าง แผง RAM | ROM: ถาวร (Non-volatile) สุ่มเข้าถึง เร็วต่ำกว่า RAM เก็บข้อมูลถาวรของระบบ โดยทั่วไปเปลี่ยนไม่ได้ ตัวอย่าง ชิป BIOS บนเมนบอร์ด
+3|ซอฟต์แวร์ตามเอกสารกูรู: ระบบปฏิบัติการ / อรรถประโยชน์ / แปลภาษา|OS: Windows, macOS, Linux | Utility: WinRAR, 7-ZIP, Disk Cleanup | Translator: Compiler
+3|ซอฟต์แวร์ประยุกต์ตัวอย่างตามกลุ่ม|ประมวลผลคำ: Word, Google Docs | ตารางคำนวณ: Excel, Google Sheets | นำเสนอ: PowerPoint, Google Slides | เว็บเบราว์เซอร์: Chrome, Safari | โซเชียล: Facebook, Instagram | บันเทิง: YouTube, Netflix
+3|หน่วยข้อมูลใหญ่กว่า TB|1 PB (เพตะไบต์) = 1024 TB | 1 EB (เอกซะไบต์) = 1024 PB | 1 ZB (เซตตะไบต์) = 1024 EB | 1 YB (ยอตตะไบต์) = 1024 ZB
+3|นามสกุลไฟล์เอกสาร|.doc .docx .odt .pdf .txt .rtf
+3|นามสกุลไฟล์รูปภาพ|.jpg .jpeg .png .gif .bmp
+3|นามสกุลไฟล์เสียง|.mp3 .wav .aac .flac .ogg
+3|นามสกุลไฟล์วิดีโอ|.mp4 .avi .mov .wmv .mkv
+3|เรคคอร์ด / ไฟล์ / ฐานข้อมูล (ตามเอกสารกูรู)|Record = กลุ่มของฟิลด์ที่เกี่ยวข้อง เช่น ข้อมูลลูกค้าหนึ่งคน | File = กลุ่มของเรคคอร์ดที่มีลักษณะเหมือนกัน | Database = กลุ่มของไฟล์/ตารางสัมพันธ์กัน
+3|ฟิลด์ (Field)|กลุ่มของไบต์ที่รวมกัน เช่น ชื่อ อายุ ที่อยู่ ราคาสินค้า
+3|Peopleware 5 กลุ่ม (ตามเอกสารกูรู)|User ผู้ใช้ทั่วไป | Programmer สร้าง พัฒนา แก้ไขซอฟต์แวร์ | Database Administrator ออกแบบ สร้าง จัดการ ดูแลรักษาฐานข้อมูล | System Analyst ศึกษาวิเคราะห์ความต้องการเพื่อออกแบบและพัฒนาระบบ | System Administrator ติดตั้ง ดูแล บำรุงรักษา จัดการระบบคอมพิวเตอร์และเครือข่าย
+3|กระบวนการทำงาน (Procedures) ตัวอย่าง|ขั้นตอนเปิด-ปิดเครื่อง | ติดตั้ง/ถอนการติดตั้งซอฟต์แวร์ | สำรองข้อมูล (Backup) และกู้คืน (Restore) | การใช้งานโปรแกรมต่าง ๆ
+3|สัญลักษณ์ Flowchart ตามเอกสารกูรู|วงรี/แคปซูล = จุดเริ่มต้น (Start) และสิ้นสุด (End) | สี่เหลี่ยมผืนผ้า = ขั้นตอนทำงาน/ประมวลผล (Process) | ข้าวหลามตัด = ตัดสินใจ (Decision) | ลูกศร = ทิศทางการไหล | วงกลม = จุดเชื่อมต่อของผังงานต่างหน้า
+4|องค์ประกอบระบบเครือข่าย|1 ผู้ส่ง | 2 ผู้รับ | 3 สื่อกลาง (ไร้สาย: คลื่นวิทยุ ไมโครเวฟ อินฟราเรด ดาวเทียม | มีสาย: สายทองแดง Twisted Pair/Coaxial และสายใยแก้วนำแสง Fiber Optic)
+4|อุปกรณ์เครือข่ายตามเอกสารกูรู|Switch, Bridge, Repeater, NIC, Hub, Gateway, Modem, Router, Access Point (AP)
+4|CAN คืออะไร|Controller Area Network ใช้ภายในยานพาหนะและระบบควบคุมเรียลไทม์
+4|SAN คืออะไร|Storage Area Network เครือข่ายเฉพาะทางที่เชื่อมต่อเซิร์ฟเวอร์กับอุปกรณ์จัดเก็บข้อมูลในศูนย์ข้อมูลองค์กร
+4|PAN ตัวอย่าง|ใกล้ตัว เช่น บลูทูธระหว่างมือถือกับหูฟัง
+4|ประเภทเครือข่ายตามเอกสารกูรู 6 ชนิด|WAN อินเทอร์เน็ต ข้ามประเทศ | MAN ระดับเมือง เช่น เครือข่ายเคเบิลทีวี วิทยาเขตในเมืองเดียวกัน | LAN เครือข่าย Wi-Fi ในบ้าน/สำนักงาน | CAN ในยานพาหนะ | SAN ศูนย์ข้อมูล | PAN ใกล้ตัว
+4|Half-Duplex ตัวอย่างตามเอกสารกูรู|สองทิศทางสลับกัน: วิทยุสื่อสาร, CB Radio, LAN แบบเก่าที่ใช้ฮับ
+4|Full-Duplex ตัวอย่างตามเอกสารกูรู|สองทิศทางพร้อมกัน: โทรศัพท์, LAN สมัยใหม่ที่ใช้สวิตช์, สื่อสารสมัยใหม่
+4|Simplex ตัวอย่างตามเอกสารกูรู|ทิศทางเดียว: วิทยุกระจายเสียง โทรทัศน์ แป้นพิมพ์ไปยังคอมพิวเตอร์
+4|Hybrid Topology|ผสมผสานระหว่างแบบบัสและแบบดาว เป็นลำดับชั้นคล้ายต้นไม้
+4|Mesh Topology|อุปกรณ์แต่ละตัวเชื่อมต่อกับอุปกรณ์อื่นหลายตัวหรือทุกตัว
+4|Bus / Ring / Star (สรุปสั้น)|Bus = สายเคเบิลหลักเส้นเดียว | Ring = ต่อเป็นวงแหวน ข้อมูลไหลทิศทางเดียว | Star = ต่อกับอุปกรณ์ศูนย์กลาง (ฮับ หรือสวิตช์)
+5|FTTx คืออะไร|Fiber to the x เทคโนโลยีใช้สายใยแก้วนำแสงเชื่อมต่ออินเทอร์เน็ตความเร็วสูงไปยังปลายทาง
+5|FTTH / FTTB / FTTC / FTTO|FTTH = ถึงบ้านพักอาศัย (Home) | FTTB = ถึงอาคาร/ชั้นใต้ดิน (Building/Basement) | FTTC = ถึงตู้ชุมสายใกล้บ้าน (Curb/Cabinet) | FTTO = ถึงสำนักงาน (Office)
+5|ขนาด IPv4 / IPv6 ตัวเลขจริง|IPv4 32 บิต สร้างได้ประมาณ 4.3 พันล้านหมายเลข | IPv6 128 บิต สร้างได้ 2^128 หมายเลข
+5|โดเมน .info|เว็บไซต์ที่ให้ข้อมูล (Information)
+5|โดเมน .mil|กองทัพ (Military)
+5|โดเมน .com(.co) / .org(.or) / .net|.com(.co) ธุรกิจการค้า | .org(.or) องค์กรที่ไม่แสวงหาผลกำไร | .net เดิมสำหรับเครือข่าย ปัจจุบันใช้ทั่วไป
+5|โดเมน .edu(.ac) / .gov(.go)|.edu(.ac) สถาบันการศึกษา | .gov(.go) หน่วยงานรัฐบาล
+5|Website / Web Page / Homepage|Website = กลุ่มหน้าเว็บเพจที่เชื่อมกัน | Web Page = หน้าเว็บไซต์ | Homepage = หน้าแรกของเว็บไซต์
+5|URL / Server / Hosting|URL = ตำแหน่งของหน้าเว็บ | Server = พื้นที่จัดเก็บไฟล์เว็บไซต์ | Hosting = บริการเช่าพื้นที่บนเซิร์ฟเวอร์
+5|Browser / Hyperlink|Browser = โปรแกรมเปิดและแสดงผลเว็บไซต์ | Hyperlink = วัตถุที่เมื่อคลิกแล้วจะนำไปยังหน้าเว็บ
+5|Cookie คืออะไร|ไฟล์ขนาดเล็กที่เว็บไซต์จัดเก็บไว้ในเครื่องผู้ใช้
+5|Cache คืออะไร (เว็บ)|การจำข้อมูลเว็บไซต์ไว้ในเครื่อง เพื่อเปิดซ้ำได้เร็วขึ้น
+6|ศัพท์อีเมล 1|E-mail Address = ที่อยู่อีเมล | Inbox = กล่องจดหมาย | Sent Items = ส่งแล้ว | Drafts = ฉบับร่าง | Trash/Bin = ถังขยะ | Spam/Junk Mail = สแปม/อีเมลขยะ
+6|ศัพท์อีเมล 2|To = ผู้รับ | Cc (Carbon Copy) = สำเนาถึง | Bcc (Blind Carbon Copy) = สำเนาลับถึง | Subject = หัวเรื่อง | Attachment = ไฟล์แนบ | Reply = ตอบกลับ | Reply All = ตอบกลับทั้งหมด
+6|E-Commerce 5 รูปแบบตามเอกสารกูรู|B2B ธุรกิจ-ธุรกิจ | B2C ธุรกิจ-ผู้บริโภค | C2B ผู้บริโภค-ธุรกิจ | C2C ผู้บริโภค-ผู้บริโภค | G2C รัฐบาล-ประชาชน
+6|C2B คืออะไร|Consumer to Business ผู้บริโภคเสนอสินค้า/บริการให้ธุรกิจ
+6|ประเภทสินค้า E-Commerce 3 แบบ|สินค้าที่จับต้องได้ (Physical/Hard Goods) เช่น เสื้อผ้า รองเท้า คอมพิวเตอร์ | สินค้าดิจิทัล (Digital/Soft Goods) เช่น โปรแกรม แอปพลิเคชัน คอร์สเรียน | บริการ (Services) เช่น จองตั๋วเครื่องบิน โรงแรม ธนาคารออนไลน์ ชำระบิล
+7|Computer Virus (เปรียบเทียบ)|เหมือนโรคติดต่อ แพร่ไปติดไฟล์อื่น ทำให้ไฟล์เสีย
+7|Worm (เปรียบเทียบ)|เหมือนหนอนที่ชอนไชเครื่อง จำลองตัวเองและแพร่กระจาย ทำให้เครื่องช้า
+7|Trojan Horse (เปรียบเทียบ)|เหมือนคนร้ายเป็นโปรแกรมคนดี หลอกให้ติดตั้ง แล้วเข้ามาขโมยข้อมูล
+7|Ransomware (เปรียบเทียบ)|เหมือนโจรจับคอมพิวเตอร์เราไปเรียกค่าไถ่ ทำให้เข้าถึงไฟล์ไม่ได้
+7|Spyware (เปรียบเทียบ)|เหมือนสายลับ แอบดูว่าเราทำอะไรบ้าง ทำให้ข้อมูลส่วนตัวรั่วไหล
+7|Adware (เปรียบเทียบ)|เหมือนคนขายของน่ารำคาญ แสดงโฆษณาที่ไม่พึงประสงค์
+7|Rootkit (เปรียบเทียบ)|เหมือนโจรที่ซ่อนตัวเก่ง หาตัวยาก ทำให้ตรวจจับมัลแวร์ได้ยาก
+7|Keylogger (เปรียบเทียบ)|เหมือนคนแอบจดรหัสที่เราพิมพ์ ขโมยข้อมูลเช่นรหัสผ่านและข้อมูลบัตร
+7|Botnet|เหมือนกองทัพซอมบี้ที่ถูกควบคุม คอมพิวเตอร์ที่ติดมัลแวร์ ใช้ในการโจมตีแบบ DDoS
+7|Phishing (สั้น)|การหลอกลวงทางออนไลน์เพื่อขโมยข้อมูลส่วนตัว
+7|DoS vs DDoS|DoS (Denial of Service) = โจมตีเว็บไซต์/เซิร์ฟเวอร์ จากแหล่งเดียว | DDoS (Distributed DoS) = โจมตีจากหลายแหล่ง (มักใช้ Botnet)
+9|แอปพลิเคชันและบริการ Google 1|Google Search ค้นหาข้อมูล | Chrome เว็บเบราว์เซอร์ | Maps นำทางและแผนที่ | Lens ใช้กล้องค้นหา แปลภาษา เรียลไทม์
+9|แอปพลิเคชันและบริการ Google 2|Gmail อีเมล | Chat แชทสำหรับทีมและบุคคล | Meet ประชุมออนไลน์ | Drive พื้นที่สำรองไฟล์เข้าถึงได้จากหลายอุปกรณ์
+9|แอปพลิเคชันและบริการ Google 3|Docs สร้าง/แก้ไขเอกสาร | Sheets จัดการข้อมูลและคำนวณ | Slides สร้างและนำเสนอสไลด์ | Calendar ปฏิทินและตารางนัดหมาย
+9|แอปพลิเคชันและบริการ Google 4|Translate แอปแปลภาษา | YouTube แพลตฟอร์มวิดีโอที่ใหญ่ที่สุดในโลก | Photos สำรอง จัดการ แก้ไขรูปและวิดีโอ | Play Store แหล่งดาวน์โหลดแอปและเกมสำหรับ Android
+9|พื้นที่ฟรีบริการฝากไฟล์|Google Drive 15 GB (เชื่อมต่อบริการอื่นของ Google) | Dropbox 2 GB (ซิงค์ไฟล์ระหว่างอุปกรณ์) | Microsoft OneDrive 5 GB (มาพร้อมแผน Microsoft 365) | Apple iCloud 5 GB (สำหรับอุปกรณ์ Apple)
+9|เครื่องมือสอน/ประชุมออนไลน์|Zoom | Google Meet | Microsoft Teams
+9|เทคโนโลยีสมัยใหม่ 1-2|Digital Transformation = นำเทคโนโลยีดิจิทัลมาปรับใช้ในทุกภาคส่วนของธุรกิจและสังคม | IoT = เครือข่ายของอุปกรณ์ที่เชื่อมอินเทอร์เน็ต สื่อสารแลกเปลี่ยนข้อมูลและควบคุมซึ่งกันและกันได้
+9|เทคโนโลยีสมัยใหม่ 3-4|Blockchain = บัญชีแยกประเภทแบบกระจายศูนย์ บันทึกข้อมูลปลอดภัย โปร่งใส เปลี่ยนแปลงไม่ได้ | VR (Virtual Reality) = สร้างสภาพแวดล้อมจำลองสามมิติ ให้ผู้ใช้รู้สึกเหมือนอยู่ในนั้น โต้ตอบได้
+9|เทคโนโลยีสมัยใหม่ 5-6|AR (Augmented Reality) = ซ้อนข้อมูลดิจิทัลบนโลกจริง เช่น ข้อมูลนำทางบนกระจกหน้ารถ | ML (Machine Learning) = สาขาหนึ่งของ AI คอมพิวเตอร์เรียนรู้จากข้อมูลได้โดยไม่ต้องตั้งโปรแกรมชัดเจน
+9|เทคโนโลยีสมัยใหม่ 7-8|Biometric Authentication = ยืนยันตัวตนด้วยลักษณะทางชีวภาพ เช่น ลายนิ้วมือ | Cryptocurrency = สกุลเงินดิจิทัล ใช้เทคโนโลยี Blockchain เช่น Bitcoin (BTC) Ethereum (ETH)
+8|ส่วนประกอบหน้าจอ Word (16 จุด)|1 Quick Access Toolbar | 2 Title bar | 3 File | 4 Home | 5 Insert | 6 Draw | 7 Design | 8 Layout | 9 References | 10 Mailings | 11 Review | 12 View | 13 Help | 14 Status Bar | 15 มุมมองแบบด่วน | 16 Zoom in/out
+8|แท็บของ Word: หน้าที่|Home = จัดการข้อความและรูปแบบพื้นฐาน เช่น แบบอักษร | Insert = แทรกสิ่งใหม่ เช่น ภาพ | Draw = วาด เขียน เน้นข้อความด้วยปากกา/เมาส์ | Design = ตกแต่งเอกสาร รูปแบบ สี | Layout = จัดโครงสร้าง ระยะขอบ | References = อ้างอิง สารบัญ เชิงอรรถ | Mailings = จดหมายเวียน (Mail Merge) | Review = ตรวจทาน พิสูจน์อักษร | View = มุมมอง | Help = ช่วยเหลือ
+8|Quick Access Toolbar / Title bar / File|Quick Access Toolbar = แถบเครื่องมือคำสั่งที่ใช้งานบ่อย ปรับแต่งได้ | Title bar = แถบบอกชื่อโปรแกรมและชื่อไฟล์เอกสาร | File = ศูนย์บัญชาการหลักของไฟล์ เช่น สร้าง เปิด
+8|Status Bar / มุมมองแบบด่วน / Zoom|Status Bar = แสดงข้อมูลเกี่ยวกับเอกสาร เช่น จำนวนหน้า (PowerPoint/Excel ยังมีจำนวนคำ) | มุมมองแบบด่วน = แสดงเอกสารในรูปแบบต่าง ๆ | Zoom = ย่อ-ขยาย
+8|ส่วนประกอบหน้าจอ PowerPoint (17 จุด)|1 Quick Access | 2 Title bar | 3 File | 4 Home | 5 Insert | 6 Draw | 7 Design | 8 Transitions | 9 Animations | 10 Slide Show | 11 Record | 12 Review | 13 View | 14 Help | 15 Status Bar | 16 มุมมองแบบด่วน | 17 Zoom
+8|แท็บเฉพาะของ PowerPoint|Transitions (การเปลี่ยนสไลด์) | Animations (การเคลื่อนไหว เอฟเฟกต์กับวัตถุ) | Slide Show (ตั้งค่าและควบคุมการนำเสนอ) | Record (บันทึกการนำเสนอ ภาพ เสียง)
+8|ส่วนประกอบหน้าจอ Excel (22 จุด)|1 Quick Access | 2 Title bar | 3 File | 4 Home | 5 Insert | 6 Page Layout | 7 Formulas | 8 Data | 9 Review | 10 View | 11 Automate | 12 Developer | 13 Form | 14 Help | 15 Name Box | 16 Formula Bar | 17 Columns | 18 Rows | 19 Cell | 20 Status Bar | 21 มุมมองแบบด่วน | 22 Zoom
+8|แท็บเฉพาะของ Excel|Page Layout = จัดโครงสร้างหน้ากระดาษ | Formulas = รวมเครื่องมือและฟังก์ชัน | Data = ค่าหรือข้อเท็จจริงต่าง ๆ รับข้อมูลภายนอก | Automate = เกี่ยวกับการเขียนสคริปต์ | Developer = เครื่องมือพัฒนาและทำงานอัตโนมัติ | Form = ช่วยให้ผู้ใช้ป้อนและแก้ไขข้อมูลในตาราง
+8|Name Box / Formula Bar / Columns / Rows|Name Box = แสดงพิกัดเซลล์ปัจจุบัน | Formula Bar = แถบสูตร แสดงข้อมูลในเซลล์ เช่น สูตร ฟังก์ชัน | Columns = คอลัมน์ แนวตั้ง (A, B, C, ...) | Rows = แถว แนวนอน (1, 2, 3, ...)
+1|IoT ใน Smart City|เครือข่ายอุปกรณ์/เซนเซอร์จำนวนมากเชื่อมอินเทอร์เน็ต เก็บ-แลกเปลี่ยน-วิเคราะห์ข้อมูล แล้วสั่งงานระบบอัตโนมัติ เพื่อยกระดับบริการสาธารณะ ประสิทธิภาพ คุณภาพชีวิต และความโปร่งใส
+1|บทบาทของ IoT ใน Smart City|มอนิเตอร์สิ่งแวดล้อม (อุณหภูมิ ความชื้น คุณภาพน้ำ/อากาศ) | แจ้งเตือนเรียลไทม์ ทำงานอัตโนมัติเมื่อเกินค่าวิกฤต | บริหารโครงสร้างพื้นฐาน (ไฟฟ้า ประปา ขนส่ง จราจร ขยะ แสงสว่าง) | สาธารณสุขอัจฉริยะ | ความมั่นคงปลอดภัยไซเบอร์
+1|เซนเซอร์ที่ใช้บ่อยของ IoT|อุณหภูมิ = เกษตร ห้องเย็น/วัคซีน | ความชื้น = ควบคุมการผลิต เกษตร (รดน้ำอัตโนมัติ) | ก๊าซ = ตรวจคุณภาพอากาศ/ก๊าซพิษ | อินฟราเรด/แสง = ตรวจจับการเคลื่อนไหว สิ่งกีดขวาง | ไจโรสโคป = นำทาง/ติดตามการเคลื่อนไหว (สมาร์ตโฟน ยานยนต์ หุ่นยนต์ การแพทย์)
+1|E-filing|ยื่นภาษีออนไลน์ กรมสรรพากร
+1|ERP (ตามหนังสือ)|Enterprise Resource Planning ซอฟต์แวร์วางแผนและบริหารทรัพยากรองค์กร เชื่อมข้อมูลทุกแผนก (การเงิน บัญชี HR การผลิต การขาย คลังสินค้า) ไว้ในฐานข้อมูลเดียว
+1|CAI (ตามหนังสือ)|Computer-Aided Instruction ระบบช่วยสอน นำเสนอผ่านสื่อประสม (ข้อความ ภาพนิ่ง ภาพเคลื่อนไหว เสียง วิดีโอ) ผู้เรียนโต้ตอบตามจังหวะของตน
+1|MOOCs (ตามหนังสือ)|Massive Open Online Courses หลักสูตรออนไลน์แบบเปิด รองรับผู้เรียนจำนวนมาก เรียนฟรี เรียนได้ทุกที่ทุกเวลา
+1|Blockchain ในหมวดการประยุกต์ใช้|ระบบสัญญาไร้คนกลาง ทำสัญญาอิเล็กทรอนิกส์ระหว่างผู้ใช้สองราย เช่น กู้ยืม ชำระเงิน ประกัน ไม่ต้องมีธนาคารเป็นคนกลาง ค่าบริการต่ำ เช่น Bitcoin
+1|GIS (ตามหนังสือ)|Geographic Information System ระบบสารสนเทศภูมิศาสตร์ บอกสภาพพื้นที่ เช่น ความหนาแน่นประชากร พื้นที่ป่าไม้ แหล่งน้ำ ใช้วางแผนทรัพยากรของภาครัฐ
+1|ซอฟต์แวร์แผนที่/GIS ตัวอย่าง|ESRI, Bing Maps, Apple Maps
+1|หน่วยงานหลักพัฒนารัฐบาลดิจิทัลของไทย|สำนักงานพัฒนารัฐบาลดิจิทัล (องค์การมหาชน) หรือ DGA
+1|สิ่งประดิษฐ์ต้นกำเนิดเครื่องคำนวณ|ลูกคิด (Abacus)
+2|DIKW Pyramid|คิดค้นโดย Danny Wallace ลำดับ: Data > Information > Knowledge > Wisdom (ตามหนังสือมี Intelligence คั่นก่อน Wisdom: Data > Information > Knowledge > Intelligence > Wisdom)
+2|Knowledge Society|สังคมแห่งความรู้ ข้อมูลและสารสนเทศถูกแปลเป็นความรู้ที่นำไปใช้จริงได้
+2|ข้อมูลปฐมภูมิ (Primary data)|ข้อมูลที่เก็บจากแหล่งขั้นต้น เช่น การสังเกต การทดลอง ถูกต้อง ทันสมัย เป็นปัจจุบัน
+2|ข้อมูลทุติยภูมิ (Secondary data)|ข้อมูลที่มีผู้รวบรวม/เรียบเรียงไว้แล้ว นำมาอ้างอิงได้เลย เช่น ข้อมูลสำนักงานสถิติแห่งชาติ
+2|ข้อมูลแบ่งตามรูปแบบ 4 ชนิด|Numeric (ตัวเลข คำนวณได้) | Character (ตัวอักษร คำนวณไม่ได้ เช่น ชื่อ ที่อยู่ เบอร์โทร เลขบัตรประชาชน) | Alphanumeric (ตัวอักษร+ตัวเลข+สัญลักษณ์พิเศษ) | Multimedia (ภาพ เสียง ข้อความ)
+2|ลักษณะของข้อมูลที่ดี 6 ข้อ|ถูกต้องเชื่อถือได้ | ตรงตามความต้องการผู้ใช้ | ทันสมัย | สอดคล้องกับความต้องการ | สมบูรณ์ครบถ้วน | ถูกต้องตามเวลา (ข้อมูลไม่รู้แหล่งที่มาไม่ใช่ข้อมูลที่ดี)
+2|ความรู้ (Knowledge)|การรับรู้ ความเข้าใจที่จดจำ ได้จากสารสนเทศที่ผ่านการประมวลหรือใช้งานจนเกิดประสบการณ์
+2|สติปัญญา (Intelligence)|ได้จากทักษะการรับรู้ นำไปสู่การตัดสินใจและลงมือทำ ผสมความจำแม่นยำกับความเข้าใจ เพื่อการวางแผน มีหลายด้าน เช่น คำนวณ ภาษา ศิลปะ
+2|ภูมิปัญญา (Wisdom)|ความฉลาดสะสมที่นำไปประยุกต์ใช้ เรียนรู้เพิ่มและฝึกฝนจนสมบูรณ์ในการใช้ข้อมูลสารสนเทศ
+2|วิธีประมวลผลข้อมูล 9 วิธี|คำนวณ (Calculation) | จัดเรียง (Sorting) | จัดกลุ่ม (Classifying) | ดึงข้อมูล (Retrieving) | รวมข้อมูล (Merging) | สรุปผล (Summarizing) | ทำรายงาน (Reporting) | บันทึก (Recording) | ปรับปรุงรักษาข้อมูล (Updating)
+2|เทคโนโลยี (ตามหนังสือ)|การประยุกต์ความรู้ทางวิทยาศาสตร์มาใช้ให้เกิดประโยชน์
+2|องค์ประกอบพื้นฐานของเทคโนโลยีสารสนเทศ 3 อย่าง|เทคโนโลยีคอมพิวเตอร์ | เทคโนโลยีการสื่อสาร/โทรคมนาคม | บุคลากร
+2|เทคโนโลยีคอมพิวเตอร์|เครื่องคำนวณอิเล็กทรอนิกส์ที่ทำงานตามคำสั่ง รับข้อมูลมาประมวลผล มีวงจรพื้นฐาน 4 อย่าง IPOS Cycle (Input Process Output Storage)
+2|TPS (ตามหนังสือ)|ระบบสารสนเทศแบบประมวลรายการ ประมวลผลธุรกิจต่อวัน เช่น รับ-จ่ายบิล สินค้าคงคลัง ถือเป็นระบบสารสนเทศแรกที่นำคอมพิวเตอร์มาใช้
+2|OAS|Office Automation System ระบบสำนักงานอัตโนมัติ สร้าง เก็บ ปรับปรุง แสดง และสื่อสารข้อมูลในสำนักงาน ใช้โปรแกรม Excel, Word, PowerPoint, Photoshop (กราฟิก), เบราว์เซอร์
+2|ES (ระบบผู้เชี่ยวชาญ)|Expert Systems โปรแกรมเก็บความรู้และกฎเกณฑ์ของผู้เชี่ยวชาญไว้ใน Knowledge Base ช่วยตัดสินใจ ลดปัญหาขาดแคลนผู้เชี่ยวชาญ
+2|MIS (ตามหนังสือ)|ระบบสารสนเทศเพื่อการจัดการ สำหรับผู้บริหารที่ต้องการประมวลผลมากกว่าการช่วยงานประจำวัน เปรียบเทียบข้อมูลได้
+2|DSS (ตามหนังสือ)|ระบบสนับสนุนการตัดสินใจ เตรียมสารสนเทศช่วยตัดสินใจ โดยเฉพาะเรื่องที่ไม่ได้คาดไว้ล่วงหน้า เปรียบเทียบข้อมูลจากภายในและภายนอกองค์กร
+2|GDSS|Group Decision Support System ระบบสนับสนุนการตัดสินใจแบบกลุ่ม พัฒนาจาก DSS ของบุคคล เพิ่มประสิทธิภาพและความน่าเชื่อถือ
+2|GIS|Geographic Information System นำเข้า จัดเก็บ จัดการ วิเคราะห์ แสดงผลข้อมูลเชิงพื้นที่ ใช้จัดการทรัพยากรธรรมชาติและสิ่งแวดล้อม ติดตามการเปลี่ยนแปลงพื้นที่
+2|EIS (ตามหนังสือ)|ระบบสารสนเทศเพื่อผู้บริหารระดับสูง ใช้ง่ายแม้ไม่คุ้นเคยคอมพิวเตอร์ เชื่อมโยงข่าวสาร
+2|ระบบ (System) และองค์ประกอบของระบบ|ขั้นตอนปฏิบัติงานที่กำหนดชัดเจนเพื่อให้ได้ผลตามต้องการ องค์ประกอบ 4 อย่าง: ปัจจัยนำเข้า (Input) กระบวนการ (Process) ผลผลิต (Output) ข้อมูลย้อนกลับ (Feedback)
+2|ระบบคอมพิวเตอร์ (Computer System) ตามหนังสือ|ชุดอุปกรณ์ที่เชื่อมต่อทำงานร่วมกันภายใต้ชุดคำสั่ง ประมวลผลอัตโนมัติ ขั้นตอน: นำเข้า ประมวลผล แสดงผล ข้อมูลย้อนกลับ องค์ประกอบ 5: Hardware, Software, Personnel (Peopleware), Data/Information, Procedure
+2|IPOS ตามหนังสือ (อธิบายเต็ม)|Input รับข้อมูล | Process ประมวลผลตามโปรแกรม | Output แสดงผลที่หน่วยแสดงผล | Storage จัดเก็บ (หน่วยความจำหลัก RAM ROM และหน่วยความจำสำรอง)
+2|หน่วยนำเข้า (Input Units)|อุปกรณ์ป้อนข้อมูลเข้าเครื่อง ทำหน้าที่เข้ารหัส (Encoding) มี 2 รูปแบบ: ใส่ข้อมูล (Data) / ใส่คำสั่ง (Command) เช่น แป้นพิมพ์ เมาส์ กล้อง สแกนเนอร์ ไมโครโฟน จอยสติก
+2|หน่วยประมวลผล (Processing Units) 2 ประเภท|CPU (หน่วยประมวลผลกลาง) และ GPU (หน่วยประมวลผลภาพ)
+2|CPU ทำหน้าที่เป็นอะไร / ปัจจุบันเรียกว่า|เปรียบเสมือนสมองของคอมพิวเตอร์ ปัจจุบันรู้จักในนามไมโครโพรเซสเซอร์ (Microprocessor) ความเร็ววัดเป็นเฮิรตซ์ (Hz)
+2|หน้าที่ย่อยของ CPU 3 ส่วน|CU = ควบคุมการทำงานส่วนต่าง ๆ | ALU = คำนวณและเปรียบเทียบด้วยหลักคณิตศาสตร์และตรรกศาสตร์ | Register (หน่วยพักข้อมูล) = เก็บข้อมูลจากหน่วยความจำหลักและข้อมูลที่จะประมวลผล เป็นหน่วยความจำขนาดเล็กสนับสนุน CPU
+2|GPU คืออะไร|Graphical Processing Unit หรือการ์ดจอ (VGA Card) ถอดรหัสและประมวลผลส่งออกเป็นสัญญาณภาพให้จอภาพ แสดงกราฟิก 3 มิติ ไม่มีการ์ดจอก็แสดงภาพไม่ได้
+2|วงรอบการทำงานของ CPU (Machine Cycle)|CPU ทำได้ทีละคำสั่ง 4 ขั้น: 1 Fetch ดึงคำสั่งและข้อมูลจากหน่วยความจำ | 2 Decode แปลรหัสคำสั่ง (CU ส่งไป ALU) | 3 Execute คำนวณ/ปฏิบัติตามคำสั่ง (ALU) | 4 Store เก็บผลลัพธ์ลงหน่วยความจำ
+2|หน่วยเก็บข้อมูล (Storage Units) 3 ประเภท|หน่วยความจำหลัก (Primary/Main) | หน่วยความจำสำรอง (Secondary) | (ตามหนังสือยังมีหน่วยความจำ ROM เป็นส่วนของหน่วยความจำหลัก)
+2|RAM (ตามหนังสือ)|Random Access Memory หน่วยความจำชั่วคราว (Volatile) อ่านและบันทึกได้ตลอดเวลา เก็บโปรแกรมและข้อมูลที่ส่งไปประมวลผล ต้องมีไฟฟ้าเลี้ยง แบ่ง 2 ประเภท: SRAM และ DRAM
+2|SRAM vs DRAM|SRAM (Static RAM) = เร็วกว่า ใช้พลังงานน้อย ราคาสูง (ใช้เป็น Cache) | DRAM (Dynamic RAM) = ต้องรีเฟรชข้อมูลตลอด จึงไม่เร็วมาก ราคาถูก นิยมใช้มากที่สุดปัจจุบัน
+2|ROM 3 ประเภทตามหนังสือ|PROM = เขียนได้ครั้งเดียว แก้ไขไม่ได้ | EPROM = ลบได้ด้วยแสง UV | EEPROM = ลบและเขียนใหม่ได้ด้วยไฟฟ้า (ROM เก็บชุดคำสั่งพื้นฐาน เช่น BIOS เป็นหน่วยความจำถาวร Non-Volatile)
+2|หน่วยความจำสำรอง (Secondary Memory)|เก็บข้อมูลได้มาก ไม่ต้องมีไฟเลี้ยง บันทึกแบบแผ่นแม่เหล็กหรืออื่น ๆ บันทึกและแก้ไขข้อมูลสะดวก
+2|สื่อเก็บข้อมูลแบบแสง (Optical)|บันทึกด้วยหลักการแสงเลเซอร์ เช่น CD/DVD ราคาถูก เก็บข้อมูลได้มาก (CD-R เขียนได้ครั้งเดียว เติมจนเต็ม | CD-RW ลบและเขียนซ้ำได้)
+2|CMOS|Complementary Metal Oxide Semiconductor (ซีมอส) ชิป IC เก็บค่าเฉพาะของแต่ละระบบ เช่น รหัสผ่าน เวลา วันที่ ข้อมูลของ RAM คีย์บอร์ด เมาส์ ใช้แบตเตอรี่เลี้ยง
+2|BIOS|Basic Input Output System โปรแกรมที่เก็บในหน่วยความจำถาวร ROM ไม่ต้องมีไฟเลี้ยงข้อมูลก็ไม่หาย
+2|Semiconductor Memory (ตัวอย่าง)|CMOS และหน่วยความจำแบบแฟลช (Flash Memory) เช่น Micro/Nano SD Card อ่าน/เขียนเร็วมาก ความจุตั้งแต่ 128 GB ถึงหลาย TB
+2|หน่วยความจำสำรอง แบ่งตามสื่อ 4 กลุ่ม|แผ่นแม่เหล็ก (Hard Disk, Floppy Disk) | แสง (CD, DVD) | เทป (Digital Audio Tape, Magnetic Tape) | แฟลช (Flash Drive, Memory Card, SSD)
+2|Output Units (ตามหนังสือ)|หน่วยนำออกแสดงผลลัพธ์ 2 ประเภท: Soft Copy (ดิจิทัล จับต้องไม่ได้ จอภาพ เสียง ลำโพง) และ Hard Copy (เครื่องพิมพ์ จับต้องได้)
+2|เครื่องพิมพ์ 2 ประเภทใหญ่|Impact Printer (ใช้แรงกระแทกผ่านผ้าหมึก) | Non-Impact Printer (ไม่ใช้แรงกระแทก)
+2|Impact Printer ใช้เมื่อใด|งานที่ต้องการสำเนาหลายแผ่นพร้อมกัน เช่น สลิปเงินเดือน (สลิปคาร์บอน)
+2|Dot Matrix Printer (หัวเข็ม)|กดหมุดเชิงกลผ่านผ้าหมึก เหมาะพิมพ์สมุดบัญชีเงินฝาก (Passbook) เช็คเงินสด พิมพ์ฉลากบาร์โค้ด
+2|Daisy Wheel Printer (ล้อดอกเดซี่)|กดตัวพิมพ์ผ่านผ้าหมึก หมุนดิสก์จนตัวอักษรหันไปทางกระดาษ ทำงานคล้ายเครื่องพิมพ์ดีดไฟฟ้า
+2|Line Printer (เครื่องพิมพ์บรรทัด)|พิมพ์ครั้งละหนึ่งบรรทัด เร็วแต่ราคาสูง ใช้กับคอมพิวเตอร์ขนาดใหญ่
+2|Inkjet Printer (พ่นหมึก)|หยด/พ่นหมึกลงกระดาษ นิยมแพร่หลาย ราคาค่อนข้างถูก
+2|Laser Printer|ใช้แสงเลเซอร์วาดลงบนกระบอกรับภาพที่มีประจุไฟฟ้า เร็ว แม่นยำ คุณภาพสูง
+2|Thermal Printer|ใช้ความร้อนจากหัวพิมพ์ถ่ายไปยังกระดาษเทอร์มอล สารเคมีเปลี่ยนเป็นสีดำ รวดเร็ว เสียงเบา ราคาต่ำ นิยมพิมพ์ใบเสร็จ
+2|Plotter Printer|ใช้ปากกาเขียนลงกระดาษเฉพาะงาน เหมาะงานพิมพ์แผนที่ เขียนแบบวิศวกร สถาปนิก
+2|Multifunction Printer|รวมฟังก์ชันหลายอย่างในเครื่องเดียว พิมพ์-สแกน-แฟกซ์-ถ่ายเอกสาร (Copy)
+2|3D Printer|นวัตกรรมพิมพ์งานออกมามีรูปลักษณ์เสมือนจริง ใช้ผลิตชิ้นส่วนเครื่องจักรอุตสาหกรรม อวัยวะเทียมทางการแพทย์
+2|อุปกรณ์ที่เป็นทั้ง Input และ Output (I/O)|เช่น Touchscreen, กล้องดิจิทัล, เครื่องพิมพ์สมัยใหม่
+3|องค์ประกอบระบบคอมพิวเตอร์ 5 อย่าง|Hardware, Software, Peopleware, Data/Information, Procedure
+3|ฮาร์ดแวร์ (Hardware) ตามหนังสือ|อุปกรณ์ตัวเครื่องและอุปกรณ์ต่อพ่วงที่สัมผัสได้ แบ่ง 4 ส่วน: หน่วยนำเข้า | หน่วยประมวลผล | หน่วยเก็บข้อมูล | หน่วยนำออก/ผลลัพธ์ (Smart phone มีโครงสร้างพื้นฐานจากคอมพิวเตอร์)
+3|ซอฟต์แวร์ (Software) ตามหนังสือ|ชุดคำสั่งหรือโปรแกรมที่สั่งงานคอมพิวเตอร์ตามลำดับ เขียนด้วยภาษาคอมพิวเตอร์ แบ่ง 2 ประเภท: ซอฟต์แวร์ระบบ และซอฟต์แวร์ประยุกต์
+3|ซอฟต์แวร์ระบบ 4 ชนิด|1 ระบบปฏิบัติการ (OS) | 2 ยูทิลิตี (Utility Program) | 3 ตัวแปลภาษา (Language Translator) | 4 ตัวควบคุมอุปกรณ์ (Device Driver)
+3|ระบบปฏิบัติการ (OS)|ชุดโปรแกรมอยู่ระหว่างฮาร์ดแวร์กับซอฟต์แวร์ประยุกต์ ควบคุมฮาร์ดแวร์และสนับสนุนซอฟต์แวร์ประยุกต์ ตัวอย่าง Windows, Linux (ฟรี), macOS, Unix, Ubuntu, iOS, Android
+3|Utility Program|เพิ่มประสิทธิภาพเครื่อง ทำให้เครื่องทำงานง่ายและเร็วขึ้น ป้องกันโปรแกรมไม่พึงประสงค์ เช่น Windows Security, Disk Cleanup, Defragmenter, โปรแกรมบีบอัดไฟล์
+3|Language Translator|แปลภาษาระดับต่ำ (Assembly) หรือระดับสูง (C) เป็นรหัสเลข 0,1 ที่เครื่องเข้าใจ มี 3 ลักษณะ: Compiler, Interpreter, Assembler
+3|Compiler|แปลทั้งโปรแกรมทีเดียว เมื่อพบข้อผิดพลาดจะแสดงทั้งหมดหลังคอมไพล์เสร็จ ใช้กับภาษา C, C#, COBOL
+3|Interpreter|แปลทีละบรรทัดขณะทำงาน เมื่อพบข้อผิดพลาดต้องแก้ไขทีละคำสั่งจึงทำงานต่อได้ ใช้กับ PHP, APL, BASIC
+3|Assembler|โปรแกรมที่ใช้แปลภาษาแอสแซมบลี (Assembly) เป็นภาษาเครื่อง แปลทีละคำสั่ง
+3|Device Driver|โปรแกรมช่วยให้คอมพิวเตอร์ติดต่อใช้งานอุปกรณ์ต่าง ๆ ได้ เช่น printer driver, scanner driver, sound driver
+3|ซอฟต์แวร์ประยุกต์ 2 ประเภท|เฉพาะด้าน (Special Purpose) เช่น งานธนาคาร ทะเบียนนักเรียน คิดภาษี ร้าน Seven | ทั่วไป (General Purpose) 6 ประเภท
+3|ซอฟต์แวร์ประยุกต์ทั่วไป 6 ประเภท|1 จัดการฐานข้อมูล | 2 ประมวลผลคำ | 3 นำเสนอข้อมูล | 4 ตารางการทำงาน (Spreadsheet) | 5 กราฟิกและมัลติมีเดีย | 6 ติดต่อสื่อสาร
+3|ซอฟต์แวร์จัดการฐานข้อมูล (DBMS)|เก็บ ปรับปรุง ค้นคืนข้อมูล สร้างรายงาน ลดความซ้ำซ้อนและขัดแย้ง ใช้ข้อมูลร่วมกัน ตัวอย่าง Oracle, MySQL, Microsoft SQL Server, Microsoft FoxPro, dBase, Amazon SimpleDB
+3|ซอฟต์แวร์ประมวลผลคำ|พิมพ์เอกสาร แก้ไข แทรก ลบ จัดรูปแบบ ตัวอย่าง Microsoft Word, Libre Office Writer, OpenOffice
+3|ซอฟต์แวร์นำเสนอข้อมูล|สร้างสไลด์ (ตัวอักษร รูป กราฟ ตาราง ภาพเคลื่อนไหว เสียง) ตัวอย่าง PowerPoint, Open Office Impress, Libre Office Impress
+3|Spreadsheet software|ช่วยคิดคำนวณ ใส่ตัวเลข ข้อความ สูตร สร้างกราฟแผนภูมิ (แท่ง วงกลม) ตัวอย่าง Microsoft Excel, Open Office Calc
+3|ซอฟต์แวร์กราฟิกและมัลติมีเดีย|สร้าง ออกแบบ วาด ตกแต่งรูปภาพ จัดการสื่อ (ภาพนิ่ง เสียง ข้อความ ภาพเคลื่อนไหว) ตัวอย่าง Adobe Photoshop, Illustrator, Premiere Pro
+3|ซอฟต์แวร์ติดต่อสื่อสาร|ช่วยให้ติดต่อสื่อสารได้ทั่วโลกสะดวกรวดเร็ว (เช่น อีเมล แชต ประชุมออนไลน์)
+3|Commercial Ware|ซอฟต์แวร์เชิงพาณิชย์ ต้องซื้อลิขสิทธิ์ มีเงื่อนไขจำกัดผู้ใช้/ฟีเจอร์ เช่น Adobe Photoshop
+3|Shareware|ทดลองใช้ฟรีมีกำหนดเวลา ครบแล้วหยุดทำงาน พอใจสมัครใช้ต่อ เช่น WinRAR
+3|Adware (ในฐานะประเภทลิขสิทธิ์ซอฟต์แวร์)|โปรแกรมสนับสนุนโฆษณา มี Pop-up ขึ้นขณะทำงาน จ่ายเงินซื้อเวอร์ชันเต็มเพื่อไม่ให้มีโฆษณา เช่น Spotify
+3|Freeware|ใช้ฟรี แต่ห้ามดัดแปลงแก้ไข และห้ามใช้เชิงพาณิชย์เพื่อหากำไร เช่น Winamp
+3|Open-Source Software|ใช้ฟรีเหมือน Freeware และอนุญาตให้พัฒนา/แก้ไขโปรแกรมได้ไม่จำกัดโดยไม่ผิดกฎหมาย เช่น LibreOffice
+3|ข้อมูล (Data) ตามหนังสือบทที่ 5|ข้อเท็จจริงหรือเรื่องราวในรูปแบบเหมาะต่อการสื่อสาร แปลความหมาย ประมวลผล ป้อนเข้าคอมพิวเตอร์ในสถานะดิจิทัล มี 2 สถานะ: 0 (ปิด) และ 1 (เปิด)
+3|ชนิดของข้อมูลตามหนังสือ 4 ชนิด|1 ตัวอักษร (Alphanumeric) | 2 ภาพ (Image) | 3 ภาพเคลื่อนไหว (Video) | 4 เสียง (Audio)
+3|Alphanumeric Data|ตัวเลข ตัวอักษร เครื่องหมาย สัญลักษณ์ นามสกุลไฟล์: .doc/.docx (เอกสาร Word) | .xls/.xlsx (Excel ใส่สูตรคำนวณ) | .csv | .pdf | .ppt/.pptx | .dwg | .txt
+3|นามสกุล .csv|Comma-Separated Values ไฟล์ตารางขนาดเล็ก เปิดง่าย แลกเปลี่ยนข้อมูลสะดวก นำไปวิเคราะห์ใน Excel, Google Sheets ได้
+3|นามสกุล .pdf|ไฟล์ขนาดเล็ก คุณภาพสูง แสดงเอกสารในรูปแบบกราฟิก
+3|นามสกุล .dwg|drawing file ของโปรแกรม AutoCAD
+3|นามสกุล .txt|Text ไฟล์ข้อความธรรมดา
+3|นามสกุลไฟล์ภาพ: jpg / png / gif / bmp|.jpg/.jpeg = ความละเอียดสูง ไฟล์เล็ก | .png = พื้นหลังโปร่งใส ความละเอียดเหมือน JPG | .gif = ภาพเคลื่อนไหว ไฟล์เล็ก สีสูงสุด 256 สี | .bmp = ภาพกราฟิกวินโดว์ ไฟล์ใหญ่
+3|นามสกุลไฟล์ภาพ: tiff / psd / swf / ai / raw|.tiff = เหมาะงานสิ่งพิมพ์ คุณภาพสูง รองรับ CMYK, RGB, Lab, Indexed Color, Grayscale | .psd = Adobe Photoshop | .swf = Flash ของ Adobe Flash | .ai = Adobe Illustrator | .raw = ภาพไม่ผ่านการบีบอัดจากเซนเซอร์กล้อง คุณภาพสูง แก้ไขได้ยืดหยุ่น ไฟล์ใหญ่ ต้องใช้ซอฟต์แวร์เฉพาะ
+3|ขนาดข้อมูลเป็นเลขยกกำลัง|1 KB = 2^10 ไบต์ | 1 MB = (2^10)^2 | 1 GB = (2^10)^3 | 1 TB = (2^10)^4 | 1 PB = (2^10)^5 | 1 EB = (2^10)^6 | 1 ZB = (2^10)^7 | 1 YB = (2^10)^8
+3|บิต (Bit)|ข้อมูลที่เล็กที่สุด เครื่องเข้าใจและใช้งานได้ (0 หรือ 1)
+3|ไบต์ (Byte)|8 บิต = 1 อักขระ (ตัวเลข ตัวอักษร หรือสัญลักษณ์พิเศษ 1 ตัว)
+3|ฟิลด์ / เรคคอร์ด / ไฟล์ / ฐานข้อมูล (ตามหนังสือ)|Field = อักขระ 1 ตัวขึ้นไปรวมกัน เช่น เลขประจำตัว ชื่อพนักงาน | Record = ฟิลด์ที่สัมพันธ์กัน เช่น ชื่อ นามสกุล เลข... | File = เรคคอร์ดเรื่องเดียวกันรวมกัน เช่น ประวัติพนักงานทั้งหมด | Database = ไฟล์ที่เกี่ยวข้องรวมกัน เช่น ไฟล์ข้อมูลแผนกต่าง ๆ ของบริษัท
+3|ASCII|รหัส 8 บิต แทนสัญลักษณ์ได้ 256 ตัว นิยมใช้กันมาก
+3|EBCDIC|ใช้ 8 บิต (1 ไบต์) ต่ออักขระ เหมือน ASCII
+3|Unicode|ใช้เลขฐานสอง 16 บิต แทนอักษรได้ 65,536 ตัว รองรับหลายภาษาพร้อมกัน
+3|บุคลากร: System Analyst (SA) / System Programmer (SP)|SA = วิเคราะห์และออกแบบระบบ | SP = เขียนโปรแกรมระบบควบคุมเครื่อง
+3|บุคลากร: Programmer / DBA|Programmer = เขียนโปรแกรมประยุกต์ตามที่ SA ออกแบบ | DBA = กำหนดนโยบาย วางแผนบริหารและดูแลรักษาฐานข้อมูลขององค์กร
+3|บุคลากร: System Manager / Operator / User|System Manager = วางนโยบายการใช้คอมพิวเตอร์ให้ตรงเป้าหมายหน่วยงาน | Operator = เปิด-ปิดเครื่องและเฝ้าดูระบบ | User = ผู้ใช้โปรแกรมตามวัตถุประสงค์ของตน
+3|กระบวนการทำงาน (Procedures) ตามหนังสือ|ขั้นตอนการทำงานเพื่อให้ได้ผลลัพธ์หรือสารสนเทศจากคอมพิวเตอร์ ผู้ใช้ต้องเข้าใจขั้นตอนเพื่อให้ได้งานถูกต้องและมีประสิทธิภาพ
+3|ผังงาน (Flowchart) ตามหนังสือ|รูปภาพหรือสัญลักษณ์แทนขั้นตอนคำอธิบาย ข้อความ ที่ใช้ในอัลกอริทึม (Algorithm) เพื่อให้ผู้เกี่ยวข้องเข้าใจตรงกัน
+3|ผังงานระบบ (System Flowchart)|แสดงขั้นตอนการทำงานในระบบแบบภาพกว้าง ไม่เจาะลึกการทำงานของระบบย่อย
+3|รูปแบบการเขียนผังงาน 3 แบบ|1 ตามลำดับ (Sequence) บนลงล่างทีละบรรทัด | 2 เลือกกระทำตามเงื่อนไข (Decision/Selection) จริง-เท็จ | 3 ทำซ้ำ (Repetition/Loop) ทำกระบวนการเดิมหลายครั้งโดยมีเงื่อนไขควบคุม
+3|Flowchart: Terminator|จุดเริ่มต้นและจุดสิ้นสุดของการทำงาน
+3|Flowchart: Process|การดำเนินการ/ประมวลผลข้อมูล เช่น กำหนดค่าตัวแปร การบวก
+3|Flowchart: Data (Input/Output)|รับข้อมูล แสดงผลข้อมูลโดยไม่ระบุอุปกรณ์
+3|Flowchart: Manual Input / Display / Document|Manual Input = รับข้อมูลจากผู้ใช้ | Display = แสดงผลลัพธ์ขณะประมวลผล เช่น ทางหน้าจอ | Document = แสดงข้อมูลบนเครื่องพิมพ์
+3|Flowchart: Preparation / Predefined Process|Preparation = การเตรียมทำงานลำดับถัดไป | Predefined Process = ระบุการทำงานย่อยหรือฟังก์ชันย่อย
+3|Flowchart: Online Storage / Connector / Off-page Connector|Online Storage = แหล่งเก็บข้อมูลออนไลน์หรือหน่วยความจำสำรอง | Connector = จุดเชื่อมผังงานในหน้าเดียวกัน | Off-page Connector = จุดเชื่อมผังงานต่างหน้า
+3|Flowchart: เส้นลูกศร|เส้นทางลำดับขั้นตอนการดำเนินงาน
+4|ระบบเครือข่ายคอมพิวเตอร์ (ตามหนังสือ)|ระบบที่มีคอมพิวเตอร์อย่างน้อย 2 เครื่องเชื่อมกันโดยใช้สื่อกลาง สื่อสารข้อมูลได้ ประโยชน์: ใช้ทรัพยากรร่วมกัน แชร์ไฟล์ ติดต่อสื่อสาร ใช้อินเทอร์เน็ตร่วมกัน
+4|Noise|การรบกวนในการสื่อสารข้อมูล ทำให้ผู้รับได้ข้อมูลคลาดเคลื่อน
+4|องค์ประกอบการสื่อสารข้อมูล 5 อย่าง (ตามหนังสือ)|1 ผู้ส่ง (Sender/Source) | 2 ผู้รับ (Receiver/Destination) | 3 ข้อมูล (Message/Data: ข้อความ ตัวเลข ภาพ เสียง) | 4 สื่อกลาง (Channel/Medium) | 5 โปรโตคอล (Protocol)
+4|Protocol (ตามหนังสือ)|กฎระเบียบ ข้อกำหนด ข้อตกลงที่ใช้ในการสื่อสารข้อมูล เป็นภาษากลางระหว่างคอมพิวเตอร์
+4|โปรโตคอลด้านการสื่อสาร 1|TCP/IP (สำคัญที่สุด ใช้ในอินเทอร์เน็ตและอินทราเน็ต) | HTTP = รับ-ส่งข้อมูลระหว่างเบราว์เซอร์กับเว็บไซต์ | SMTP = รับส่งจดหมาย | FTP = ถ่ายโอนไฟล์
+4|โปรโตคอลด้านการสื่อสาร 2|VoIP (Voice over IP) = โทรศัพท์ผ่านอินเทอร์เน็ต | Telnet = เชื่อมต่อคอมพิวเตอร์ระยะไกลผ่านบรรทัดคำสั่ง (command-line)
+4|โปรโตคอลด้านความปลอดภัย|HTTPS = HTTP ที่เพิ่มความปลอดภัย | SSL (Secure Socket Layer) = ปกป้องข้อมูลบนอินเทอร์เน็ต ใช้ได้ทั้ง Browser-Server และ Server-Server | SFTP = ปกป้องการถ่ายโอนไฟล์
+4|โปรโตคอลด้านการจัดการเครือข่าย|SNMP (Simple Network Management Protocol) = ตรวจสอบอุปกรณ์เครือข่าย | ICMP (Internet Control Message Protocol) = วินิจฉัยปัญหา ดูข้อผิดพลาดการสื่อสารระหว่างอุปกรณ์
+4|องค์ประกอบระบบเครือข่าย 5 อย่าง (ตามหนังสือ)|1 คอมพิวเตอร์แม่ข่าย (File Server) | 2 ช่องทางสื่อสาร | 3 สถานีงาน (Workstation/Terminal) | 4 อุปกรณ์ในเครือข่าย (NIC, Hub, Bridge) | 5 ซอฟต์แวร์ระบบปฏิบัติการเครือข่าย
+4|File Server (แม่ข่าย)|คอมพิวเตอร์ผู้ให้บริการทรัพยากร (หน่วยประมวลผล หน่วยความจำ ฐานข้อมูล โปรแกรม)
+4|Workstation / Terminal|Workstation = ไมโครคอมพิวเตอร์ลูกข่าย | Terminal = สถานีปลายทางของระบบ Mainframe มีแค่จอภาพและแป้นพิมพ์ ไม่มี CPU ต้องใช้ CPU ของ Host
+4|ระบบปฏิบัติการเครือข่าย (NOS)|จัดการระบบเครือข่าย การรักษาความปลอดภัย ควบคุมโปรแกรมสื่อสาร เช่น Windows NT, Linux, Novell Netware, Windows 11, Solaris, Unix
+4|สื่อกลางแบบมีสาย vs ไร้สาย|Wired = สื่อประเภทเหนี่ยวนำ (สายทองแดง ไฟเบอร์ออฟติก) | Wireless = สื่อกระจายคลื่น (คลื่นวิทยุ ไมโครเวฟ อินฟราเรด)
+4|สายคู่บิดเกลียว STP / UTP|STP (Shielded) = หุ้มฉนวนหนา กันคลื่นแม่เหล็กไฟฟ้ารบกวนได้ดีกว่า | UTP (Unshielded) = ฉนวนบาง โค้งงอสะดวก กันรบกวนได้น้อยกว่า
+4|เส้นใยแก้วนำแสง (Fiber Optic) คุณลักษณะ|ประสิทธิภาพสูงและราคาแพงที่สุด ส่งสัญญาณแสงได้ระยะไกล สูญเสียสัญญาณต่ำ ส่งข้อมูลได้มาก ไม่ถูกรบกวนจากคลื่นไฟฟ้า
+4|FTTH / FTTO / FTTB / FTTC|FTTH = ใยแก้วถึงบ้าน (Home) | FTTO = ถึงสำนักงาน (Office) | FTTB = ถึงอาคาร (Building) | FTTC = ถึงตู้กระจายสัญญาณ (Curb/Cabinet)
+4|ไมโครเวฟ (Microwave) / ดาวเทียม|ส่งแบบเส้นตรง (Line-of-sight) ใช้ในสัญญาณโทรศัพท์มือถือและดาวเทียม | ดาวเทียมพัฒนาเพื่อแก้ข้อจำกัดไมโครเวฟภาคพื้นดิน โดยเป็นสถานีอยู่เหนือพื้นโลก
+4|คลื่นวิทยุ (Radio) / อินฟราเรด|วิทยุ = กระจายรอบทิศทางผ่านเสาอากาศ เหมาะกับ Multicasting ส่งไกล ไวต่อสัญญาณรบกวน | อินฟราเรด = ใช้กับรีโมทคอนโทรล ระยะใกล้
+4|Bluetooth|สื่อสารไร้สายสองทางด้วยคลื่นวิทยุระยะสั้น กินไฟน้อย ราคาถูก ระยะไม่เกิน 10 เมตร
+4|ทิศทางการส่งข้อมูล 3 แบบ|Simplex = ทางเดียว (วิทยุ ทีวี) | Half-duplex = สองทางสลับกัน (วิทยุสื่อสาร) | Full-duplex = สองทางพร้อมกัน (โทรศัพท์, Zoom)
+4|NIC (Network Interface Card)|เชื่อมคอมพิวเตอร์เข้ากับระบบเครือข่าย
+4|Hub (ฮับ)|รวมสัญญาณจากหลายเครื่อง กระจายไปทุกเครื่องที่ต่ออยู่ แต่ละเครื่องเลือกรับเฉพาะข้อมูลของตน
+4|Switch (สวิตช์)|เหมือนฮับ แต่ไม่กระจายไปทุกสถานี ส่งเฉพาะปลายทาง ลดการชนกันของข้อมูล
+4|Bridge (บริดจ์)|เชื่อมเครือข่ายหลายกลุ่มเข้าด้วยกัน ต้องใช้โปรโตคอลเดียวกัน จัดการความหนาแน่นของข้อมูล
+4|Repeater (รีพีตเตอร์)|ทวนสัญญาณ ทำให้ส่งไกลขึ้น ปรับสัญญาณที่อ่อนให้กลับเป็นรูปเดิม
+4|Modem (โมเด็ม)|แปลงสัญญาณระหว่าง Analog และ Digital เชื่อมคอมพิวเตอร์ระยะไกลผ่านสายโทรศัพท์
+4|Router (เราเตอร์)|หาเส้นทางที่เหมาะสมในการส่งข้อมูลโดยใช้แอดเดรสกำกับ เชื่อมเครือข่ายที่ใช้เทคโนโลยีต่างกัน
+4|Gateway (เกตเวย์)|เชื่อมเครือข่ายที่ลักษณะต่างกันให้ติดต่อกันได้เหมือนเครือข่ายเดียว เปรียบเสมือนประตูทางผ่าน
+4|Access Point (AP)|กระจายสัญญาณเครือข่าย LAN ไร้สาย
+4|พอร์ตภาพ HDMI|ส่งภาพและเสียงในสายเดียว รองรับความละเอียดสูง
+4|พอร์ตภาพ VGA|ส่งเฉพาะสัญญาณภาพ แบบอนาล็อก ไม่รองรับเสียง คุณภาพลดลงเมื่อความละเอียดสูงหรือสายยาว
+4|USB-C vs Thunderbolt|USB-C (Type-C) ส่งข้อมูล ภาพ (DisplayPort) ไฟชาร์จ | Thunderbolt ใช้พอร์ตเดียวกับ USB-C แต่เร็วกว่ามาก
+4|ประเภทเครือข่ายตามขนาด 4 แบบ|PAN = ส่วนบุคคล 5-10 เมตร | LAN = ท้องถิ่น ไม่เกิน 10 กม. (องค์กร อาคาร โรงงาน) | MAN = ระดับเมือง เช่น มหาวิทยาลัย (CAN = Campus) | WAN = ระดับประเทศ/ระหว่างประเทศ ใช้ Microwave, Satellite, Internet
+4|Ethernet vs Wireless LAN|Ethernet = มาตรฐานเชื่อมต่อ LAN แบบใช้สาย | Wireless LAN = LAN ไร้สาย มาตรฐาน IEEE 802.11 (Wi-Fi)
+4|เครือข่ายแบบ Peer-to-Peer|เท่าเทียมกัน เป็นได้ทั้งผู้ให้และผู้รับบริการ ใช้แบ่งปันข้อมูล เช่น BitTorrent, eDonkey
+4|เครือข่ายแบบ Client-Server|มีเครื่องแม่ข่าย (Server) ให้บริการ เช่น เว็บ ฐานข้อมูล ตามคำร้องขอของเครื่องลูกข่าย (Client)
+4|เครือข่ายแบบรวมศูนย์ (Centralized)|Terminal ใช้สั่งงาน ส่วน Workstation/Mainframe ประมวลผลให้
+4|Topology แบบ Bus|สายหลักเส้นเดียว ปลายสองข้างมี Terminator กันสัญญาณสะท้อน | ข้อดี: ติดตั้งง่าย ประหยัดสาย เพิ่มเครื่องง่าย | ข้อเสีย: สายหลักเสียทั้งระบบหยุด หาจุดผิดพลาดยาก
+4|Topology แบบ Star|ทุกเครื่องต่อกับ Hub/Switch ศูนย์กลาง | ข้อดี: ดูแลง่าย หาจุดผิดพลาดง่าย | ข้อเสีย: ค่าใช้จ่ายสูง เปลืองสาย
+4|Topology แบบ Ring|เชื่อมเป็นวงกลม แต่ละเครื่องมี Repeater | ข้อดี: ข้อมูลไม่ชนกัน ประหยัดสาย | ข้อเสีย: สายชำรุดระบบหยุด หาจุดผิดพลาดยาก
+4|Topology แบบ Mesh|ทุกโหนดเชื่อมต่อกันแบบจุดต่อจุด | ข้อดี: เสถียรที่สุด รับส่งไว | ข้อเสีย: เปลืองสายสัญญาณ
+4|Topology แบบ Hybrid|ผสมหลายรูปแบบเป็นเครือข่ายใหญ่ | ข้อดี: เชื่อมระบบเก่ากับใหม่ได้ ขยายง่าย | ข้อเสีย: หากเสียหายหนึ่งจุด จุดอื่นใช้งานไม่ได้จนกว่าจะซ่อม
+5|ISP (Internet Service Provider)|ผู้ให้บริการอินเทอร์เน็ต หน่วยงานที่ทำให้ผู้ใช้เข้าถึงอินเทอร์เน็ตได้
+5|ISP ในประเทศไทย 2 ประเภท|1 เชิงพาณิชย์ (Commercial): AIS, True, 3BB, CAT, TOT, INET, CMN, KSC, JI-Net | 2 ไม่แสวงหากำไร (Non-commercial) สำหรับสถาบันการศึกษา วิจัย รัฐ: ThaiSarn, Khonthai, PubNet, UniNet
+5|Web server / Web browser|Web server = คอมพิวเตอร์ที่ให้บริการเว็บ | Web browser = ซอฟต์แวร์ที่ใช้ค้นหา ดึงข้อมูล และแสดงเนื้อหาบน www. เช่น Chrome, Edge, Opera
+5|Website / Web page / Home page|Website = แหล่งข้อมูลเว็บ (เหมือนหนังสือ) | Web page = หน้าของเว็บไซต์ (หน้ากระดาษ) | Home page = หน้าหลัก/หน้าแรก (หน้าปก/สารบัญ)
+5|วิวัฒนาการ 1G|ระบบแอนะล็อก (Analog) เซลลูลาร์ AMPS, TACS รับส่งเสียง (voice) อย่างเดียว
+5|วิวัฒนาการ 2G|มือถือระบบดิจิทัลยุคแรก เซลลูลาร์ GSM, GPRS, EDGE รับส่ง voice, data และ MMS
+5|วิวัฒนาการ 3G|เน้นรับส่งข้อมูลผ่านเครือข่ายโทรศัพท์ข้อมูล WCDMA, HSPA, HSPA+ รับส่ง voice, data, MMS, VDO call ความเร็ว 384Kbps-30Mbps
+5|วิวัฒนาการ 4G|LTE, Wi-MAX, VoLTE, LTE Advance ดิจิทัล ความเร็ว 30Mbps-1Gbps
+5|วิวัฒนาการ 5G|ยุคแห่งข้อมูล ไม่จำกัดเฉพาะ Smart Phone/Tablet/Computer เซลลูลาร์ NR และ eLTE รองรับ IoT ความเร็ว 6.4Gbps
+5|IP Address (ตามหนังสือ)|หมายเลขประจำเครื่องคอมพิวเตอร์แต่ละเครื่องในเครือข่ายที่ใช้โปรโตคอล TCP/IP บอกได้ว่าเครื่องตั้งอยู่ที่ไหน
+5|IP Address Class A, B, C|Class A 1.0.0.1-127.255.255.254 | Class B 128.0.0.1-191.255.255.254 | Class C 192.0.1.1-223.255.254.254
+5|IP Address Class D และ E|Class D 224.0.0.0-239.255.255.255 ใช้งาน Multicast | Class E 240.0.0.0-255.255.255.254 สำรองไว้ ยังไม่มีการใช้งาน
+5|URL (Uniform Resource Locator)|ที่อยู่ของเว็บเพจที่ไม่ซ้ำกัน เช่น https://www.royalthaipolice.go.th/agencies_under.php | https = Protocol | www = Subdomain | royalthaipolice.go.th = Domain name | agencies_under.php = Path/Page
+5|Bookmark|ที่คั่นหน้า บันทึกที่อยู่เว็บไซต์ (URL) เพื่อกลับมาเข้าชมได้ง่าย
+5|Domain name (โดเมนเนม)|ชื่อที่ใช้อ้างอิงเว็บไซต์แทน IP Address ที่จำยาก คั่นด้วยจุด (.) เช่น 74.125.135.105 = google.com
+5|โดเมน 2 ระดับ vs 3 ระดับ|2 ระดับ = ชื่อโดเมน.ประเภท เช่น gurupolice.com | 3 ระดับ = ชื่อโดเมน.ประเภท.ประเทศ เช่น gurupolice.co.th
+5|โดเมนประเภทองค์กร (2 ระดับ / 3 ระดับ)|บริษัท/พาณิชย์ .com / .co | บริการเครือข่าย .net / .net | ไม่แสวงหากำไร .org / .or | การศึกษา .edu / .ac | รัฐบาล .gov / .go | ทหาร .mil / .mi | องค์กรข้ามชาติ .int / .in
+5|ตัวย่อประเทศในโดเมน 1|.th ไทย | .cn จีน | .uk อังกฤษ | .jp ญี่ปุ่น | .au ออสเตรเลีย | .sg สิงคโปร์
+5|ตัวย่อประเทศในโดเมน 2|.us สหรัฐ | .it อิตาลี | .ru รัสเซีย | .kr เกาหลีใต้ | .kp เกาหลีเหนือ | .ph ฟิลิปปินส์
+5|TLD (Top Level Domain) 2 หมวด|gTLD (Generic) โดเมนระดับบนสุดแบบทั่วไป เช่น .com .net .org .edu | ccTLD (Country Code) แบบบ่งบอกประเทศ เช่น .th .jp .uk .us
+5|DNS Server|ระบบแปลงชื่อเว็บไซต์ (เช่น www.google.com) เป็นหมายเลข IP (เช่น 8.8.8.8) เปรียบเสมือน "สมุดโทรศัพท์ของอินเทอร์เน็ต"
+5|HTML|HyperText Markup Language ภาษาจัดหน้าเว็บเพจ นามสกุลไฟล์ .htm หรือ .html
+6|พาณิชย์อิเล็กทรอนิกส์ (E-Commerce)|การซื้อขายหรือแลกเปลี่ยนสินค้าและบริการผ่านสื่ออิเล็กทรอนิกส์ เช่น อินเทอร์เน็ต เครือข่ายคอมพิวเตอร์ ผ่านเว็บไซต์หรือแอปพลิเคชัน เข้าถึงร้านค้าได้ตลอด 24 ชั่วโมง จัดประเภทตามคู่ค้าได้ 6 ประเภท
+6|B2B (Business to Business)|ธุรกิจกับธุรกิจ (บริษัท-บริษัท) เช่น ขายส่งสินค้าจากโรงงานไปยังห้างร้าน ผู้ผลิตกับผู้ค้าส่ง
+6|B2C (Business to Consumer)|ธุรกิจกับผู้บริโภค (บริษัท-บุคคล) เช่น ร้านอาหาร Lazada, Shopee, Amazon.com
+6|B2G (Business to Government)|ธุรกิจกับภาครัฐ เช่น การจัดซื้อจัดจ้างผ่านอินเทอร์เน็ต ธุรกรรมออนไลน์กับหน่วยงานรัฐ ผ่านระบบ e-Government
+6|C2C (Consumer to Consumer)|บุคคลกับบุคคล เช่น ซื้อขายสินค้ามือสองออนไลน์ ebay.com, ThaiSecondhand.com
+6|G2C (Government to Consumer)|ภาครัฐกับประชาชน เช่น ยื่นภาษีเงินได้บุคคลธรรมดาผ่านเว็บไซต์กรมสรรพากร
+6|G2G (Government to Government)|ภาครัฐกับภาครัฐ แลกเปลี่ยนข้อมูล/ข้อตกลงบนอินเทอร์เน็ต เช่น ระหว่างกระทรวง
+6|e-Tax Invoice|ใบกำกับภาษีอิเล็กทรอนิกส์ ปรับจากกระดาษเป็นข้อมูลอิเล็กทรอนิกส์ มี Digital Certificate และ Digital Signature ยืนยันตัวตนผู้ขายและความถูกต้องของข้อมูล
+6|e-Receipt|ใบรับอิเล็กทรอนิกส์ ใบเสร็จรับเงินในรูปข้อมูลอิเล็กทรอนิกส์ ส่งทางอีเมลให้ลูกค้าได้
+6|e-Service|การให้บริการอิเล็กทรอนิกส์ บริการที่สร้างบนเครือข่ายอินเทอร์เน็ตตอบสนองความต้องการทางธุรกิจ
+6|e-Sourcing|การจัดหาทางอิเล็กทรอนิกส์ กระบวนการจัดซื้อจัดหาที่เชื่อมผู้ซื้อกับผู้ขายผ่านเว็บไซต์
+6|e-Payment|การชำระเงินทางอิเล็กทรอนิกส์ โอนเงิน/ชำระเงินผ่านสื่ออิเล็กทรอนิกส์ เช่น สมาร์ทโฟนผ่านอินเทอร์เน็ต
+6|e-Tracking|ระบบติดตามสถานะการผ่านพิธีการศุลกากรทางอินเทอร์เน็ต เช่น ใบขนสินค้าขาเข้า-ขาออก บัญชีสินค้า
+6|e-Wallet|กระเป๋าเงินอิเล็กทรอนิกส์ รูปแบบแอปพลิเคชัน เช่น Shopee Pay, True Money Wallet, Rabbit Line Pay
+6|e-Card / e-Mail|e-Card = บัตรอวยพรอิเล็กทรอนิกส์ มักมีภาพเคลื่อนไหวและเพลง | e-Mail = จดหมายอิเล็กทรอนิกส์ ส่งผ่านเครือข่ายหรืออินเทอร์เน็ต
+6|e-Book / e-Magazine|e-Book = หนังสืออิเล็กทรอนิกส์ อ่านผ่านหน้าจอ ทั้งออฟไลน์และออนไลน์ | e-Magazine = นิตยสารอิเล็กทรอนิกส์ มีคลิปวิดีโอ เสียงเพลงประกอบ
+6|E-services ด้านสังคม|E-government = บริหารราชการผ่านระบบอิเล็กทรอนิกส์ เช่น ยื่นเอกสารราชการออนไลน์ | E-voting = ลงคะแนนเลือกตั้งอิเล็กทรอนิกส์ | E-passport = หนังสือเดินทางฝังชิปข้อมูล | E-saraban = ระบบสารบรรณอิเล็กทรอนิกส์ของภาครัฐ
+6|E-services ด้านการศึกษา|E-learning = เรียนออนไลน์ เช่น Zoom, Google Classroom | E-training = ฝึกอบรมออนไลน์ | E-library = ห้องสมุดอิเล็กทรอนิกส์ | E-book = หนังสืออิเล็กทรอนิกส์ | E-portfolio = แฟ้มสะสมงานอิเล็กทรอนิกส์
+6|E-services ด้านสาธารณสุข|E-hospital = โรงพยาบาลอิเล็กทรอนิกส์ เช่น ระบบคิว จ่ายยา | E-medical record = เวชระเบียนอิเล็กทรอนิกส์
+6|E-services ด้านเศรษฐกิจ|E-commerce = ซื้อขายสินค้าออนไลน์ | E-payment = ชำระเงินออนไลน์ | E-wallet = กระเป๋าเงินอิเล็กทรอนิกส์ | E-banking = ธนาคารออนไลน์ | E-tax/E-invoice = ภาษีและใบกำกับภาษีอิเล็กทรอนิกส์ | E-filing = ยื่นภาษีออนไลน์ที่กรมสรรพากร
+6|E-services ด้านสื่อสารและโทรคมนาคม|E-mail = จดหมายอิเล็กทรอนิกส์ | E-conference = ประชุมออนไลน์ | E-newspaper = หนังสือพิมพ์ออนไลน์
+6|E-services ด้านสิ่งแวดล้อมและทรัพยากร|E-environment = ใช้เทคโนโลยีจัดการสิ่งแวดล้อม | E-waste management = ระบบจัดการขยะอิเล็กทรอนิกส์ | E-agriculture = เกษตรอิเล็กทรอนิกส์ เช่น ตรวจวัดน้ำ
+7|ไวรัสคอมพิวเตอร์ (Computer Virus) / มัลแวร์|ชุดคำสั่งหรือโปรแกรมที่สร้างเพื่อบั่นทอนระบบความปลอดภัย ก่อกวน โจรกรรม ทำลายข้อมูลในเครื่องเป้าหมาย เรียกอีกอย่างว่า มัลแวร์ (Malware)
+7|หนอน (Worm)|แพร่กระจายตัวเองจากเครื่องหนึ่งไปอีกเครื่องผ่านอีเมล ระบบแชร์ไฟล์ | ผลเสีย: เครื่องช้าลง แพร่เร็ว ความเสียหายรุนแรง
+7|ม้าโทรจัน (Trojan Horse)|โปรแกรมที่ทำตัวเหมือนโปรแกรมธรรมดาเพื่อหลอกให้ผู้ใช้เรียกทำงาน | ผลเสีย: ทำลายข้อมูล หรือล้วงความลับของระบบ
+7|Boot Virus|แพร่เข้าระหว่างเริ่มบูตเครื่อง มักติดมากับ Flash Drive, CD, DVD | ผลเสีย: เครื่องบูตไม่ขึ้น เปิดเครื่องไม่ได้
+7|File Virus|พบมากที่สุดในชีวิตประจำวัน แฝงมากับไฟล์ติดตั้งโปรแกรมที่ดาวน์โหลดฟรี นามสกุล .exe, .com, .sys | ผลเสีย: โปรแกรม/ไฟล์ช้าหรือทำงานผิดปกติ
+7|Macro Virus|พบในงานออฟฟิศ แทรกมากับไฟล์เอกสาร Microsoft Word / Excel | ผลเสีย: เอกสารถูกแก้ไขหรือเสียหาย แพร่ง่ายผ่านไฟล์
+7|Spyware|โปรแกรมสอดส่องการใช้เครื่องโดยไม่รู้ตัว ขโมยข้อมูลส่วนตัว เก็บพฤติกรรมการใช้เน็ต เช่น ชื่อ รหัสผ่าน บัตรเครดิต | ผลเสีย: ข้อมูลรั่วไหล เครื่องช้า
+7|Spam Mail|อีเมลก่อกวน โฆษณา ส่งให้ผู้รับจำนวนมาก | ผลเสีย: กล่องอีเมลรก รบกวนสมาธิ เสี่ยงถูกหลอก
+7|Rootkits|มัลแวร์แฝงตัวในระบบ ซ่อนกระบวนการทำงานจนตรวจจับยาก ให้แฮกเกอร์ควบคุมจากระยะไกล (Remote Control) โดยเจ้าของไม่รู้ตัว หลบ Antivirus
+7|Hoax|ไวรัสลักษณะเหมือนจดหมายลูกโซ่ ผ่านอีเมลและแชท เนื้อหาหลอกลวงให้สับสน ให้คนเชื่อข้อมูลผิดและแชร์ต่อ
+7|Adware|โปรแกรมโฆษณาที่แอบมากับซอฟต์แวร์ฟรี เมื่อกดติดตั้งโดยไม่ระวัง | ผลเสีย: รบกวนการใช้งาน อาจพาไปเว็บอันตราย เครื่องช้า
+7|Phishing|หลอกลวงด้วยลิงก์ในอีเมลหรือเว็บไซต์ปลอมที่เหมือนบริการจริง เช่น ธนาคาร ร้านค้าออนไลน์ ให้กรอกชื่อผู้ใช้ รหัสผ่าน บัตรเครดิต บัตรประชาชน
+7|Pharming|คล้าย Phishing แต่โจมตีระบบโดเมน (DNS) หรือเซิร์ฟเวอร์เว็บไซต์ แม้พิมพ์ URL ถูกก็ถูกพาไปเว็บปลอมเพื่อขโมยข้อมูล
+7|DDoS (Distributed Denial of Service)|โจมตีเครือข่ายหรือเว็บไซต์ด้วยคำขอจำนวนมากพร้อมกันจากหลายเครื่อง | ผลเสีย: ระบบล่ม ช้า เข้าใช้งานไม่ได้
+7|Deep Fake|AI เลียนแบบใบหน้า เสียง การเคลื่อนไหวให้คล้ายบุคคลจริง | ผลเสีย: ทำลายชื่อเสียง ภัยความมั่นคงและการเมือง ละเมิดความเป็นส่วนตัว
+7|อาชญากรรมคอมพิวเตอร์ (Computer Crime / Cyber-crime)|การกระทำผิดกฎหมายโดยใช้คอมพิวเตอร์เป็นเครื่องมือ เช่น โจรกรรมข้อมูล บิดเบือนข้อมูล ฉ้อโกง ฟอกเงิน ถอดรหัสโปรแกรม ก่อกวนโดยแฮกเกอร์
+7|Hacker (แฮกเกอร์)|ผู้มีความรู้ด้านคอมพิวเตอร์และเครือข่าย อาศัยช่องโหว่เทคโนโลยี ลักลอบดูข้อมูลผู้อื่นโดยไม่ได้รับอนุญาต เพื่อความท้าทายหรือทดสอบความรู้ ไม่ได้ตั้งใจร้ายต่อข้อมูล เรียกว่า หมวกขาว (White hat)
+7|Cracker (แครกเกอร์)|ความรู้เทียบเท่า Hacker แต่มีเจตนาให้ข้อมูลเสียหายมากกว่า ส่วนใหญ่ชำนาญมากเป็นพิเศษ
+7|Script Kiddies / Novices|แฮกเกอร์มือใหม่ ขาดความชำนาญ ใช้โปรแกรมเจาะระบบที่ Hacker ชำนาญสูงพัฒนาไว้ ด้วยความอยากรู้อยากเห็น
+7|Organized Crime|อาชญากรรมองค์กร กลุ่มที่มีระบบ ใช้คอมพิวเตอร์ทั้งหาข่าวสารและเป็นเครื่องมือก่ออาชญากรรม/กลบเกลื่อนร่องรอย น่าเป็นห่วงที่สุดเพราะมีจำนวนมากขึ้นเรื่อยๆ
+7|Con Artist|พวกหัวพัฒนา ใช้ความก้าวหน้าและความรู้ด้านคอมพิวเตอร์หาเงินโดยมิชอบ
+7|Dreamer / Career Criminal / Extreme Advocates|Dreamer = พวกบ้าลัทธิ ผิดเพราะความเชื่อ | Career Criminal = อาชญากรมืออาชีพ ดำรงชีพจากการทำผิด เช่น ฉ้อโกงสถาบันการเงิน ขโมยข้อมูลไปขาย | Extreme Advocates = พวกหัวรุนแรง ก่อเหตุเพื่ออุดมการณ์ การเมือง เศรษฐกิจ ศาสนา สิทธิมนุษยชน
+7|VPN (Virtual Private Network)|เครือข่ายส่วนตัวเสมือน สร้างการเชื่อมต่อที่ปลอดภัยและเป็นส่วนตัวผ่านเครือข่ายสาธารณะ เหมือนอุโมงค์ ปกป้องข้อมูลจากการสอดแนม
+7|SSL / HTTPS|โปรโตคอลเข้ารหัสข้อมูลระหว่างผู้ใช้ (Client) กับเว็บเซิร์ฟเวอร์ ป้องกันข้อมูลรั่วไหลหรือถูกดักจับ
+7|Firewall (ไฟร์วอลล์)|ซอฟต์แวร์/ฮาร์ดแวร์บนเครือข่าย ตรวจสอบข้อมูลเข้า-ออก ตามกฎที่กำหนด คัดกรองว่ามาจากไหนไปที่ใด ป้องกันการบุกรุกเจาะเครือข่ายขององค์กร
+7|โปรแกรมสแกนไวรัส (Antivirus) ตัวอย่าง|Windows Defender, AVG, Adaware, Avast, ESET NOD32, Malwarebytes, McAfee, Avira, Immunet, Bitdefender, Kaspersky, Comodo, Forticlient, Trend Micro, Norton
+7|Biometric (ไบโอเมตริกซ์)|เทคโนโลยีพิสูจน์และยืนยันอัตลักษณ์เฉพาะบุคคล เช่น ปลดล็อกมือถือด้วยใบหน้า/ลายนิ้วมือ สนามบินสุวรรณภูมิ ดอนเมืองใช้สแกนใบหน้า
+7|Biometric ลักษณะทางกายภาพ (Physiological)|ติดตัวมาแต่เกิด ไม่ค่อยเปลี่ยน: ลายนิ้วมือ (Fingerprint) | ใบหน้า (Facial Recognition) | ม่านตา (Iris) / เรตินา (Retina) | เส้นเลือด (Vein Pattern)
+7|Biometric ลักษณะทางพฤติกรรม (Behavioural)|วัดจากรูปแบบการกระทำ เช่น การเซ็นชื่อ (Signature) ความเร็ว ความดัน ทิศทางการเขียน
+7|ทักษะดิจิทัลของข้าราชการ (สู่รัฐบาลดิจิทัล)|1 Digital Literacy = รู้เท่าทันและใช้เทคโนโลยี | 2 Digital Governance, Standard and Compliance = เข้าใจนโยบาย กฎหมาย มาตรฐาน | 3 Digital Technology / Digital Process and Service Design and Assurance = ใช้ดิจิทัลเพื่อประยุกต์และพัฒนา | 4 Digital Leadership / Digital Project and Strategic Management = ใช้ดิจิทัลวางแผน บริหารจัดการ นำองค์กร | 5 Digital Transformation = ขับเคลื่อนการเปลี่ยนแปลงและสร้างสรรค์ (โดย DGA)
+8|โปรแกรมประยุกต์ในสำนักงาน 4 กลุ่ม|จัดการเอกสาร: Microsoft Word, Google Docs | คำนวณ/วิเคราะห์ข้อมูล: Microsoft Excel, Google Sheets | นำเสนอข้อมูล: Microsoft PowerPoint, Google Slides | จัดการฐานข้อมูล: Microsoft Access, MySQL
+8|Word: เมนู Home|จัดรูปแบบข้อความ: Copy Formatting (คัดลอกรูปแบบไปใช้ที่อื่น), Increase/Decrease Font Size (เพิ่ม/ลดขนาดตัวอักษร), Change Case (เปลี่ยนตัวอักษรใหญ่-เล็ก), Clear Formatting (ยกเลิกรูปแบบ), Text Effect, Text Highlight Color (สีเน้นข้อความ)
+8|Word: Home - ย่อหน้า (Paragraph)|Bullets = หัวข้อย่อย | Numbering = เลขลำดับ | Multilevel List = หัวข้อหลายลำดับ | Decrease/Increase Indent = ลด/เพิ่มระยะย่อหน้า | Show/Hide formatting marks = แสดง/ซ่อนเครื่องหมายจัดรูปแบบ
+8|Word: การจัดตำแหน่งข้อความ|Align Left = ชิดซ้าย | Center = กึ่งกลาง | Align Right = ชิดขวา | Justify = ชิดขอบทั้งสองข้าง | Thai Distributed = กระจายตัวอักษรให้สม่ำเสมอทั้งบรรทัด | Line and Paragraph Spacing = ระยะห่างระหว่างบรรทัด/ก่อน-หลังย่อหน้า | Styles = รูปแบบสำเร็จรูป
+8|Word: เมนู Insert|Cover Page (หน้าปกสำเร็จรูป) | Blank Page | Page Break (แบ่งหน้า) | Table | Pictures | Shapes | Icons | 3D Models | Chart | Screenshot | Media | Link | Bookmark (จุดบันทึกตำแหน่งในเอกสาร) | Cross-reference (อ้างอิงข้ามภายในเอกสาร)
+8|Word: Insert - Comment / Header / Footer|Comment = ใส่ข้อเสนอแนะ | Header = ส่วนหัวกระดาษ | Footer = ส่วนท้ายกระดาษ | Page Number = เลขหน้า | Text Box = กล่องข้อความ
+8|Word: Insert - Quick Parts / Drop Cap / Object|Field = แทรกข้อมูลอัตโนมัติที่อัปเดตเอง เช่น วันที่ปัจจุบัน เลขหน้า ชื่อไฟล์ | Drop Cap = ตัวอักษรตัวแรกขนาดใหญ่ | Date & Time = วันที่และเวลา | Object = แทรกไฟล์อื่น เช่น Excel, PowerPoint | Equation = สมการ | Symbol/Advanced Symbol = สัญลักษณ์พิเศษที่ไม่มีบนแป้นพิมพ์
+8|Word: เมนู Design|Themes = ชุดรูปแบบสำเร็จรูปทั้งฉบับ | Colors = ชุดสี | Paragraph Spacing = ระยะห่างก่อน-หลังย่อหน้า | Watermark = ลายน้ำ | Page Color = สีพื้นหลัง | Page Borders = กรอบเส้นรอบหน้า
+8|Word: เมนู Layout - ตั้งค่าหน้า|Margins = ระยะขอบ | Orientation = แนวกระดาษ (Portrait แนวตั้ง / Landscape แนวนอน) | Size = ขนาดกระดาษ | Columns = แบ่งเนื้อหาเป็นคอลัมน์ | Breaks = แบ่งหน้า/คอลัมน์/ส่วน | Line Numbers = ตัวเลขกำกับบรรทัด
+8|Word: Layout - Position / Wrap Text|Position = กำหนดตำแหน่งรูปภาพ/กล่องข้อความ | Wrap Text = วิธีที่ข้อความล้อมรอบรูป: In Line with Text, Square, Tight, Through, Top and Bottom, Behind Text, In Front of Text
+8|Word: Layout - Arrange|Bring Forward / Bring to Front = เลื่อนวัตถุมาด้านหน้า | Send Backward / Send to Back = ถอยไปด้านหลัง | Selection Pane = แผงจัดการเลเยอร์วัตถุ | Align = จัดวางวัตถุให้เป็นระเบียบ | Rotate = หมุน/พลิก (Flip Vertical, Flip Horizontal, Rotate Right/Left 90°)
+8|Word: เมนู References|Table of Contents = สารบัญ | Footnote = เชิงอรรถ | Insert Citation = อ้างอิง | Caption = ใส่ชื่อรูป/ตาราง | Index = ดัชนี
+8|Word: เมนู Mailings|Start Mail Merge = เริ่มสร้างจดหมายเวียน (จดหมาย, ซองจดหมาย, ป้ายฉลาก, อีเมล) | Select Recipients = เลือกผู้รับ | Preview Results = ตัวอย่าง | Finish & Merge = ส่งออก
+8|Word: เมนู Review - พิสูจน์อักษร|Spelling and Grammar = ตรวจการสะกดคำและไวยากรณ์ | Thesaurus = ค้นหาคำเหมือน/คำใกล้เคียง | Word Count = นับจำนวนคำ อักขระ บรรทัด ย่อหน้า หน้า
+8|Word: Review - เครื่องมืออื่น|Read Aloud = อ่านออกเสียงข้อความ | Check Accessibility = ตรวจการเข้าถึงสำหรับผู้พิการ | Translate = แปลภาษา | Language = กำหนดภาษาเพื่อตรวจคำผิด ไวยากรณ์ และการออกเสียง
+8|Word: เมนู View - โหมดแสดงผล 1|Print Layout = เห็นเหมือนพิมพ์จริง (ระยะขอบ หัว-ท้ายกระดาษ ภาพ ตาราง) | Web Layout = แบบหน้าเว็บ ไม่มีขอบกระดาษ ข้อความไหลต่อกัน | Outline = แสดงเฉพาะหัวข้อ (Heading) จัดย้ายหัวข้อได้ง่าย | Draft = แบบเรียบง่าย ซ่อนการตกแต่ง แก้ข้อความเร็ว
+8|Word: เมนู View - โหมดแสดงผล 2|Focus Mode = ซ่อนเมนู เหลือแต่เนื้อหา | Immersive Reader = โหมดอ่านตัดสิ่งรบกวน ปรับฟอนต์ ระยะบรรทัด สี แยกพยางค์ ออกเสียง | Ruler = ไม้บรรทัดตั้งระยะขอบ ย่อหน้า แท็บ | Gridlines = เส้นตารางช่วยกะระยะ (ไม่พิมพ์ออก) | Navigation Pane = แถบซ้ายดูหัวข้อทั้งหมด | Macros = บันทึกขั้นตอนซ้ำๆ ให้ทำอัตโนมัติ
+8|Word: Picture Format 1|Remove Background = ลบพื้นหลังรูป | Corrections = ปรับความคมชัด/ความสว่าง | Color = ปรับโทนสี | Artistic Effects = เอฟเฟกต์ศิลปะ เช่น ภาพวาด สีน้ำ | Transparency = ความโปร่งใส
+8|Word: Picture Format 2|Compress Pictures = ลดขนาดรูปเพื่อลดขนาดไฟล์ | Change Picture = เปลี่ยนรูปโดยไม่เสียการจัดวาง | Reset Picture = คืนค่าเดิม | Picture Border = เส้นขอบรูป | Picture Effects = เงา เรืองแสง นูน สะท้อน | Alt Text = คำอธิบายรูปสำหรับโปรแกรมอ่านหน้าจอ (ผู้พิการทางสายตา)
+8|Word: Picture Format 3 - Crop / Rotate|Crop = ครอบตัดรูป ตัดส่วนที่ไม่ต้องการออก | Rotate = หมุน/พลิกวัตถุ
+8|Word: Table Layout - Delete|Delete Cells = ลบเซลล์เดียว | Delete Columns = ลบทั้งคอลัมน์ (แนวตั้ง) | Delete Rows = ลบทั้งแถว (แนวนอน) | Delete Table = ลบทั้งตาราง (ไม่ได้ลบทั้งเอกสาร)
+8|Word: Table Layout - Insert|Insert Above = เพิ่มแถวด้านบน | Insert Below = เพิ่มแถวด้านล่าง | Insert Left = เพิ่มคอลัมน์ซ้าย | Insert Right = เพิ่มคอลัมน์ขวา
+8|Word: Table Layout - Merge / Split / Convert|Merge Cells = ผสานเซลล์เป็นช่องเดียว | Split Cells = แยกเซลล์เป็นหลายแถว/คอลัมน์ | Split Table = แยกตารางเป็นสองชุด (แถวที่เลือกเป็นจุดแบ่ง) | Convert to Text = แปลงตารางเป็นข้อความธรรมดา | Formula = คำนวณตัวเลขในตาราง
+8|Word: ปุ่มลัด Ctrl + A / C / X / V|Ctrl+A เลือกทั้งหมด | Ctrl+C คัดลอก (Copy) | Ctrl+X ตัด (Cut) | Ctrl+V วาง (Paste)
+8|Word: ปุ่มลัด จัดรูปแบบข้อความ|Ctrl+B ตัวหนา | Ctrl+I ตัวเอียง | Ctrl+U ขีดเส้นใต้ | Ctrl+E จัดกึ่งกลาง | Ctrl+L ชิดซ้าย | Ctrl+R ชิดขวา
+8|Word: ปุ่มลัด จัดการไฟล์|Ctrl+N สร้างเอกสารใหม่ | Ctrl+O เปิดเอกสาร | Ctrl+S บันทึก | Ctrl+P พิมพ์ | Ctrl+W ปิดเอกสาร | Ctrl+F เปิดกล่องค้นหา | Ctrl+K แทรกไฮเปอร์ลิงก์
+8|Word: ปุ่มลัด Undo / Repeat / อื่นๆ|Ctrl+Z เลิกทำ (Undo) | Ctrl+Y ทำซ้ำ (Repeat) | ESC ยกเลิกคำสั่ง | Ctrl+Home ไปจุดเริ่มต้นเอกสาร | Ctrl+End ไปส่วนท้ายสุดเอกสาร | Ctrl+Prt Sc จับภาพหน้าจอ
+8|Word: ปุ่มลัด ขนาดอักษร / นับ / เวลา|Ctrl+[ ลดขนาดอักษร 1 point | Ctrl+] เพิ่มขนาดอักษร 1 point | Ctrl+Shift+G นับตัวอักษรทั้งหมดในเอกสาร | Ctrl+Shift+D ขีดเส้นใต้ 2 เส้นข้อความที่จะพิมพ์ | Alt+Shift+G แทรกเวลาปัจจุบัน (ตามที่หนังสือระบุ)
+8|Excel: ส่วนประกอบหน้าจอ|Title bar = กล่องชื่อสมุดงาน | Quick Access Toolbar = แถบเครื่องมือด่วน | Formula Bar = แถบสูตร | Column = คอลัมน์ | Row = แถว
+8|Excel: เมนู Home 1|Copy / Format Painter (Copy formatting) = คัดลอกรูปแบบไปใช้กับอีกอัน | Increase/Decrease Font Size = เพิ่ม/ลดขนาดตัวอักษร | Underline = ขีดเส้นใต้ | Fill Color/Shading = เติมสีพื้นหลัง | Font Color = สีข้อความ
+8|Excel: เมนู Home 2 - การจัดข้อความ|Align Top/Middle/Bottom = ชิดบน/กลาง/ล่าง | Orientation = หมุนข้อความ (Angle Counterclockwise) | Wrap Text = ตัดข้อความยาวลงบรรทัดใหม่ในเซลล์ | Decrease/Increase Indent = ลด/เพิ่มการเยื้อง | Merge & Center = ผสานเซลล์และจัดกึ่งกลาง
+8|Excel: Number Format|General, Number, Currency, Accounting (รูปแบบบัญชีและการเงิน), Short Date, Long Date, Time, Percentage (% คูณ 100 และเติม % อัตโนมัติ), Fraction (เศษส่วน), Scientific, Text
+8|Excel: Comma Style / Decimal|Comma Style = ใส่เครื่องหมายจุลภาค (,) คั่นหลักพัน หลักล้าน | Increase Decimal = เพิ่มตำแหน่งทศนิยม | Decrease Decimal = ลดตำแหน่งทศนิยม
+8|Excel: Home - Conditional Formatting / Table / Cell Styles|Conditional Formatting = จัดรูปแบบตามเงื่อนไข | Format as Table = จัดรูปแบบเป็นตาราง | Cell Styles = สไตล์เซลล์สำเร็จรูป | Insert / Delete / Format = แทรก/ลบ/จัดรูปแบบเซลล์
+8|Excel: Home - Sort & Filter / Find & Select|Sort = เรียงลำดับ | Filter = กรองข้อมูลบางส่วน | Find = ค้นหา | Replace = แทนที่ | Select = เลือกเซลล์ที่มีคุณสมบัติตามเงื่อนไข
+8|Excel: เมนู Insert 1|Table / PivotTable = สรุปผลและวิเคราะห์ข้อมูลจำนวนมากอย่างรวดเร็ว | Pictures | Shapes | Icons | 3D Models | SmartArt = แผนภาพ | Screenshot | Data from Picture = แปลงรูปภาพเป็นตัวหนังสือ/ตารางแก้ไขได้ด้วย OCR (Optical Character Recognition)
+8|Excel: Checkbox|ช่องกาเครื่องหมาย (✓) คลิกเพื่อเลือก (Checked) หรือไม่เลือก (Unchecked) ใช้ควบคุมสถานะ ติดตามงาน ทำเช็กลิสต์
+8|Excel: Recommended Charts|แนะนำประเภทแผนภูมิ (Chart) ที่เหมาะกับข้อมูลให้โดยอัตโนมัติ
+8|Excel: ชนิดแผนภูมิ 1|Column/Bar = แผนภูมิแท่ง | Line = แผนภูมิเส้น | Hierarchy = ลำดับชั้น | Statistical = แสดงผลเชิงสถิติ
+8|Excel: ชนิดแผนภูมิ 2|X Y (Scatter) = กราฟกระจายจุด แสดงความสัมพันธ์ระหว่างตัวแปร 2 ตัว (แกน X แนวนอน แกน Y แนวตั้ง) | Waterfall = แสดงการเปลี่ยนแปลงจากค่าเริ่มต้นไปค่าสุดท้าย เพิ่ม-ลดแต่ละช่วง | Combo = นำกราฟ 2 แบบขึ้นไปรวมในแผนภูมิเดียว
+8|Excel: Maps / Sparklines|Maps (Map Chart) = แผนภูมิแผนที่ แสดงข้อมูลเชิงพื้นที่/ภูมิศาสตร์ | Sparklines = กราฟขนาดเล็กฝังในเซลล์เดียว แสดงแนวโน้ม (Trend)
+8|Excel: Insert - Link / Comment / Text|Link = แทรกลิงก์ | Comment = ใส่ข้อเสนอแนะ | Text Box = กล่องข้อความ | Header & Footer = ส่วนหัว/ท้ายกระดาษ เมื่อพิมพ์หรือดูใน Page Layout / Print Preview | WordArt | Equation | Symbol
+8|Excel: เมนู Page Layout|Themes = ชุดรูปแบบ | Colors = ชุดสี | Margins | Orientation (Landscape แนวนอน) | Size = ขนาดกระดาษ | Print Area = กำหนดพื้นที่พิมพ์ | Breaks = แบ่งหน้า | Print Titles = พิมพ์แถว/คอลัมน์เดิมซ้ำทุกหน้า | Page Setup = ตั้งค่าหน้ากระดาษก่อนพิมพ์
+8|Excel: เมนู Formulas - หมวดฟังก์ชัน 1|Insert Function = แทรกฟังก์ชัน | AutoSum | Recently Used = ที่ใช้ล่าสุด | Financial = การเงิน | Logical = ตรรกะ ผลลัพธ์ TRUE (จริง) หรือ FALSE (เท็จ) | Text = จัดการข้อความ ตัดคำ เปลี่ยนตัวพิมพ์ใหญ่/เล็ก ดึงตัวอักษรบางส่วน
+8|Excel: เมนู Formulas - หมวดฟังก์ชัน 2|Date & Time = จัดการวันที่และเวลา | Lookup & Reference = ค้นหา/อ้างอิงข้อมูลจากตารางหนึ่งไปอีกตาราง | Math & Trig = คณิตศาสตร์และตรีโกณมิติ | More Functions (Statistical, Engineering, Information)
+8|Excel: เมนู Formulas - กลุ่มอื่น|Defined Names = กำหนดชื่อข้อมูล | Formula Auditing = ตรวจสอบสูตร | Calculation = การคำนวณ (Calculation Options, Calculate Now)
+8|Excel: เมนู Data / Review|Data = รับข้อมูลภายนอก (Get Data), การเชื่อมต่อ, Sort & Filter, Data Tools, โครงร่าง (Outline) | Review = Spelling, Thesaurus, Check Accessibility, Translate, Comment/Note, Protect (เปลี่ยนแปลงข้อมูล)
+8|Excel: เมนู View|มุมมองงาน (Normal, Page Break Preview, Page Layout, Custom Views) | การแสดงเครื่องมือ (Ruler, Gridlines, Formula Bar, Headings) | ย่อ/ขยาย (Zoom) | ฟังก์ชันหน้าต่าง (New Window, Arrange All, Freeze Panes) | Macros
+8|Excel: ปุ่มลัด คัดลอก/ตาราง|Ctrl+D คัดลอกข้อมูลลงแถวด้านล่าง | Ctrl+R คัดลอกข้อมูลไปคอลัมน์ด้านขวา | Ctrl+T สร้างตาราง | Alt+F1 สร้างกราฟ | Ctrl+Shift+L สร้างตัวกรองข้อมูล (Filter)
+8|Excel: ปุ่มลัด เปลี่ยนรูปแบบ|Ctrl+Shift+$ ค่าเงิน | Ctrl+Shift+! ตัวเลข | Ctrl+Shift+% เปอร์เซ็นต์ | Ctrl+Shift+# วันที่ | Ctrl+Shift+@ เวลา | Ctrl+Shift+_ เอาเส้นตารางออก
+8|Excel: ปุ่มลัด วันที่/เวลา/อื่นๆ|Ctrl+; พิมพ์วันที่ปัจจุบัน | Ctrl+Shift+; พิมพ์เวลาปัจจุบัน | Alt+; เลือก Cell ที่ไม่โดน Hide | Alt+= Autosum | Alt+F8 เปิด Macro
+8|Excel: ฟังก์ชัน IF|=IF(เงื่อนไข, ค่าถ้าเป็นจริง, ค่าถ้าเป็นเท็จ) | ตัวอย่าง =IF(A2>=50,"ผ่าน","ไม่ผ่าน")
+8|Excel: ฟังก์ชัน DATE|=DATE(ปี, เดือน, วัน) | ตัวอย่าง =DATE(2025,1,5) แสดงวันที่ 5 มกราคม 2568
+8|Excel: ฟังก์ชัน SUM|=SUM(ช่วงข้อมูล) หาผลรวม | ตัวอย่าง =SUM(A2:A10)
+8|Excel: ฟังก์ชัน SUMIF|=SUMIF(ช่วงเงื่อนไข, เงื่อนไข, ช่วงที่ต้องการรวม) หาผลรวมตามเงื่อนไข | ตัวอย่าง =SUMIF(B2:B20,"ม.6/3",C2:C20)
+8|Excel: ฟังก์ชัน AVERAGE|=AVERAGE(ช่วงข้อมูล) หาค่าเฉลี่ย | ตัวอย่าง =AVERAGE(A2:A10)
+8|Excel: ฟังก์ชัน MAX / MIN|=MAX(ช่วงข้อมูล) ค่าสูงสุด | =MIN(ช่วงข้อมูล) ค่าต่ำสุด | ตัวอย่าง =MAX(A2:A10)
+8|Excel: COUNT vs COUNTA|COUNT = นับจำนวน Cell ที่มีข้อมูลตัวเลข | COUNTA = นับจำนวน Cell ที่มีตัวอักษรหรือตัวเลข
+8|Excel: ฟังก์ชัน LEN|=LEN(text) นับจำนวนตัวอักษรหรือตัวเลขของข้อความใน Cell
+8|Excel: ฟังก์ชัน TRIM|=TRIM(text) ลบช่องว่างด้านหน้า ตรงกลาง และหลังของข้อความออก
+8|Excel: ฟังก์ชัน CONCAT / CONCATENATE|เชื่อมคำ =CONCAT(A2," ",B2) | ถ้า A2=บัส B2=กูรู จะเชื่อมเป็น "บัส กูรู"
+8|Excel: UPPER / LOWER|=UPPER(text) เปลี่ยนข้อความอังกฤษเป็นตัวพิมพ์ใหญ่ | =LOWER(text) เป็นตัวพิมพ์เล็ก
+8|Excel: ลำดับความสำคัญของเครื่องหมาย|1 วงเล็บ | 2 เปอร์เซ็นต์ (%) | 3 เครื่องหมายติดลบ | 4 ยกกำลัง (^) | 5 คูณ (*) หาร (/) | 6 บวก (+) ลบ (-) | 7 เชื่อม (&) | ทุกสูตรต้องขึ้นต้นด้วย = เสมอ
+8|Excel Error: ###### |ตัวเลขหรือผลสูตรยาวเกินความกว้างคอลัมน์ | แก้: ปรับคอลัมน์ให้กว้างขึ้น
+8|Excel Error: #DIV/0!|ตัวหารในสูตรเป็น 0 หรือเซลล์ว่าง | แก้: ตรวจสอบตัวหาร
+8|Excel Error: #VALUE!|ใช้อาร์กิวเมนต์ผิดประเภท เช่น นำข้อความไปคำนวณ | แก้: ให้ถูกประเภท
+8|Excel Error: #NULL!|ใช้เซลล์อ้างอิงผิด/ไม่ถูกต้อง | แก้: ตรวจสอบเซลล์อ้างอิง
+8|Excel Error: #NAME?|ชื่อที่ใช้ในสูตรสะกดผิดหรือไม่มีชื่อนั้น | แก้: ตรวจสอบชื่อ
+8|Excel Error: #N/A|ใส่อาร์กิวเมนต์ไม่ครบ หรือใช้ไม่ตรงเงื่อนไขฟังก์ชัน | แก้: ตรวจอาร์กิวเมนต์
+8|Excel Error: #REF!|เซลล์ที่อ้างอิงในสูตรถูกลบ หรือมีข้อมูลอื่นย้ายมาแทน | แก้: ใช้ Undo หรืออ้างอิงเซลล์อื่น
+8|Excel Error: #NUM!|อาร์กิวเมนต์ผิดประเภท หรือผลสูตรมีค่ามาก/น้อยเกินไป | แก้: แก้อาร์กิวเมนต์หรือสูตร
+8|Excel Error: #SPILL!|ใส่สูตรแล้วได้ผลลัพธ์มากกว่า 1 ค่า แต่พื้นที่แสดงผลถูกขวาง | แก้: ตรวจสอบและปรับสูตร/เคลียร์พื้นที่
+8|PowerPoint: ส่วนประกอบ|โปรแกรมนำเสนอข้อมูล (Microsoft PowerPoint, Google Slides) | Click to add title = ช่องใส่หัวข้อสไลด์
+8|PowerPoint: Home - สไลด์|New Slide = เพิ่มสไลด์ใหม่ | Layout = รูปแบบเค้าโครงสไลด์ | Reset = คืนค่ารูปแบบสไลด์เป็นค่าเดิมตามแม่แบบ (Template) | Section = จัดกลุ่มสไลด์ | Format Painter = คัดลอกรูปแบบ
+8|PowerPoint: Home - ตัวอักษร|Strikethrough = ขีดเส้นกลาง | Superscript = ตัวยก | Character Spacing = ระยะห่างตัวอักษร | Change Case = เปลี่ยนตัวใหญ่-เล็ก | Highlight = สีเน้น | Bullets / Numbering = หัวข้อย่อย/เลขลำดับ
+8|PowerPoint: Home - ย่อหน้า|Decrease/Increase Indent | Line Spacing | Columns = เพิ่ม/ลดคอลัมน์ | Align Left/Center/Right | Distributed = กระจายเหมาะกับภาษาไทย | Text Direction = ทิศทางข้อความ | Convert to SmartArt Graphic = แปลงข้อความเป็นไดอะแกรมสำเร็จรูป | Shape Outline = เส้นขอบรูปทรง
+8|PowerPoint: Insert|New Slide, Table, Pictures, Screenshot, Shapes, Icons, Charts, SmartArt | Insert Cameo = แทรกภาพจาก Webcam แบบสด ให้ผู้พูดแสดงหน้าตัวเองบนสไลด์ขณะนำเสนอ
+8|PowerPoint: Zoom|Summary Zoom = ทำเมนูภาพรวมหลายหัวข้อ | Section Zoom = กระโดดไปยัง Section ที่แบ่งไว้ | Slide Zoom = ลิงก์ไปสไลด์ใดสไลด์หนึ่ง
+8|PowerPoint: Action / Comment|Action = กำหนดให้วัตถุ (Shape ข้อความ รูปภาพ) โต้ตอบได้ในโหมด Slide Show เมื่อคลิก (Click) หรือชี้เมาส์ (Mouse Over) | Comment = ใส่หมายเหตุ/ข้อเสนอแนะ
+8|PowerPoint: Header & Footer / อื่นๆ|Header & Footer = หัวและท้ายสไลด์ | Slide Number = เลขลำดับสไลด์ | Date & Time = วันที่และเวลา | Object = แทรกไฟล์เช่น Excel, Word | Equation | Symbol
+8|PowerPoint: Design - Slide Size|Standard (4:3) = สไลด์ทรงสี่เหลี่ยม | Widescreen (16:9) = สไลด์กว้างแบบจอทีวี/โปรเจกเตอร์ | Themes = ธีมสไลด์
+8|PowerPoint: Format Background|เปลี่ยนพื้นหลังทั้งเซตหรือเฉพาะหน้า: Solid Fill = สีเดียว | Gradient Fill = ไล่สี | Picture or Texture Fill = ภาพ/พื้นผิว | Pattern Fill = ลายจุด ลายเส้น | Hide Background Graphics = ซ่อนพื้นหลังจากธีม/เทมเพลต | Transparency = ความโปร่งใส
+8|PowerPoint: Transitions|Preview = ดูตัวอย่างเอฟเฟกต์การเปลี่ยนสไลด์ | Transition Options | Duration = กำหนดความเร็วในการเปลี่ยนสไลด์
+8|PowerPoint: Transitions - Sound / Advance|Sound = เพิ่มเสียงประกอบตอนเปลี่ยนสไลด์ | On Mouse Click = เปลี่ยนไปสไลด์ถัดไปเมื่อคลิกเมาส์ | After (Advance Slide after seconds) = เปลี่ยนอัตโนมัติตามเวลาที่กำหนดโดยไม่ต้องคลิก | Apply to All = ใช้ทรานซิชันเดียวกันกับทุกสไลด์
+8|PowerPoint: Animations - Preview / Entrance / Emphasis|Preview = ทดสอบดูผล Animation โดยไม่ต้องเข้า Slide Show | Entrance Effects = เอฟเฟกต์วัตถุเข้ามา | Emphasis Effects = เอฟเฟกต์เน้นตัววัตถุ
+8|PowerPoint: Animations - Exit / Path / Options|Exit Effects = เอฟเฟกต์วัตถุหายออกจากสไลด์ | Motion Path Animation = เคลื่อนที่ตามเส้นทางที่กำหนด เช่น เส้นตรง โค้ง วงกลม หรือวาดเอง | Effect Options = ปรับรายละเอียด เช่น ทิศทาง รูปแบบการเคลื่อนที่
+8|PowerPoint: Animation Pane / Trigger / Painter|Animation Pane = หน้าต่างดูและจัดการลำดับเอฟเฟกต์ในสไลด์ปัจจุบัน | Trigger = ให้ Animation ทำงานเมื่อคลิกวัตถุที่กำหนด | Animation Painter = คัดลอกเอฟเฟกต์จากวัตถุหนึ่งไปอีกวัตถุหนึ่ง
+8|PowerPoint: Slide Show - Play from|From Beginning (Play from Start) = เริ่มเล่นตั้งแต่สไลด์แรก รวมแอนิเมชันและทรานซิชันทั้งหมด (ปุ่มลัด F5) | From Current Slide = เริ่มเล่นจากสไลด์ที่เปิดอยู่ (Shift+F5)
+8|PowerPoint: Presenter View / Custom Show|Presenter View = ผู้พูดเห็นหน้าจอพิเศษเฉพาะตัวเอง ผู้ชมเห็นเฉพาะสไลด์ | Custom Slide Show = ชุดลำดับสไลด์เฉพาะ นำเสนอบางส่วนโดยไม่ต้องลบหรือซ่อนสไลด์
+8|PowerPoint: Rehearse / Set Up / Hide|Rehearse with Coach = ซ้อมนำเสนอโดยมี AI เป็นโค้ช | Set Up Slide Show = กำหนดรูปแบบการแสดง/ควบคุมด้วยหน้าจอไหน | Hide Slide = ซ่อนสไลด์ไม่ให้แสดงแต่ยังอยู่ในไฟล์ | Rehearse Timings = ซ้อมจับเวลา บันทึกเวลาที่พูดในแต่ละสไลด์ ให้เลื่อนอัตโนมัติ
+8|PowerPoint: Record|บันทึกการบรรยาย (เสียง/กล้อง/การคลิกสไลด์) ลงในงานนำเสนอ เหมาะสำหรับวิดีโอสอน คอร์สออนไลน์ พรีเซนต์ที่ไม่ต้องพูดสด
+8|PowerPoint: เมนู Record|Cameo = แทรกภาพ Webcam ของผู้พูดลงสไลด์ | Screen Recording = อัดหน้าจอ | From Beginning = เริ่มบันทึก/นำเสนอจากสไลด์แรก | From Current Slide = จากสไลด์ที่เลือก | Clear = ลบการบันทึกเสียง วิดีโอ จังหวะ | Reset to Cameo/Delete Recording and Replace with Cameo = ลบการบันทึกที่เคยอัดแล้วแทนที่ด้วย Cameo
+8|PowerPoint: เมนู Review|Spelling and Grammar | Thesaurus | Check Accessibility | Translate | Comment = เพิ่ม/แก้/ดู/ลบความคิดเห็นในสไลด์ | Compare = เปรียบเทียบ | Hide Ink = ซ่อนหมึก
+8|PowerPoint: View - Normal / Outline / Slide Sorter|Normal = มุมมองแก้ไขสไลด์ ใส่ข้อความ รูป เพิ่ม/ลบ | Outline View = แสดงโครงร่างเฉพาะข้อความ | Slide Sorter = ภาพรวม จัดเรียง/คัดลอกสไลด์ใหม่ได้ง่าย
+8|PowerPoint: View - Notes Page / Reading View|Notes Page = มุมมองใช้ร่วมกับช่องบันทึก ใส่คำพูดหรือสคริปต์สำหรับผู้พูด ผู้ชมไม่เห็นตอนนำเสนอ | Reading View = ดูงานนำเสนอเต็มหน้าต่าง
+8|PowerPoint: Master Views|Slide Master = แม่แบบควบคุมรูปแบบของสไลด์ทั้งหมด | Handout Master = จัดรูปแบบเอกสารประกอบ (Handout) ที่พิมพ์แจกผู้เรียน | Notes Master = จัดรูปแบบหน้าบันทึกช่วยพูด
+8|PowerPoint: View - Notes / Zoom / Fit|Notes = พื้นที่ใต้สไลด์เขียนบันทึก | Zoom = ขยาย/ย่อมุมมอง | Fit to Window = ปรับขนาดสไลด์ให้พอดีหน้าต่าง | Macros = ชุดคำสั่งบันทึกการทำงานซ้ำๆ เรียกใช้อัตโนมัติ
+8|PowerPoint: ปุ่มลัดนำเสนอ 1|F5 เริ่มตั้งแต่สไลด์แรก | Shift+F5 เริ่มจากสไลด์ปัจจุบัน | Home กลับสไลด์แรก | End ไปสไลด์สุดท้าย | B แสดงสไลด์ว่างสีดำ | W แสดงสไลด์ว่างสีขาว | เลขสไลด์ + Enter ไปสไลด์ที่ต้องการ | N / Spacebar / ลูกศรขวา สไลด์ถัดไป
+8|PowerPoint: ปุ่มลัดนำเสนอ 2|Alt+P เล่นสื่อ | Alt+Q หยุดสื่อ | Alt+Up เพิ่มเสียง | Alt+Down ลดเสียง | Ctrl+L เคอร์เซอร์เป็นเลเซอร์ | Ctrl+P ปากกา | Ctrl+A ลูกศร | Ctrl+E ยางลบ
+9|สื่อ (Media)|เครื่องมือหรือช่องทางตัวกลางนำสาร (ข้อความ ข่าวสาร ข้อมูล ความรู้ ความคิด ความรู้สึก) จากผู้ส่งสารไปยังผู้รับสาร
+9|แบ่งประเภทสื่อตามช่องทางนำเสนอ 3 แบบ|สื่อสิ่งพิมพ์ (Print Media) = ใช้กระดาษ เช่น หนังสือพิมพ์ นิตยสาร โปสเตอร์ แผ่นพับ | สื่ออิเล็กทรอนิกส์ (Electronic Media) = วิทยุ โทรทัศน์ ภาพยนตร์ เทปเสียง/วิดีโอ | สื่อดิจิทัล/ออนไลน์ (Digital/Online Media) = เว็บไซต์ โซเชียลมีเดีย บล็อก อีเมล
+9|แบ่งสื่อตามประสาทสัมผัส 3 แบบ|สื่อโสต (Audio) = ฟัง เช่น วิทยุ เทปเสียง | สื่อทัศน์ (Visual) = มอง เช่น หนังสือพิมพ์ ภาพนิ่ง กราฟิก | สื่อโสตทัศน์ (Audiovisual) = ฟังและมอง เช่น โทรทัศน์ ภาพยนตร์ วิดีโอ
+9|แบ่งสื่อตามบทบาททางสังคม|สื่อมวลชน (Mass Media) = เข้าถึงคนจำนวนมากพร้อมกัน เช่น หนังสือพิมพ์ โทรทัศน์ | สื่อเฉพาะกิจ (Specialized Media) = กลุ่มเป้าหมายหรือวัตถุประสงค์เฉพาะ เช่น วารสารวิชาการ สื่อการสอนในห้องเรียน
+9|Social Media แบบ Social Networks|เชื่อมโยงผู้คนด้วยการแลกเปลี่ยนความคิดเห็น ติดตามผู้สนใจเหมือนกัน เช่น Facebook, LinkedIn
+9|Social Media แบบ Media Networks|แชร์คอนเทนต์มีเดีย รูปภาพ วิดีโอ เช่น Instagram, Vimeo, TikTok, YouTube
+9|Social Media แบบ Discussions|เน้นตั้งคำถามและพูดคุย ไม่เน้นการติดตาม เช่น Pantip, Quora, Reddit
+9|Social Media แบบ Reviews|เน้นรีวิว เป็นแหล่งข้อมูลประกอบการตัดสินใจ โรงแรม ร้านอาหาร ท่องเที่ยว เช่น TripAdvisor, Yelp
+9|Social Media แบบ Microblogging|แชร์ข้อความสั้นๆ เน้นความฉับไว เช่น Twitter (X), Threads, Tumblr หรือลูกผสมอย่าง TikTok
+9|Social Media แบบ Live Streaming & Short-Form Video|เน้นถ่ายทอดสดและวิดีโอสั้น เช่น TikTok, Twitch, YouTube Live, Instagram Live
+9|Social Media แบบ Social Commerce & E-commerce|ผสาน Social Media กับการซื้อขาย ดูสินค้า รีวิว ซื้อขายบนแพลตฟอร์ม เช่น Facebook Marketplace, TikTok Shop, Instagram Shopping, LINE OA
+9|Facebook|ผู้ก่อตั้ง: มาร์ก ซักเคอร์เบิร์ก | มีแบบส่วนตัว และแบบเพจ (ปุ่ม Like, Follow, ติดดาว)
+9|YouTube|เปิดตัวกุมภาพันธ์ 2005 | ปุ่ม Like, Dislike, Share, Download, Subscribe | มี YouTube Shorts (วิดีโอสั้นแนวตั้ง) คู่แข่งหลักของ TikTok และระบบสร้างรายได้ที่ซับซ้อนขึ้น
+9|LINE|มาจากประเทศญี่ปุ่น | แบบส่วนตัว และแบบทางการ LineOA (Line Official Account) | Line MyShop สำหรับ E-commerce | Line VOOM สำหรับวิดีโอสั้น
+9|Instagram|เครือเดียวกับ Facebook (เป็นของ Meta บริษัทแม่ของ Facebook) | เน้นรูปภาพ วิดีโอสั้น (Reels) | มี Broadcast Channels ให้ครีเอเตอร์ส่งข้อความแบบ One-way ถึงผู้ติดตามจำนวนมาก | พิมพ์ข้อความได้ไม่เกิน 2,200 ตัวอักษร
+9|TikTok|มาจากประเทศจีน | TikTok Shop ใช้ฟีเจอร์ Live ได้เมื่อมีผู้ติดตาม 1,000 คนขึ้นไป | TikTok Series (เนื้อหาเสียเงิน) เน้น E-commerce และ Content Monetization
+9|Threads|พัฒนาโดยทีมงาน Instagram (ในเครือ Meta) | ต้องมีบัญชี Instagram จึงสมัครได้ และชื่อบัญชีซิงค์กัน | สูงสุด 500 ตัวอักษร
+9|Social Network แบ่งตามวัตถุประสงค์ 6 ประเภท|1 เผยแพร่ตัวตน (Identity) | 2 เผยแพร่ผลงาน (Creative) | 3 ความสนใจตรงกัน (Interested) | 4 ร่วมกันทำงาน (Collaboration) | 5 Peer to Peer (P2P) | 6 โลกเสมือน (Gaming / Virtual Reality)
+9|Identity Network|เผยแพร่ตัวตน/เรื่องราวของผู้ใช้ เช่น Facebook, Instagram, Twitter
+9|Creative Network|เน้นนำเสนอผลงานของตัวเอง เช่น YouTube, TikTok, Photobucket, SlideShare
+9|Interested Network|แชร์ลิงก์หรือเว็บที่สนใจ เจ้าของไม่ต้องเป็นเจ้าของผลงาน เช่น Pinterest, Dek-D.com, Pantip.com
+9|Collaboration Network|ทำงานร่วมกัน/ใช้ข้อมูลร่วมกันเรื่องเดียว ปรับปรุงต่อเนื่อง เช่น Wikipedia, Google Earth, Google Docs
+9|Peer to Peer (P2P) Network|เชื่อมต่อระหว่างผู้ใช้กับ Client โดยตรง เช่น Skype, Line, Grab Food, BitTorrent
+9|Gaming / Virtual Reality Network|จำลองตัวผู้ใช้เป็นตัวละครในเกม พูดคุยกับผู้เล่นอื่นได้ เช่น Dota, The Sims, Metaverse
+9|Google Search / Maps / Translate / Chrome|Google Search = ค้นหาข้อมูล ติดตามข่าวสาร | Google Maps = แผนที่ นำทางด้วย GPS ดูข้อมูลการจราจร ค้นหาสถานที่ | Google Translate = แปลภาษา (พูด สแกน พิมพ์) | Google Chrome = เบราว์เซอร์
+9|Gmail / Google Drive / Google Calendar|Gmail = บริการฟรีอีเมล | Google Drive = ที่เก็บ เข้าถึง และแชร์ไฟล์อย่างปลอดภัย | Google Calendar = ปฏิทินออนไลน์แชร์ร่วมกันได้
+9|Google Docs / Sheets / Slides / Form|Docs = พิมพ์/จัดการเอกสารออนไลน์ | Sheets = สเปรดชีต ทำงานร่วมกับผู้อื่น | Slides = งานนำเสนอ | Form = สร้างแบบสอบถามออนไลน์
+9|Google Meet / Sites / My Business / Analytics|Meet = ประชุมวิดีโอและโทร | Sites = สร้างและแก้ไขหน้าเว็บ เริ่มจากศูนย์หรือเทมเพลต | My Business = ใส่ข้อมูลธุรกิจบน Google เชื่อมต่อลูกค้า | Analytics = ข้อมูลเชิงลึกเกี่ยวกับลูกค้าจากทุกช่องทางผ่านเว็บไซต์
+9|Google Trends|สำรวจว่าคนทั้งโลกกำลังค้นหาอะไร
+9|Google vs Microsoft|เอกสาร: Google Docs / Microsoft Word | ตารางคำนวณ: Google Sheets / Excel | สไลด์: Google Slides / PowerPoint | เก็บไฟล์ Cloud: Google Drive / OneDrive | ประชุม: Google Meet / Microsoft Teams | แชท: Google Chat / Teams | เบราว์เซอร์: Chrome / Edge
+9|Chrome: ปุ่มลัดหน้าต่าง/แท็บ|Ctrl+N หน้าต่างใหม่ | Ctrl+Shift+N หน้าต่างไม่ระบุตัวตน | Ctrl+T แท็บใหม่ | Ctrl+Shift+T เปิดแท็บที่ปิดไปกลับมา | Ctrl+Tab แท็บถัดไป | Ctrl+Shift+Tab แท็บก่อนหน้า | Ctrl+9 แท็บสุดท้าย | Ctrl+W ปิดแท็บ
+9|Chrome: ปุ่มลัดอื่นๆ|Ctrl+R รีเฟรชหน้า | Ctrl+J หน้าดาวน์โหลด | Ctrl+H ประวัติการเข้าชม | F11 เปิดโหมดเต็มหน้าจอ (Full screen)
+9|Private Cloud|Cloud สร้างสำหรับองค์กรเดียว (Private Network) เช่น Government Cloud (G-Cloud) ของสำนักงานรัฐบาลอิเล็กทรอนิกส์
+9|Public Cloud|Cloud ให้บริการผ่านอินเทอร์เน็ตแก่ผู้ใช้ทั่วไป (Cloud Provider) จ่ายตามการใช้งานจริง
+9|Hybrid Cloud|ผสม Private และ Public Cloud ข้อมูลสำคัญเก็บใน Private งานที่ไม่เน้นความปลอดภัยใช้ Public
+9|IaaS (Infrastructure as a Service)|บริการโครงสร้างพื้นฐาน เช่น เซิร์ฟเวอร์ พื้นที่เก็บข้อมูล เช่น Google Drive, Dropbox, iCloud
+9|PaaS (Platform as a Service)|แพลตฟอร์มสำหรับนักพัฒนาวางระบบ เช่น Google App Engine
+9|SaaS (Software as a Service)|ให้บริการซอฟต์แวร์ เรียกใช้แอปบน Cloud ผ่านเว็บ ไม่ต้องติดตั้งโปรแกรม เช่น Google Docs
+9|ข้อดีของ Cloud|1 ใช้งานได้ทุกที่ทุกเวลา | 2 ใช้ข้อมูลเดียวกันทุกอุปกรณ์ หลายคนแก้ไขพร้อมกันได้ | 3 ลดต้นทุนซื้อเซิร์ฟเวอร์/ค่าบำรุงรักษา | 4 ฮาร์ดแวร์ซอฟต์แวร์ประสิทธิภาพสูง | 5 มีไฟล์สำรอง (Backup)
+9|ข้อเสียของ Cloud|1 ต้องพึ่งพาอินเทอร์เน็ต (ถ้าเน็ตช้า/ล่ม ทำงานไม่ได้) | 2 ความปลอดภัยของข้อมูล อาจรั่วไหลหรือถูก hack ควรเลือกผู้ให้บริการที่น่าเชื่อถือ
+9|E-mail: To / Cc / Bcc|To = ผู้รับหลักที่ต้องการสื่อสารโดยตรง | Cc (Carbon Copy) = ส่งสำเนาให้รับรู้ แต่ไม่ต้องตอบกลับ | Bcc (Blind Carbon Copy) = ส่งลับให้คนอื่น ผู้รับคนอื่นไม่เห็นรายชื่อ
+9|E-mail: Subject / Attachment|Subject = หัวข้ออีเมล | Attachment (Attach File) = ไฟล์ที่แนบมากับอีเมล เช่น Word, PDF, รูป, Excel
+9|AI (Artificial Intelligence)|ปัญญาประดิษฐ์ โปรแกรมคอมพิวเตอร์ที่ทำงานเหมือนมนุษย์และเลียนแบบกิจกรรมของมนุษย์ได้
+9|หลักการทำงานของ AI 4 อย่าง|1 การเรียนรู้ (Learning) = รับข้อมูลและสร้างกฎอัลกอริทึม | 2 การใช้เหตุผล (Reasoning) = คิดวิเคราะห์ ตัดสินใจ เลือกอัลกอริทึมที่เหมาะสม | 3 Self-correction = ปรับอัลกอริทึมซ้ำอย่างเป็นระบบเพื่อเพิ่มความแม่นยำ | 4 Creativity = สร้างสิ่งใหม่ด้วยโครงข่ายประสาทเทียมและสถิติ
+9|AI แบ่งตามความสามารถ 3 ระดับ|ANI (Artificial Narrow Intelligence) = เก่งงานเฉพาะอย่าง เช่น ระบบแนะนำของ Netflix/YouTube, Siri, ตรวจจับใบหน้า, รถไร้คนขับ | AGI (Artificial General Intelligence) = สร้างสรรค์เนื้อหาใหม่จากคำสั่ง (Prompt) ตามที่หนังสือระบุ | ASI (Artificial Super Intelligence) = ยังไม่มีจริง คิด แก้ปัญหา เรียนรู้ทุกด้านเหมือนมนุษย์
+9|AI แบ่งตามฟังก์ชัน 4 ประเภท|1 Reactive Machines = ตอบสนองอย่างเดียว เรียนรู้ไม่ได้ | 2 Limited Memory = มีหน่วยความจำจำกัด เรียนรู้จากประสบการณ์ เช่น รถไร้คนขับ | 3 Theory of Mind = เข้าใจอารมณ์ ความรู้สึก ความเชื่อ เจตนาของมนุษย์ | 4 Self-awareness = ตระหนักรู้ในตนเอง มีอารมณ์ ความต้องการ ยังสร้างไม่ได้จริง
+1|[ข้อสอบ] สิ่งประดิษฐ์ใดเป็นต้นกำเนิดของเครื่องมือคำนวณ นำไปสู่การพัฒนาเป็นคอมพิวเตอร์ 1) Vacuum Tube 2) Abacus 3) Microprocessor 4) Artificial Intelligence|ข้อ 2 Abacus (ลูกคิด) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] บุคคลใดได้รับการยกย่องเป็นบิดาแห่งเครื่องคอมพิวเตอร์ 1) วิลเลียม ออตเทรต 2) จอห์น เนเปียร์ 3) ชาร์ลส์ แบบเบจ 4) เลดี้ เอดา ออกัสตา เลิฟเลซ|ข้อ 3 ชาร์ลส์ แบบเบจ (Charles Babbage) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] บุคคลใดได้รับการยกย่องเป็นโปรแกรมเมอร์คนแรกของโลก 1) วิลเลียม ออตเทรต 2) จอห์น เนเปียร์ 3) ชาร์ลส์ แบบเบจ 4) เลดี้ เอดา ออกัสตา เลิฟเลซ|ข้อ 4 เลดี้ เอดา ออกัสตา เลิฟเลซ (Ada Lovelace) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] เครื่องคำนวณอัตโนมัติเครื่องแรกของโลกเป็นฝีมือบุคคลใด 1) Vincent Atanasoff 2) Howard Aiken 3) Charles Babbage 4) George Boole|ข้อ 2 Howard Aiken (Harvard Mark I) หมายเหตุ: OCR โจทย์ไม่ชัด ถ้าหนังสือเฉลยต่างให้ยึดเฉลยหนังสือ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] รากฐานการออกแบบวงจรในคอมพิวเตอร์ดิจิทัลปัจจุบันกำเนิดโดยบุคคลใด 1) George Boole 2) Leibniz 3) Babbage 4) Pascal|ข้อ 1 George Boole (พีชคณิตแบบบูลีน) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] บุคคลใดเป็นผู้ค้นพบเลขฐานสอง (Binary number) 1) George Boole 2) Gottfried Wilhelm Leibniz 3) Charles Babbage 4) Blaise Pascal|ข้อ 2 Gottfried Wilhelm Leibniz | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] เครื่องหาผลต่าง (Difference Engine) เป็นงานวิจัยของบุคคลใด 1) Stephen Hawking 2) Isaac Newton 3) Charles Babbage 4) Georgiana Whitmore|ข้อ 3 Charles Babbage | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] ข้อใดเรียงลำดับยุคของคอมพิวเตอร์ยุคที่ 1 ถึงยุคที่ 5 ถูกต้อง 1) ยุคหลอดสุญญากาศ, ยุคทรานซิสเตอร์, ยุค IC, ยุค VLSI และยุค AI 2) ยุค IC, ยุคทรานซิสเตอร์, ยุคหลอดสุญญากาศ, ยุค VLSI และยุค AI 3) ยุคทรานซิสเตอร์, ยุค IC, ยุคหลอดสุญญากาศ, ยุค VLSI และยุค AI 4) ยุค VLSI, ยุค IC, ยุคหลอดสุญญากาศ, ยุคทรานซิสเตอร์ และยุค AI|ข้อ 1 หลอดสุญญากาศ, ทรานซิสเตอร์, IC, VLSI, AI | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] คอมพิวเตอร์แบบดิจิทัลเครื่องแรกของโลกเกิดในยุคใด 1) VLSI 2) ทรานซิสเตอร์ 3) หลอดสุญญากาศ 4) IC|ข้อ 3 ยุคหลอดสุญญากาศ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] เทคโนโลยียุคแรกของคอมพิวเตอร์ใช้อุปกรณ์ใดเป็นหลักในวงจร 1) หลอดสุญญากาศ 2) รีเลย์ 3) หลอดสุญญากาศและรีเลย์ 4) ทรานซิสเตอร์|ข้อ 1 หลอดสุญญากาศ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] เทคโนโลยีใดถูกนำมาใช้ในคอมพิวเตอร์ยุคที่ 3 1) Vacuum Tube 2) VLSI 3) Integrated Circuit 4) AI|ข้อ 3 Integrated Circuit (IC) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] คอมพิวเตอร์ชนิดใดประมวลผลด้วยความเร็วและถูกต้องมากที่สุด 1) Supercomputers 2) Mainframe 3) Minicomputers 4) Microcomputers|ข้อ 1 Supercomputers | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] คอมพิวเตอร์ประเภทใดประมวลผลและคำนวณเส้นทางการบินที่แม่นยำสำหรับขีปนาวุธ 1) Supercomputer 2) Mainframe 3) Microcomputer 4) Mid-range|ข้อ 1 Supercomputer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] สมาร์ทโฟนจัดเป็นคอมพิวเตอร์ประเภทใด 1) Supercomputers 2) Mainframe 3) Minicomputers 4) Microcomputers|ข้อ 4 Microcomputers | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] ระบบ Smart Home เป็นคอมพิวเตอร์ประเภทใด 1) Mainframe 2) Minicomputer 3) Microcomputer 4) Embedded computer|ข้อ 4 Embedded computer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] คอมพิวเตอร์ชนิดใดพยากรณ์อากาศหรืองานวิจัยต่างๆ ได้ 1) Supercomputers 2) Mainframe 3) Minicomputers 4) Microcomputers|ข้อ 1 Supercomputers | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] คอมพิวเตอร์ชนิดใดเชื่อมกับระบบ Cloud เกิดเป็น IoT ได้ 1) Mainframe 2) Minicomputer 3) Microcomputer 4) Embedded computer|ข้อ 4 Embedded computer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] IoT คืออะไร 1) Internet over TCP 2) Information of Technology 3) Internet of Things 4) Input-Output Transfer|ข้อ 3 Internet of Things (อินเทอร์เน็ตของสรรพสิ่ง) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+1|[ข้อสอบ] หน่วยงานหลักพัฒนา ส่งเสริม กำกับดูแลรัฐบาลดิจิทัลของไทย 1) สำนักงานสถิติแห่งชาติ 2) สำนักงานพัฒนารัฐบาลดิจิทัล 3) สำนักงานพัฒนาธุรกรรมทางอิเล็กทรอนิกส์ 4) กระทรวงดิจิทัลฯ|ข้อ 2 สำนักงานพัฒนารัฐบาลดิจิทัล (DGA) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดไม่ใช่ข้อมูล 1) ข้อมูลนักท่องเที่ยวจังหวัดแพร่ 2) ยอดขายหนังสือร้านนายอินทร์ 3) จำนวนผู้ใช้ห้องสมุดวันที่ 11/11/2011 4) ค่าใช้จ่ายเฉลี่ยของพนักงานรายเดือน 13,250 บาท|ข้อ 4 เพราะค่าเฉลี่ยเป็นผลจากการประมวลผล จึงเป็นสารสนเทศ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดไม่เป็นข้อมูล (Data) ที่แบ่งตามรูปแบบการแทนข้อมูล 1) Numeric 2) Character 3) Alphanumeric 4) Primary data|ข้อ 4 Primary data (ปฐมภูมิ เป็นการแบ่งตามแหล่งที่มา) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเป็นข้อมูลปฐมภูมิ (Primary data) 1) การสังเกตพฤติกรรมแมว ตลอดระยะเวลา 1 วัน 2) แบบสอบถามความพึงพอใจหลังการเข้าร่วมกิจกรรมวิ่งเพื่อสุขภาพ 3) จำนวนผู้ติดเชื้อ Covid-19 จากกรมการแพทย์ 4) ถูกทั้งข้อ 1 และ 2|ข้อ 4 ถูกทั้งข้อ 1 และ 2 แจกแจงแต่ละข้อ: | ข้อ 1 ถูก = สังเกตพฤติกรรมแมวเอง เก็บข้อมูลโดยตรง จึงเป็นปฐมภูมิ | ข้อ 2 ถูก = แบบสอบถามที่ผู้ทำกิจกรรมเก็บเอง จึงเป็นปฐมภูมิ | ข้อ 3 ผิด = ตัวเลขจากกรมการแพทย์มีผู้อื่นรวบรวมไว้แล้ว เป็นทุติยภูมิ | ข้อ 4 จึงถูก เพราะข้อ 1 และ 2 ถูกทั้งคู่ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อมูลดิบจัดเป็นข้อมูลประเภทใด 1) ปฐมภูมิ 2) ทุติยภูมิ 3) สารสนเทศ 4) ไม่มีข้อใดถูก|ข้อ 1 ข้อมูลปฐมภูมิ (ข้อมูลดิบคือข้อมูลที่เก็บมาโดยตรงและยังไม่ผ่านการประมวลผล) แจกแจงแต่ละข้อ: | ข้อ 1 ถูก = ปฐมภูมิ | ข้อ 2 ผิด = ทุติยภูมิ คือข้อมูลที่ผู้อื่นรวบรวมไว้แล้ว | ข้อ 3 ผิด = สารสนเทศ คือผลลัพธ์หลังประมวลผลข้อมูลดิบแล้ว | ข้อ 4 ผิด เพราะมีข้อ 1 ถูก | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดจัดเป็นสารสนเทศ 1) การพิมพ์ข้อความผ่านแป้นพิมพ์ 2) แผนผังองค์กร 3) ใบทรานสคริปต์ 4) ภาพถ่ายจากงานประชุม|ข้อ 3 ใบทรานสคริปต์ (ผ่านการประมวลผลข้อมูลแล้ว) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเป็นข้อมูลทุติยภูมิ (Secondary data) 1) การสังเกตพฤติกรรมแมว ตลอดระยะเวลา 1 วัน 2) จำนวนผู้ติดเชื้อ Covid-19 จากกรมการแพทย์ 3) แบบสอบถามความพึงพอใจหลังการเข้าร่วมกิจกรรมวิ่งเพื่อสุขภาพ 4) ถูกทั้งข้อ 1 และ 2|ข้อ 2 จำนวนผู้ติดเชื้อ Covid-19 จากกรมการแพทย์ แจกแจงแต่ละข้อ: | ข้อ 1 ผิด = สังเกตเอง เป็นปฐมภูมิ | ข้อ 2 ถูก = ผู้อื่นรวบรวมไว้แล้ว เป็นทุติยภูมิ | ข้อ 3 ผิด = แบบสอบถามที่เก็บเอง เป็นปฐมภูมิ | ข้อ 4 ผิด เพราะข้อ 1 ผิด | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดไม่ใช่ลักษณะของข้อมูลที่ดี 1) ถูกต้องเชื่อถือได้ 2) ทันสมัย 3) สอดคล้องกับความต้องการ 4) ข้อมูลที่ไม่รู้แหล่งที่มาบนโลกออนไลน์|ข้อ 4 | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเรียงลำดับขั้นตามทฤษฎี DIKW Pyramid ถูกต้อง 1) Information -> Knowledge -> Data -> Intelligence -> Wisdom 2) Knowledge -> Data -> Information -> Wisdom -> Intelligence 3) Data -> Information -> Knowledge -> Intelligence -> Wisdom 4) Intelligence -> Data -> Information -> Knowledge -> Wisdom|ข้อ 3 Data -> Information -> Knowledge -> Intelligence -> Wisdom | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเป็นกระบวนการของสารสนเทศ 1) ข้อมูล >> สารสนเทศ 2) ข้อมูล >> ประมวลผล 3) ข้อมูล >> ประมวลผล >> สารสนเทศ 4) ข้อมูล >> สารสนเทศ >> ประมวลผล|ข้อ 3 ข้อมูล >> ประมวลผล >> สารสนเทศ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดคือข้อมูล 1) ส่วนสูง 2) กราฟแสดงคะแนนสอบ 3) แผนภูมิพัฒนาการเด็ก 4) ค่าเฉลี่ยคะแนนสอบ|ข้อ 1 ส่วนสูง (ข้อมูลดิบ ที่เหลือเป็นสารสนเทศ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ตัวย่อของระบบสนับสนุนการตัดสินใจแบบกลุ่มคืออะไร 1) DSS 2) MIS 3) EIS 4) GDSS|ข้อ 4 GDSS (Group Decision Support System) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดคือระบบสารสนเทศภูมิศาสตร์ 1) Transaction Processing System 2) Geographic Information System 3) Decision Support System 4) Management Information System|ข้อ 2 Geographic Information System (GIS) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ความหมายของระบบสารสนเทศแบบประมวลรายการ (TPS) คือข้อใด 1) ระบบการประมวลผลทางธุรกิจ มักเป็นการประมวลผลต่อวัน 2) ระบบที่ทำหน้าที่จัดเตรียมสารสนเทศ เพื่อช่วยในการตัดสินใจ 3) ระบบสารสนเทศที่พัฒนามาจากระบบสารสนเทศสนับสนุนการตัดสินใจของบุคคล 4) ระบบสารสนเทศที่พัฒนาสำหรับผู้บริหารระดับสูง|ข้อ 1 ระบบประมวลผลทางธุรกิจ มักประมวลผลต่อวัน | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดคือระบบสนับสนุนการตัดสินใจ 1) MIS 2) GDSS 3) TPS 4) DSS|ข้อ 4 DSS (Decision Support System) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ระบบสารสนเทศที่ถูกพัฒนาให้ใช้กับคอมพิวเตอร์เป็นระบบแรกคือระบบใด 1) GIS 2) DSS 3) TPS 4) ES|ข้อ 3 TPS | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ระบบสารสนเทศใดช่วยสร้าง เก็บ ปรับปรุง แสดงข้อมูล และติดต่อสื่อสารในงานสำนักงาน 1) TPS 2) MIS 3) OAS 4) ES|ข้อ 3 OAS (Office Automation System) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดคือระบบสำนักงานอัตโนมัติ 1) Transaction Processing System 2) Office Automation System 3) Decision Support System 4) Management Information System|ข้อ 2 Office Automation System (OAS) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ระบบสารสนเทศใดใช้ฐานความรู้ (Knowledge Base) เป็นหัวใจสำคัญ 1) TPS 2) DSS 3) ES 4) OAS|ข้อ 3 ES (Expert System) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดกล่าวถึงระบบผู้เชี่ยวชาญ (Expert System) ถูกที่สุด 1) เป็นระบบที่ใช้จัดเก็บเอกสารและข้อมูลสำนักงาน 2) เป็นระบบที่รวบรวมความรู้จากผู้เชี่ยวชาญเพื่อช่วยตัดสินใจ 3) เป็นระบบคำนวณทางคณิตศาสตร์สำหรับงานบัญชี 4) เป็นระบบนำเสนอข้อมูลในรูปแบบกราฟและตาราง|ข้อ 2 ระบบที่รวบรวมความรู้จากผู้เชี่ยวชาญเพื่อช่วยตัดสินใจ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดคือระบบผู้เชี่ยวชาญ 1) Transaction Processing System 2) Geographic Information System 3) Decision Support System 4) Expert System|ข้อ 4 Expert System (ES) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่องค์ประกอบของระบบคอมพิวเตอร์ 1) ฮาร์ดแวร์ 2) ซอฟต์แวร์ 3) เครือข่ายอินเทอร์เน็ต 4) บุคลากร|ข้อ 3 เครือข่ายอินเทอร์เน็ต | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ขั้นตอนพื้นฐานในการทำงานของคอมพิวเตอร์ 1) แสดงผลข้อมูล 2) ประมวลผล 3) วางฐานข้อมูล 4) จัดเก็บข้อมูล|ข้อ 3 วางฐานข้อมูล | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ลำดับการทำงานของระบบคอมพิวเตอร์ข้อใดไม่ถูกต้อง 1) Input->Processing 2) Storage->Input 3) Processing->Output 4) Processing->Storage|ข้อ 2 Storage -> Input | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ฮาร์ดแวร์ 1) VGA Card 2) Monitor 3) Keyboard 4) Microsoft365|ข้อ 4 Microsoft365 (ซอฟต์แวร์) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] อุปกรณ์ฮาร์ดแวร์ข้อใดไม่ได้อยู่ในประเภทเก็บข้อมูล 1) RAM 2) GPU 3) CD 4) Floppy Disk|ข้อ 2 GPU | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดกล่าวผิดเกี่ยวกับ CPU 1) เปรียบเสมือนสมอง 2) ALU ควบคุมการทำงานส่วนต่างๆ 3) ทำได้ทีละคำสั่งแต่เร็วมาก 4) ความเร็วมีหน่วยเป็นเฮิรตซ์|ข้อ 2 ผิด เพราะหน่วยควบคุมคือ CU ส่วน ALU คำนวณและตรรกะ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] อุปกรณ์แสดงผลประเภท Hard Copy คือข้อใด 1) Monitor 2) Laser printer 3) Headset 4) Projector|ข้อ 2 Laser printer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่หน่วยความจำชั่วคราว 1) Static RAM 2) Dynamic RAM 3) Erasable Programmable ROM 4) ไม่มีข้อถูก|ข้อ 3 Erasable Programmable ROM (EPROM) แจกแจงแต่ละข้อ: | ข้อ 1 Static RAM = เป็นหน่วยความจำชั่วคราว (จึงไม่ใช่คำตอบ) | ข้อ 2 Dynamic RAM = เป็นหน่วยความจำชั่วคราว (จึงไม่ใช่คำตอบ) | ข้อ 3 EPROM = เป็น ROM เก็บข้อมูลถาวร จึงไม่ใช่หน่วยความจำชั่วคราว (ถูก) | ข้อ 4 ผิด เพราะมีข้อ 3 ถูกอยู่ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดกล่าวผิดเกี่ยวกับหน่วยความจำหลัก 1) เป็นอุปกรณ์ที่ใช้เก็บข้อมูลและคำสั่งที่อยู่ระหว่างการประมวลผลของคอมพิวเตอร์ 2) หากเกิดไฟฟ้าดับ ข้อมูลที่อยู่ในหน่วยความจำแรมจะหายไป 3) หน่วยความจำรอม เรียกอีกอย่างหนึ่งว่า หน่วยความจำชั่วคราว 4) หน่วยความจำรอม สามารถเก็บข้อมูลได้โดยไม่ต้องใช้ไฟเลี้ยง|ข้อ 3 ที่ว่า ROM เรียกว่าหน่วยความจำชั่วคราว (ผิด ROM เก็บถาวรโดยไม่ต้องใช้ไฟเลี้ยง ส่วน RAM เป็นชั่วคราว) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] อุปกรณ์ที่รับข้อมูลและแสดงผล (I/O) ได้ทั้งหมด 1) Keyboard 2) Flash drive 3) Projector 4) Digital Camera|ข้อ 2 Flash drive (อ่านและเขียนข้อมูลได้) ตีความจากเนื้อหา | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] อุปกรณ์ที่เป็นทั้งนำเข้าและส่งออกข้อมูลในเวลาเดียวกัน 1) Keyboard 2) Printer 3) Touchscreen 4) Mouse|ข้อ 3 Touchscreen | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] เครื่องพิมพ์ชนิดใดใช้ผลิตชิ้นส่วนอวัยวะเทียมในวงการแพทย์ 1) Dot Matrix 2) Line Printer 3) Thermal 4) 3D Printer|ข้อ 4 3D Printer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] อุปกรณ์ในหน่วยความจำหลักที่ลบข้อมูลได้โดยใช้รังสี (UV) 1) SRAM 2) DRAM 3) PROM 4) EPROM|ข้อ 4 EPROM | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] หน่วยเก็บข้อมูลที่จุได้มากเป็นเทราไบต์ 1) RAM 2) SSD 3) CD-ROM 4) Floppy Disk|ข้อ 2 SSD | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] หน่วยเก็บข้อมูลข้อใดเมื่อปิดคอมพิวเตอร์ข้อมูลจะหาย 1) RAM 2) ROM 3) HDD 4) SSD|ข้อ 1 RAM | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นหน่วยเก็บข้อมูลแบบแม่เหล็ก (Magnetic Storage) 1) HDD 2) CD 3) DVD 4) SSD|ข้อ 1 HDD | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] หน่วยคำนวณด้วยหลักคณิตศาสตร์และตรรกศาสตร์ 1) Register 2) CU 3) ALU 4) GPU|ข้อ 3 ALU | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นอุปกรณ์ป้อนข้อมูล (Input) 1) Line Printer 2) EEPROM 3) Speaker 4) Scanner|ข้อ 4 Scanner | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] CPU ทำหน้าที่อะไร 1) บันทึกข้อมูล 2) เป็นหน่วยความจำ 3) คำนวณและเปรียบเทียบ 4) รวบรวมข้อมูล|ข้อ 3 คำนวณและเปรียบเทียบ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นหน่วยแสดงผล (Output) ทั้งหมด 1) Printer Monitor Projector 2) Mouse Scanner Keyboard 3) Projector Microphone Finger Scan 4) Joy Stick Touch Screen Scanner|ข้อ 1 Printer, Monitor, Projector | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ซอฟต์แวร์ (Software) หมายถึงอะไร 1) โปรแกรมชุดของคำสั่งที่ควบคุมการทำงานของคอมพิวเตอร์ 2) อุปกรณ์เทคโนโลยีระดับสูง 3) โปรแกรมแก้ปัญหาทุกอย่างของมนุษย์ 4) อุปกรณ์ที่ทำหน้าที่เสมือนสมองกล|ข้อ 1 โปรแกรมชุดคำสั่งที่ควบคุมการทำงานของคอมพิวเตอร์ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ซอฟต์แวร์ที่ประสานงานระหว่างผู้ใช้ โปรแกรมประยุกต์ และฮาร์ดแวร์ 1) Compiler 2) Operating System 3) Language Translator 4) Utility|ข้อ 2 ระบบปฏิบัติการ (OS) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] โปรแกรมที่ทำให้เครื่องทำงานง่ายขึ้นเร็วขึ้นและป้องกันการรบกวน 1) Open Office Impress 2) Word Processing 3) Utility Program 4) Communication software|ข้อ 3 Utility Program | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นซอฟต์แวร์ระบบปฏิบัติการทั้งหมด 1) Windows Linux iPad OS Unix 2) MacOS DOS Unix MySQL 3) Endless Windows Firefox Linux 4) DOS Windows Ubuntu Skype|ข้อ 1 Windows, Linux, iPad OS, Unix | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ซอฟต์แวร์ระบบ (System software) 1) Utility 2) Device Driver 3) Language Translator 4) Spreadsheet Software|ข้อ 4 Spreadsheet (ซอฟต์แวร์ประยุกต์) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ Operating System 1) Windows 2000 2) Windows XP 3) Windows Office 4) Windows 11|ข้อ 3 Windows Office | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นซอฟต์แวร์ระบบปฏิบัติการ 1) Microsoft Word 2) scanner driver 3) Windows XP 4) WinZip|ข้อ 3 Windows XP | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ซอฟต์แวร์ที่ออกแบบช่วยผู้ใช้ทำงานเฉพาะด้านตามความต้องการ 1) OS 2) Application Software 3) Utility 4) Compiler|ข้อ 2 ซอฟต์แวร์ประยุกต์ (Application Software) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดคือระบบปฏิบัติการ 1) Google Chrome 2) Adobe Photoshop 3) Windows 4) Microsoft Word|ข้อ 3 Windows | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] โปรแกรมใดเหมาะกับทำบัญชีและตาราง 1) Microsoft Edge 2) Microsoft Excel 3) PowerPoint 4) Adobe 365|ข้อ 2 Microsoft Excel | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] โปรแกรมที่ช่วยติดต่อสื่อสารทั่วโลก (Communication software) 1) Outlook 2) MySQL 3) Word 4) Cashier|ข้อ 1 Outlook | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] โปรแกรม Premiere Pro เหมาะกับงานใด 1) สร้างตาราง 2) ฐานข้อมูล 3) กราฟิก/ตัดต่อวิดีโอ 4) นำเสนอข้อมูล|ข้อ 3 งานด้านกราฟิก (ตัดต่อวิดีโอ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นซอฟต์แวร์สำหรับงานเฉพาะด้าน (Special Purpose Software) 1) Windows 11 2) MySQL 3) Word 4) Cashier|ข้อ 4 Cashier (โปรแกรมคิดเงิน) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ Utility Program 1) Work Folders 2) MySQL 3) defragmenter 4) Disk cleanup|ข้อ 2 MySQL (ซอฟต์แวร์จัดการฐานข้อมูล) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] โปรแกรมแปลภาษาระดับต่ำหรือสูงให้เครื่องเข้าใจเรียกว่าอะไร 1) Language Transfrom 2) Language Translator 3) Language Transport 4) Language Transaction|ข้อ 2 Language Translator | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] คอมไพเลอร์ (Compiler) มักใช้แปลภาษาอะไร 1) PHP 2) APL 3) BASIC 4) COBOL|ข้อ 4 COBOL | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ General Purpose Software 1) Operating System 2) Database Management 3) Word Processing 4) Presentation|ข้อ 1 Operating System (เป็นซอฟต์แวร์ระบบ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] Microsoft Access เป็นซอฟต์แวร์ประเภทใด 1) Database Management Software 2) Word Processing Software 3) Presentation Software 4) Spreadsheet Software|ข้อ 1 Database Management Software | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ซอฟต์แวร์เชิงพาณิชย์ต้องซื้อสิทธิ์และถูกกำหนดเงื่อนไขโดยผู้ขาย คืออะไร 1) Commercial ware 2) Shareware 3) Adware 4) Freeware|ข้อ 1 Commercial ware | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] แอปฟังเพลงฟรี มีโฆษณาสลับเพลง และเสนออัปเกรดจ่ายเงินเพื่อตัดโฆษณา เป็นซอฟต์แวร์ประเภทใด 1) Commercial 2) Shareware 3) Adware 4) Open-Source|ข้อ 3 Adware (ตีความจากเนื้อหา) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] คำว่า GURUPOLICEACADEMY มีขนาดข้อมูลเท่ากับข้อใด 1) 17 KB 2) 17 GB 3) 17 Bit 4) 17 Byte|ข้อ 4 เพราะมี 17 ตัวอักษร ตัวละ 1 Byte | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดไม่ใช่นามสกุลไฟล์ประเภทเอกสาร 1) .txt 2) .xlw 3) .prg 4) .png|ข้อ 4 .png (ไฟล์ภาพ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเรียงโครงสร้างข้อมูลจากเล็กไปใหญ่ถูกต้อง 1) Bit >> Byte >> Field >> Record >> File >> Database 2) Bit >> Byte >> Field >> File >> Record >> Database 3) Bit >> Byte >> File >> Record >> Field >> Database 4) Bit >> Byte >> Record >> File >> Field >> Database|ข้อ 1 Bit >> Byte >> Field >> Record >> File >> Database | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ไฟล์ตารางข้อมูลขนาดเล็กที่นิยมนำไปวิเคราะห์ข้อมูลต่อ 1) .xlsx 2) .csv 3) .pdf 4) .bmp|ข้อ 2 .csv | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] เก็บไฟล์จากกล้องดิจิทัลไม่ให้เสียรายละเอียดและความคมชัดมากที่สุดควรบันทึกเป็นไฟล์ชนิดใด 1) .jpg 2) .png 3) .raw 4) .cdr|ข้อ 3 .raw | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] นามสกุลไฟล์ภาพกราฟิกที่ขยับได้ 1) .jpg 2) .png 3) .gif 4) .ai|ข้อ 3 .gif | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] หน่วยวัดความจุใดเท่ากับ 1,024 Byte 1) Bit 2) Terabyte 3) Kilobyte 4) Megabyte|ข้อ 3 Kilobyte | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดมีความจุข้อมูลมากที่สุด 1) 1,024 kB 2) 2 TB 3) 2,000 GB 4) 1,500,000 MB|ข้อ 2 (2 TB = 2,048 GB มากกว่า 2,000 GB) ตีความจากโจทย์ OCR | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] รหัสแทนข้อมูลที่นิยมใช้มากที่สุดทั้งสำหรับ PC และเครื่องให้บริการ 1) BCD 2) ASCII 3) EBCDIC 4) Unicode|ข้อ 2 ASCII (ตามเนื้อหาหนังสือ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] หน่วยของข้อมูลที่เกิดจากการนำบิตมารวมกันคือ 1) Field 2) Byte 3) Record 4) File|ข้อ 2 Byte | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] รหัสนักศึกษา 690101513 เป็นหน่วยข้อมูลประเภทใด 1) Bit 2) Byte 3) Field 4) Record|ข้อ 3 Field | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] เที่ยวบิน TG910 เป็นหน่วยข้อมูลประเภทใด 1) Bit 2) Byte 3) Field 4) Record|ข้อ 3 Field | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ตัวอักษร A เป็นหน่วยข้อมูลประเภทใด 1) Bit 2) Byte 3) Field 4) Record|ข้อ 2 Byte | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อใดเป็นหน่วยวัดข้อมูลที่ความจุมากที่สุด 1) Kilobyte 2) Terabyte 3) Megabyte 4) Bit|ข้อ 2 Terabyte | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] รหัสแทนข้อมูลที่มักใช้กับอุปกรณ์ขนาดเล็ก เช่น เครื่องคิดเลข 1) BCD 2) ASCII 3) EBCDIC 4) Unicode|ข้อ 1 BCD | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] รหัสไบนารีหรือเลขฐานสองมีเลขอะไรเป็นองค์ประกอบ 1) 1,2 2) 0,1 3) 0,2 4) 0,1,2|ข้อ 2 0 และ 1 | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] ข้อมูลขนาด 24 bit มีขนาดกี่ไบต์ 1) 3 2) 4 3) 6 4) 8|ข้อ 1 = 3 Byte (8 bit = 1 Byte) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] บุคคลที่เขียนโปรแกรมตามที่นักวิเคราะห์ระบบ (SA) ออกแบบ 1) Programmer 2) System Manager 3) User 4) Administrator|ข้อ 1 Programmer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+2|[ข้อสอบ] รหัสแทนข้อมูลที่รองรับหลายภาษาพร้อมกัน 1) Binary 2) ASCII 3) EBCDIC 4) Unicode|ข้อ 4 Unicode | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] รูปภาพหรือสัญลักษณ์ที่ใช้เขียนแทนขั้นตอน คำอธิบาย ข้อความในอัลกอริทึม คือคำใด 1) ข้อมูล 2) ระบบ 3) โปรแกรม 4) ผังงาน|ข้อ 4 ผังงาน (Flowchart) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ผังงานระบบมีลักษณะเป็นแบบใด 1) คำอธิบายในภาพควรสั้นกระทัดรัด 2) เป็นผังแสดงขั้นตอนการทำงานภายในระบบหนึ่ง ๆ 3) สามารถหาข้อบกพร่องหรือข้อผิดพลาดได้ 4) เป็นผังแสดงลำดับขั้นตอนการทำงานในโปรแกรมคอมพิวเตอร์|ข้อ 2 ผังแสดงขั้นตอนการทำงานภายในระบบหนึ่งๆ (ส่วนผังแสดงขั้นตอนในโปรแกรมคือผังงานโปรแกรม) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่ประโยชน์ของผังงาน 1) จำกัดภาษาในการใช้งาน 2) แสดงลำดับการทำงาน 3) เข้าใจและแยกแยะปัญหาง่าย 4) หาข้อผิดพลาดง่าย|ข้อ 1 (ผังงานไม่ขึ้นกับภาษาใดภาษาหนึ่ง) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ผังงานรูปวงรีสำหรับจุดเริ่มต้นและสิ้นสุดของผังงาน มีชื่อเรียกว่าอย่างไร 1) Connector 2) Display 3) Terminator 4) Manual Input|ข้อ 3 Terminator (จุดเริ่มต้น/สิ้นสุด) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ผังงานที่แตกสองทางตามเงื่อนไข Yes/No แล้วมารวมกัน เป็นการเขียนผังงานแบบใด 1) การทำงานแบบตามลำดับ (Sequence) 2) การเลือกกระทำตามเงื่อนไข (Decision or Selection) 3) การทำซ้ำ (Repetition or Loop) 4) การทำแบบข้ามเงื่อนไข (Skip Decision)|ข้อ 2 การเลือกกระทำตามเงื่อนไข (Decision/Selection) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดจัดเป็นการทำงานแบบตามลำดับ (Sequence) 1) เขียนโปรแกรมเพื่อนำค่าไปเลือกกระทำ 2) การทำกระบวนการหนึ่งหลายครั้ง 3) การทำงานมี 3 กระบวนการ คือ อ่านข้อมูล คำนวณ และพิมพ์ 4) ถ้ามีกระบวนการทำงานที่ซับซ้อนจะต้องใช้เงื่อนไขหลายชั้นเพียงกระบวนการเดียว|ข้อ 3 การทำงานมี 3 กระบวนการ คืออ่านข้อมูล คำนวณ และพิมพ์ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ Flowchart รูปวงกลม ชื่อว่าอะไร 1) Connector 2) Display 3) Terminal 4) Manual Input|ข้อ 1 Connector (จุดเชื่อมต่อ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ผังงานที่มี Process วนกลับไปที่ Decision ตามเงื่อนไข Yes เป็นรูปแบบใด 1) การทำงานแบบตามลำดับ (Sequence) 2) การเลือกกระทำตามเงื่อนไข (Decision or Selection) 3) การทำซ้ำ (Repetition or Loop) 4) การทำแบบข้ามเงื่อนไข (Skip Decision)|ข้อ 3 การทำซ้ำ (Repetition/Loop) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ Flowchart รูปหกเหลี่ยมปลายแหลมซ้าย โค้งขวา ชื่อว่าอะไร 1) Connector 2) Display 3) Terminator 4) Manual Input|ข้อ 2 Display (แสดงผล) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ Flowchart รูปสี่เหลี่ยมมุมมน ชื่อว่าอะไร 1) Connector 2) Display 3) Terminator 4) Decision|ข้อ 3 Terminator | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ Flowchart รูปสี่เหลี่ยมด้านขนาน ชื่อว่าอะไร 1) Connector 2) Document 3) Input/Output Data 4) Decision|ข้อ 3 Input/Output Data | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] สัญลักษณ์ Flowchart ลูกศร (ซ้าย-ขวา / ขึ้น-ลง) ชื่อว่าอะไร 1) Flow line/Direction 2) Document 3) Input/Output 4) Connector|ข้อ 1 Flow line (เส้นแสดงทิศทาง) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดไม่ใช่รูปแบบการเขียนผังงาน 1) การทำงานแบบตามลำดับ (Sequence) 2) การเลือกกระทำตามเงื่อนไข (Decision or Selection) 3) การทำซ้ำ (Repetition or Loop) 4) การทำแบบข้ามเงื่อนไข (Skip Decision)|ข้อ 4 การทำแบบข้ามเงื่อนไข (Skip Decision) รูปแบบจริงมี Sequence, Decision/Selection, Repetition/Loop | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นข้อดีของผังงานที่ถูกต้อง 1) ช่วยให้โปรแกรมทำงานได้เร็วขึ้นโดยอัตโนมัติ 2) ช่วยให้เห็นกระบวนการทำงานทั้งหมดของระบบได้ชัดเจน 3) ช่วยลดขนาดของหน่วยความจำในการเขียนโปรแกรม 4) ใช้แทนภาษาโปรแกรมได้ทุกชนิดโดยไม่ต้องเขียนโค้ด|ข้อ 2 ช่วยให้เห็นกระบวนการทำงานทั้งหมดของระบบได้ชัดเจน | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ] ข้อใดเป็นข้อดีของผังงาน (Flowchart) 1) ช่วยทำให้หาข้อผิดพลาดของโปรแกรมได้ง่ายขึ้น 2) ช่วยให้คอมพิวเตอร์ใช้พลังงานน้อยลง 3) ทำให้ผู้ใช้ไม่จำเป็นต้องเรียนรู้ตรรกะของโปรแกรม 4) สามารถนำไปใช้รันคำสั่งแทนโปรแกรมจริงได้ทันที|ข้อ 1 ช่วยให้หาข้อผิดพลาดของโปรแกรมได้ง่ายขึ้น | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ข้อใดไม่ใช่องค์ประกอบของการสื่อสารข้อมูล 1) Protocol 2) Channel 3) Sender 4) Noise|ข้อ 4 Noise (เป็นสิ่งรบกวน ไม่ใช่องค์ประกอบ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] สื่อกลางแบบไร้สายข้อใดใช้แสงอินฟราเรด 1) รีโมทคอนโทรล 2) ดาวเทียม 3) วิทยุสื่อสาร 4) สายเคเบิลทีวี|ข้อ 1 รีโมทคอนโทรล | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] เครือข่ายที่คอมพิวเตอร์ทุกเครื่องเท่าเทียมกัน เป็นทั้ง Server และ Client ได้ในเวลาเดียวกัน คืออะไร 1) Client-Server 2) Peer-to-Peer 3) Star 4) Bus|ข้อ 2 Peer-to-Peer | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] การเชื่อมต่อแบบใดมีอุปกรณ์ตัวกลางเป็นศูนย์กลางควบคุมเส้นทางสื่อสารทั้งหมด 1) Ring 2) Star 3) Mesh 4) Bus|ข้อ 2 Star Topology | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] สายสัญญาณที่นิยมเชื่อมต่อระหว่างประเทศและไม่โดนสัญญาณรบกวนมาก 1) Twisted Pair 2) Coaxial 3) Fiber Optic 4) Copper|ข้อ 3 สายใยแก้วนำแสง (Fiber Optic) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] การลากสายใยแก้วนำแสงเข้าสู่บ้านโดยตรงคือข้อใด 1) FTTB 2) FTTC 3) FTTH 4) FTTO|ข้อ 3 FTTH | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] หน้าที่ของอุปกรณ์ Modem คือข้อใด 1) รวมสัญญาณ 2) กระจายสัญญาณ 3) แปลงสัญญาณ 4) ตรวจสอบข้อมูลเข้า-ออก|ข้อ 3 แปลงสัญญาณ (Analog <-> Digital) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ข้อใดเป็นหน้าที่ของ Router 1) รวมสัญญาณข้อมูล 2) หาเส้นทางในการส่งข้อมูล 3) การเชื่อมต่อระหว่างเครือข่าย 4) ตัวกลางในการส่งต่อข้อมูลไปยังเครือข่ายอื่น|ข้อ 2 หาเส้นทางในการส่งข้อมูล และเชื่อมต่อระหว่างเครือข่าย | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] เครือข่ายระยะสั้นเฉพาะพื้นที่ส่วนบุคคล เช่น การใช้ Hotspot ตรงกับเครือข่ายใด 1) PAN 2) LAN 3) MAN 4) WAN|ข้อ 1 PAN | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ข้อใดเป็นการส่งข้อมูลแบบ Full-duplex 1) โทรศัพท์มือถือ 2) การส่ง E-mail 3) วิทยุ FM 4) โทรทัศน์|ข้อ 1 โทรศัพท์มือถือ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] สายส่งสัญญาณชนิดใดไม่มีผลกระทบจากคลื่นรบกวนทางไฟฟ้า 1) STP 2) Fiber Optic 3) Coaxial 4) UTP|ข้อ 2 Fiber Optic | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ความหมายของ โปรโตคอล ที่ถูกต้อง 1) มาตรฐานของอุปกรณ์เชื่อมต่อเครือข่าย 2) หมายเลขที่ใช้ระบุตำแหน่งเครื่องและเป็นหมายเลขที่ไม่ซ้ำกัน 3) ข้อกำหนดหรือข้อตกลงในการสื่อสารระหว่างคอมพิวเตอร์ 4) รูปแบบการเชื่อมต่อเครือข่าย|ข้อ 3 ข้อกำหนดหรือข้อตกลงในการสื่อสารระหว่างคอมพิวเตอร์ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] โปรโตคอลใดใช้เข้าชมเว็บไซต์ที่ปลอดภัยโดยเข้ารหัสข้อมูล 1) FTP 2) HTTP 3) HTTPS 4) SMTP|ข้อ 3 HTTPS | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ข้อใดแสดงบริการแบบ VoIP ได้ถูกต้อง 1) VoIP คือการส่งอีเมลผ่านอินเทอร์เน็ต เช่น Gmail, Outlook, Yahoo Mail 2) VoIP คือการดูวิดีโอผ่านอินเทอร์เน็ต เช่น YouTube, TikTok, Netflix 3) VoIP คือการสื่อสารเสียงผ่านอินเทอร์เน็ต เช่น Skype, Zoom, Line Call, Google Meet 4) VoIP คือการจัดเก็บไฟล์ออนไลน์ เช่น Google Drive, OneDrive, Dropbox|ข้อ 3 การสื่อสารเสียงผ่านอินเทอร์เน็ต เช่น Skype, Zoom, Line Call, Google Meet | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] โปรโตคอลที่ใช้เชื่อมต่อและควบคุมคอมพิวเตอร์ระยะไกล (Remote Login) 1) ICMP 2) Telnet 3) HTTPS 4) FTP|ข้อ 2 Telnet | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] การส่งสัญญาณบลูทูธจัดเป็นเครือข่ายประเภทใด 1) PAN 2) LAN 3) MAN 4) WAN|ข้อ 1 PAN | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ต้องเชื่อมเครือข่ายภายในบ้านเข้ากับอินเทอร์เน็ต ต้องผ่านอุปกรณ์ใด 1) การ์ดแลน 2) Router 3) Bridge 4) Gateway|ข้อ 2 Router | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] อุปกรณ์ที่รวมสัญญาณจากอุปกรณ์รับส่งหรือคอมพิวเตอร์หลายเครื่องเข้าด้วยกัน 1) Gateway 2) Hub 3) Repeater 4) Router|ข้อ 2 Hub | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] อุปกรณ์ที่เชื่อมเครือข่ายที่ใช้โปรโตคอลต่างกันให้สื่อสารกันได้ 1) Repeater 2) Hub 3) Gateway 4) Bridge|ข้อ 3 Gateway | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ต้องการสายส่งสัญญาณที่เหมาะกับการติดตั้งแบบโค้งงอได้ ควรเลือกสายใด 1) STP 2) UTP 3) Coaxial 4) Fiber Optic|ข้อ 2 สายคู่บิดเกลียวชนิดไม่หุ้มฉนวน (UTP) เพราะฉนวนบาง โค้งงอสะดวก | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ข้อใดเรียงระยะการส่งสัญญาณจากมากไปน้อยถูกต้อง 1) ดาวเทียม > คลื่นวิทยุ > คลื่นไมโครเวฟ > แสงอินฟราเรด 2) ดาวเทียม > คลื่นไมโครเวฟ > คลื่นวิทยุ > แสงอินฟราเรด 3) ดาวเทียม > คลื่นไมโครเวฟ > แสงอินฟราเรด > คลื่นวิทยุ 4) ดาวเทียม > คลื่นวิทยุ > แสงอินฟราเรด > คลื่นไมโครเวฟ|ข้อ 2 ดาวเทียม > ไมโครเวฟ > วิทยุ > อินฟราเรด (ตีความจากเนื้อหา) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] ส่งข้อมูลวิดีโอขนาดใหญ่ต้องการความเร็วสูง ควรใช้สายใด 1) VGA 2) USB2.0 3) HDMI 4) DVI|ข้อ 3 HDMI | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] อุปกรณ์ในคอมพิวเตอร์ที่เชื่อมด้วยสายเพื่อเข้าถึงอินเทอร์เน็ต 1) Router 2) Switch 3) LAN Card ใช้สาย Ethernet 4) Bluetooth|ข้อ 3 การ์ดแลน (LAN Card) ใช้สาย Ethernet | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+4|[ข้อสอบ] สถานีตำรวจมีคอมพิวเตอร์ 8 เครื่องและเครื่องพิมพ์ 3 เครื่อง ควรใช้เครือข่ายใด 1) PAN 2) LAN 3) MAN 4) WAN|ข้อ 2 LAN | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] หน่วยงานใดเป็น ISP (Internet Service Provider) 1) AIS 2) SCG 3) PUBG 4) ROV|ข้อ 1 AIS | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] หน่วยงานใดไม่ใช่ผู้ให้บริการอินเทอร์เน็ตเชิงพาณิชย์ 1) JI-Net 2) True 3) PubNet 4) 3BB|ข้อ 3 PubNet (Non-commercial ISP) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดระบุความหมายนามสกุล Domain ถูกต้อง 1) .co.th หน่วยงาน องค์กรธุรกิจด้านเครือข่ายที่ตั้งอยู่ในประเทศไทย 2) .or.th ห้างหุ้นส่วน บริษัทที่จดทะเบียนในประเทศไทย 3) .net ธุรกิจ หน่วยงานที่เกี่ยวข้องกับเครือข่าย 4) .edu สถาบันการศึกษา|ข้อ 4 .edu = สถาบันการศึกษา | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] URL ใดเป็นหน่วยงานของรัฐบาลไทย 1) Thai.go.th 2) Thai.mi.th 3) Thai.or.th 4) Thai.co.th|ข้อ 1 .go.th | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] หมายเลข 158.254.155.105 เป็น IP Address คลาสใด 1) คลาส A 2) คลาส B 3) คลาส C 4) คลาส D|ข้อ 2 คลาส B เพราะอยู่ในช่วง 128-191 | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] URL https://test.guruacademy.in.th ข้อใดกล่าวผิด 1) โดเมนระดับ 3 2) ชื่อโดเมน guruacademy 3) เป็นสถาบันการศึกษา 4) ก่อตั้งที่ประเทศไทย|ข้อ 3 ผิด เพราะ .in = กลุ่ม/หน่วยงานนานาชาติ ไม่ใช่สถาบันการศึกษา (.ac) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดไม่เกี่ยวข้องกับการใช้งานอินเทอร์เน็ต 1) ISP 2) Protocol 3) IP Address 4) Open Source|ข้อ 4 Open Source | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดกล่าวผิดเกี่ยวกับ URL https://study.arden.ac.uk/ 1) เป็นเว็บไซต์ที่เกี่ยวข้องในประเทศสหราชอาณาจักร 2) เป็นเว็บไซต์ประเภทโดเมน 3 ระดับ 3) เป็นเว็บไซต์เกี่ยวกับสถาบันการศึกษา 4) เป็นเว็บไซต์ที่ไม่มีโปรโตคอล|ข้อ 4 ที่ว่าไม่มีโปรโตคอล (ผิด เพราะมี https) นอกนั้นถูก: สหราชอาณาจักร โดเมน 3 ระดับ สถาบันการศึกษา | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดไม่ใช่ผู้ให้บริการอินเทอร์เน็ต (ISP) 1) TOT 2) CAT 3) SCB 4) 3BB|ข้อ 3 SCB (ธนาคาร) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] เว็บไซต์เกี่ยวกับการจัดจ้างและจัดหางาน 1) AAA.jobs 2) BBB.art 3) CCC.shop 4) DDD.info|ข้อ 1 .jobs | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดคือโปรโตคอลที่เป็นองค์ประกอบของ URL 1) .com 2) http:// 3) www. 4) ถูกทุกข้อ|ข้อ 2 http:// แจกแจงแต่ละข้อ: | ข้อ 1 ผิด = .com คือโดเมนระดับบนสุด (Top-Level Domain) | ข้อ 2 ถูก = http:// คือโปรโตคอลที่ใช้รับ-ส่งข้อมูลเว็บ | ข้อ 3 ผิด = www. คือชื่อโฮสต์หรือซับโดเมน | ข้อ 4 ผิด เพราะมีเพียงข้อ 2 ที่ถูก | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] IP Address คืออะไร 1) Network Address เป็นหมายเลข ID สำหรับเครือข่าย ตั้งด้วย Router 2) เป็นตัวแทนของเครื่องคอมพิวเตอร์ในโลก บอกได้ว่าเครื่องตั้งอยู่ที่ไหน และเลข IP จะไม่ซ้ำกัน 3) มาตรฐานปัจจุบันคือ IPv4 (32 บิต) และ IPv6 (128 บิต) 4) ถูกทุกข้อ|ข้อ 4 ถูกทุกข้อ แจกแจงแต่ละข้อ: | ข้อ 1 ถูก = IP Address เป็นหมายเลขประจำเครื่อง/เครือข่ายที่ใช้ระบุตัวตนบนเครือข่าย TCP/IP และตั้งค่าผ่าน Router ได้ | ข้อ 2 ถูก = IP Address ใช้บอกตำแหน่งของเครื่อง และแต่ละเครื่องต้องไม่ซ้ำกัน | ข้อ 3 ถูก = IPv4 เป็นเลขฐานสอง 32 บิต (2^32 หมายเลข) ส่วน IPv6 เป็น 128 บิต (2^128 หมายเลข) คิดค้นเพื่อแก้ปัญหา IPv4 ใกล้หมด | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดไม่ใช่โปรแกรมสำหรับท่องเว็บ 1) Google Chrome 2) Outlook 3) Firefox 4) Safari|ข้อ 2 Outlook (โปรแกรมอีเมล) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] คอมพิวเตอร์ที่ให้บริการเว็บแก่ผู้ใช้รายอื่นบนเครือข่ายเรียกว่าอะไร 1) Web Browser 2) Web Server 3) Web Page 4) Website|ข้อ 2 Web Server | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] Home Page มีความหมายตรงกับข้อใด 1) แหล่งข้อมูลเว็บ 2) หน้าหลักหรือหน้าแรกเมื่อเข้าเว็บไซต์ 3) โปรแกรมเปิดเว็บ 4) เครื่องให้บริการเว็บ|ข้อ 2 หน้าหลักหรือหน้าแรกเมื่อเข้าเว็บไซต์ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] การเข้าถึงเว็บไซต์อีกครั้งอย่างรวดเร็วโดยไม่ต้องพิมพ์ URL ใหม่ เรียกว่าอะไร 1) History 2) Bookmark 3) Refresh 4) Homepage|ข้อ 2 Bookmark | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] คำว่า HTML ย่อมาจาก 1) High Text Machine Language 2) Hyper Text Message Level 3) HyperText Markup Language 4) Hyperlink Markup Layer|ข้อ 3 HyperText Markup Language | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+5|[ข้อสอบ] ข้อใดเป็นหน้าที่ของ HTML 1) ทำให้เว็บเพจมีสีสันและความสวยงาม 2) ควบคุมฐานข้อมูลในเซิร์ฟเวอร์ 3) ทำให้เว็บเพจตอบสนองต่อการกระทำของผู้ใช้ 4) จัดโครงสร้างเนื้อหาบนหน้าเว็บเพจ|ข้อ 4 จัดโครงสร้างเนื้อหาบนหน้าเว็บเพจ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] ข้อใดคือพาณิชย์อิเล็กทรอนิกส์ 1) e-Magazine 2) e-Wallet 3) e-Commerce 4) e-Card|ข้อ 3 e-Commerce | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] ข้อใดกล่าวผิดเกี่ยวกับพาณิชย์อิเล็กทรอนิกส์ 1) เป็นการทำธุรกรรมการซื้อขายหรือแลกเปลี่ยนสินค้าและบริการผ่านสื่ออิเล็กทรอนิกส์ 2) การซื้อขายสินค้ามือสองออนไลน์ เป็นพาณิชย์อิเล็กทรอนิกส์ในรูปแบบหนึ่ง 3) การซื้อสินค้าบน Lazada จัดเป็นพาณิชย์อิเล็กทรอนิกส์ประเภท B2G 4) การยื่นเสียภาษีเงินได้บุคคลธรรมดาผ่านเว็บไซต์กรมสรรพากรจัดเป็นพาณิชย์อิเล็กทรอนิกส์ประเภท G2C|ข้อ 3 ที่ว่าซื้อสินค้าบน Lazada เป็น B2G (ผิด Lazada เป็น B2C) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] บริษัทเอกชนทำประกันสังคมให้พนักงานผ่านระบบออนไลน์ เป็นพาณิชย์อิเล็กทรอนิกส์ลักษณะใด 1) Business to Consumer 2) Government to Consumer 3) Business to Government 4) Business to Business|ข้อ 3 Business to Government (B2G) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] สมชายซื้อสินค้าบนเว็บไซต์ ThaiSecondhand.com เป็นลักษณะใด 1) Business to Consumer 2) Consumer to Consumer 3) Business to Government 4) Business to Business|ข้อ 2 Consumer to Consumer (C2C) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] หลังซื้อของออนไลน์ เราได้รับใบกำกับภาษีอิเล็กทรอนิกส์ เรียกว่าอะไร 1) e-book 2) e-card 3) e-tax 4) e-mail|ข้อ 3 e-tax | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] ข้อใดมีความสัมพันธ์แบบ B2C 1) โจขายเสื้อผ้าให้แอนผ่านกลุ่มมือสองใน Facebook 2) แอมป์ซื้อวัสดุก่อสร้างจากร้านวันชัยค้าวัสดุ 3) บีสั่งสินค้าจากโรงงานเพื่อนำมาขายในบริษัทตัวเอง 4) เมลงทะเบียนออนไลน์จองคิวทำหนังสือเดินทาง|ข้อ 2 (ร้านค้า/ธุรกิจ ขายให้บุคคลทั่วไป) ข้อ 1 คือ C2C ข้อ 3 คือ B2B ข้อ 4 คือ G2C | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การซื้อขายสินค้าระหว่างผู้บริโภคด้วยกัน หรือซื้อขายกันโดยตรง เป็นพาณิชย์อิเล็กทรอนิกส์ประเภทใด 1) B2C 2) B2B 3) C2C 4) G2G|ข้อ 3 C2C (Consumer to Consumer) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การซื้อขายสินค้าระหว่างผู้ประกอบการด้วยกัน เป็นแบบใด 1) B2C 2) B2B 3) C2C 4) G2G|ข้อ 2 B2B | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การซื้อขายสินค้าระหว่างภาครัฐกับภาครัฐ เป็นแบบใด 1) B2C 2) B2B 3) C2C 4) G2G|ข้อ 4 G2G | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] เว็บไซต์ใดเป็นการทำการซื้อแบบ G2C 1) lazada.co.th 2) homepro.co.th 3) ebay.com 4) efiling.rd.go.th|ข้อ 4 efiling.rd.go.th (ภาครัฐกับประชาชน) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การสั่งซื้อสินค้าจาก makroclick.com เพื่อนำมาขายในร้านตนเอง เป็นการค้าแบบใด 1) B2B 2) B2C 3) B2G 4) C2C|ข้อ 1 B2B (Business to Business) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การแลกเปลี่ยนข้อมูลใบสั่งซื้อสินค้าแบบคอมพิวเตอร์ต่อคอมพิวเตอร์ (Computer-to-Computer) เรียกว่าอะไร 1) SSL 2) PDF Form 3) EDI 4) Cloud Storage|ข้อ 3 EDI (Electronic Data Interchange) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] กระเป๋าเงินดิจิทัล หรือกระเป๋าเงินออนไลน์ เรียกว่าอะไร 1) e-book 2) e-card 3) e-payment 4) e-wallet|ข้อ 4 e-wallet | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] ข้อใดไม่ใช่ e-Commerce platform 1) Qanda 2) Amazon 3) JD Central 4) Shopee|ข้อ 1 Qanda (แอปถามตอบการเรียน) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+6|[ข้อสอบ] การซื้อขายอิเล็กทรอนิกส์ทางเทคโนโลยีถือเป็นรูปแบบของอะไร 1) E-Banking 2) E-Learning 3) E-Commerce 4) E-Office|ข้อ 3 E-Commerce | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] เทคโนโลยีบริหารจัดการด้านความปลอดภัยของระบบเครือข่าย 1) Malware 2) Firewall 3) Hoax 4) Phishing|ข้อ 2 Firewall | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ชุดคำสั่งหรือโปรแกรมที่สร้างเพื่อก่อกวน โจรกรรม ทำลายข้อมูลในคอมพิวเตอร์ 1) Malware 2) Firewall 3) Hoax 4) Phishing|ข้อ 1 Malware | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ข้อใดไม่ใช่วิธีป้องกันการติดตั้งมัลแวร์ 1) ติดตั้งแอนตี้ไวรัส 2) ติดตั้งซอฟต์แวร์ถูกกฎหมายเท่านั้น 3) เลือกใช้พีซีมากกว่าโน้ตบุ๊ก 4) อัปเดตซอฟต์แวร์แพตช์|ข้อ 3 เลือกใช้พีซีมากกว่าโน้ตบุ๊ก | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] มิจฉาชีพส่ง SMS หรืออีเมลปลอมเพื่อเอาข้อมูลส่วนตัว เลขบัตรประชาชน รหัส OTP เรียกว่าอะไร 1) Spam 2) Phishing 3) Trojan 4) Virus|ข้อ 2 Phishing | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ข้อใดไม่ใช่โปรแกรมสแกนไวรัส 1) ESET NOD32 2) Trend Micro 3) SPSS 4) McAfee|ข้อ 3 SPSS (โปรแกรมวิเคราะห์สถิติ) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ไวรัสที่ออกแบบมาเพื่อ เรียกค่าไถ่ จากการขโมยข้อมูลและเข้ารหัสไฟล์เหยื่อ 1) Adware 2) Spam Mail 3) Macro Virus 4) Ransomware|ข้อ 4 Ransomware | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] จดหมายลูกโซ่ที่แชร์เพื่อหลอกลวงผู้อ่านให้สับสน เป็นมัลแวร์ชนิดใด 1) Spyware 2) Ransomware 3) Hoax 4) Trojan|ข้อ 3 Hoax | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ไวรัสที่แอบติดตั้งโดยไม่รู้ตัวเพื่อเก็บข้อมูลส่วนตัวหรือข้อมูลการใช้งานเครื่อง 1) Spyware 2) Pharming 3) Phishing 4) Worm|ข้อ 1 Spyware | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] เตือนภัยเว็บไซต์ธนาคารปลอม หลอกให้กรอกข้อมูลทางการเงิน เป็นอาชญากรรมใด 1) Phishing 2) Spyware 3) Trojan Horses 4) Romance Scam|ข้อ 1 Phishing | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] การปลอมแปลงใบหน้าและเสียง เป็นการหลอกลวงทางอินเทอร์เน็ต 1) Phishing 2) Pharming 3) Deep Fake 4) Spyware|ข้อ 3 Deep Fake | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ข้อใดคือโปรแกรมป้องกันไวรัส 1) MySQL 2) Chrome 3) OneNote 4) Windows Defender|ข้อ 4 Windows Defender | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] อาชญากรรมคอมพิวเตอร์ที่มีฉายาว่า White hat 1) Cracker 2) Hacker 3) Ransomware 4) Spyware|ข้อ 2 Hacker | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] มิจฉาชีพสร้างโปรไฟล์ดูดี ตีสนิท เมื่อเหยื่อหลงรักจึงให้โอนเงิน เป็นอาชญากรรมไซเบอร์ใด 1) Vishing Phishing 2) Romance Scam 3) Ponzi scheme 4) Email scam|ข้อ 2 Romance Scam | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] อาชญากรรมคอมพิวเตอร์ที่มีฉายาว่า Black hat 1) Cracker 2) Hacker 3) Ransomware 4) Spyware|ข้อ 1 Cracker | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] เทคโนโลยีสร้างการเชื่อมต่ออินเทอร์เน็ตที่ปลอดภัยเป็นส่วนตัวผ่านเครือข่ายสาธารณะ เหมือนอุโมงค์ข้อมูล 1) Firewall 2) VPN 3) HTTPS 4) Router|ข้อ 2 VPN | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ข้อใดไม่ใช่โปรแกรมสแกนไวรัส 1) AVG 2) Avast 3) Dreamer 4) Trend Micro|ข้อ 3 Dreamer (เป็นประเภทอาชญากรคอมพิวเตอร์ ไม่ใช่โปรแกรม) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] มีแอปแปลกๆ ติดตั้งบนคอมพิวเตอร์โดยไม่ได้ดาวน์โหลดเอง เกิดจากผู้ใช้คลิกลิงก์เว็บไซต์หนึ่ง เรียกว่าอะไร 1) Boot Sector Virus 2) Trojan 3) Pharming 4) Worm|ข้อ 2 Trojan (ตีความจากเนื้อหา โจทย์ OCR ไม่ชัด) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] บริษัทถูกไวรัสเข้ารหัสล็อกไฟล์ใช้งานไม่ได้ และเรียกค่าไถ่เป็นบิตคอยน์ เป็นไวรัสประเภทใด 1) Worm 2) Hoax 3) Trojan 4) Ransomware|ข้อ 4 Ransomware | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] ข้อใดถือเป็นอัตลักษณ์เฉพาะบุคคล (Biometric) 1) รหัสผ่าน 2) ชื่อผู้ใช้งาน 3) การสแกนลายนิ้วมือ 4) หมายเลขโทรศัพท์|ข้อ 3 การสแกนลายนิ้วมือ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+7|[ข้อสอบ] การเข้าใจร่องรอยดิจิทัล รู้เท่าทันความปลอดภัยในการใช้เทคโนโลยี และสื่อสารอย่างเข้าใจสื่อดิจิทัล คือทักษะใด 1) Digital Leadership 2) Digital Literacy 3) Digital Technology 4) Digital Transformation|ข้อ 2 Digital Literacy | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ข้อใดเป็นโปรแกรมประยุกต์เกี่ยวกับการจัดการเอกสาร 1) Word 2) PowerPoint 3) Excel 4) Access|ข้อ 1 Microsoft Word | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] คำสั่งที่ใช้ตัด (Cut) ข้อความ 1) Ctrl+V 2) Ctrl+X 3) Ctrl+C 4) Ctrl+B|ข้อ 2 Ctrl+X | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] การตั้งค่าขอบกระดาษใน Word ใช้คำสั่งอะไร 1) Design>Size 2) Design>Margins 3) Layout>Size 4) Layout>Margins|ข้อ 4 Layout > Margins | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ตั้งค่าหน้ากระดาษแนวนอนหรือแนวตั้งใน Word ใช้คำสั่งใด 1) คลิกแท็บ Layout >> Margins 2) คลิกแท็บ Layout >> Orientation 3) คลิกแท็บ Layout >> Size 4) คลิกแท็บ Layout >> Columns|ข้อ 2 คลิกแท็บ Layout >> Orientation | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการสร้างสมการใน Word ต้องใช้ฟังก์ชันใด 1) Insert>Equation 2) Draw>Equation 3) Home>Equation 4) Layout>Equation|ข้อ 1 Insert > Equation | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] คีย์ลัดเลิกทำการดำเนินการก่อนหน้าใน Word 1) Ctrl+A 2) Ctrl+Z 3) Ctrl+X 4) Ctrl+B|ข้อ 2 Ctrl+Z | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] Ctrl + I เป็นคีย์ลัดทำอะไรใน Word 1) ตัวหนา 2) ตัวเอียง 3) ขีดเส้นใต้ 4) ตัดข้อความ|ข้อ 2 ทำให้อักษรเป็นตัวเอียง | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการกดย่อหน้าข้อความใน Word ต้องกดปุ่มใด 1) Shift 2) Ctrl 3) Tab 4) Alt|ข้อ 3 Tab | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] สร้างกล่องข้อความ (Text Box) ใน Word ต้องไปที่แท็บใด 1) Draw 2) Insert 3) Design 4) Home|ข้อ 2 Insert | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] จัดรูปแบบหน้ากระดาษใน Word ต้องเลือกแถบเครื่องมือใด 1) Home 2) Design 3) Insert 4) Layout|ข้อ 4 Layout | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการให้เอกสารแสดงไม้บรรทัดใน Word ต้องไปที่แถบเครื่องมือใด 1) Design 2) View 3) Insert 4) Draw|ข้อ 2 View | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] คีย์ลัด Ctrl + Shift + < ใน Word ตรงกับคำสั่งใด 1) ลดขนาดตัวอักษร 2) เพิ่มขนาดตัวอักษร 3) ลดขนาดลง 1 พอยต์ 4) เพิ่มขึ้น 1 พอยต์|ข้อ 1 ลดขนาดตัวอักษร (ส่วน Ctrl+[ ลด 1 พอยต์ และ Ctrl+] เพิ่ม 1 พอยต์) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] Ctrl + E ใน Word ทำหน้าที่อะไร 1) จัดกึ่งกลางข้อความ 2) จัดแนวข้อความชิดซ้าย 3) จัดแนวข้อความชิดขวา 4) บิดหน้าเอกสารที่กำลังเปิดใช้งานอยู่|ข้อ 1 จัดกึ่งกลางข้อความ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] คลุมดำเอกสารทั้งหน้าใน Word ใช้คำสั่งใด 1) Ctrl+A 2) Alt+A 3) Ctrl+Alt+A 4) Ctrl+Enter+A|ข้อ 1 Ctrl+A | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการพิมพ์เอกสารจาก Word เฉพาะหน้า 1, 5 และ 10 ต้องพิมพ์ว่าอย่างไร 1) 1-5-10 2) 1/5/10 3) 1,5,10 4) 1:5:10|ข้อ 3 1,5,10 | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] แทรกรูปภาพใน Word ครั้งแรก รูปภาพจะอยู่ในรูปแบบใดของ Wrap Text 1) In line with text 2) In front of text 3) Square 4) Tight|ข้อ 1 In line with text | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] การทำหนังสือเวียน (Mail Merge) ใน Word ต้องไปที่แท็บใด 1) Insert 2) Layout 3) Mailings 4) Review|ข้อ 3 Mailings | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการบันทึกเป็นไฟล์ใหม่โดยไฟล์เดิมยังคงอยู่ ต้องใช้คำสั่งใด 1) Rename 2) Save 3) Save As 4) New Document|ข้อ 3 Save As | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] Ctrl + Shift + D ใน Word ทำหน้าที่อะไร 1) การลดขนาดตัวอักษร 2) แทรกคำอธิบายเพิ่มเติมลงไปทางด้านล่างของหน้ากระดาษ (Footnote) 3) แสดงหน้าต่าง Print Preview 4) ขีดเส้นใต้ 2 เส้นสำหรับข้อความที่กำลังจะพิมพ์|ข้อ 4 ขีดเส้นใต้ 2 เส้นสำหรับข้อความที่กำลังจะพิมพ์ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ไฟล์ Word ที่บันทึกแล้วมีนามสกุลใด 1) ppt/pptx 2) doc/docx 3) xls/xlsx 4) ai/aix|ข้อ 2 .doc หรือ .docx | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เครื่องมือ Pictures, Shapes, Icons ใน Word อยู่ในแท็บใด 1) Insert 2) Home 3) Page Layout 4) View|ข้อ 1 Insert | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เครื่องมือใน Word ที่ใช้อ่านออกเสียง และสร้างสารบัญอัตโนมัติ ตามลำดับ 1) Speak และ Index 2) Spelling and Grammar และ SmartArt 3) Read Aloud และ Table of Contents 4) Read Mode และ References Panel|ข้อ 3 Read Aloud และ Table of Contents | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เครื่องมือใน Word ปรับความคมชัดและความสว่างของรูปภาพ 1) Color 2) Corrections 3) Artistic Effects 4) Transparency|ข้อ 2 Corrections | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ตั้งค่าหน้ากระดาษแนวนอนใน Word ใช้คำสั่งใด 1) Layout > Orientation > Portrait 2) Design > Orientation > Portrait 3) Layout > Orientation > Landscape 4) Design > Orientation > Landscape|ข้อ 3 Layout > Orientation > Landscape | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการสรุปข้อมูลจำนวนอุบัติเหตุ 7 วันอันตราย โปรแกรมใดเหมาะกับการประมวลผล 1) Word 2) PowerPoint 3) Excel 4) Access|ข้อ 3 Microsoft Excel | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ใน Excel ใส่อาร์กิวเมนต์ให้ฟังก์ชันไม่ครบ จะปรากฏ Error ใด 1) ##### 2) #VALUE 3) #N/A 4) #DIV/0|ข้อ 3 #N/A | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] นับจำนวนข้อมูลจากเซลล์ที่เป็นเฉพาะตัวเลขใน Excel ควรใช้ฟังก์ชันใด 1) =COUNT() 2) =SUM() 3) =AVERAGE() 4) =COUNTA()|ข้อ 1 =COUNT (ส่วน COUNTA นับเซลล์ที่มีตัวอักษรหรือตัวเลข) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] พิมพ์สูตร =4*5-8+0/245 ใน Excel จะแสดงผลลัพธ์อย่างไร 1) -12 2) 12 3) 36 4) หาค่าไม่ได้|ข้อ 2 เท่ากับ 12 (20-8+0) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ฟังก์ชันนับจำนวนข้อมูลแบบมีเงื่อนไขเดียวใน Excel 1) IF 2) IFS 3) SUMIF 4) COUNTIF|ข้อ 4 COUNTIF | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] สูตรใน Excel หาค่าน้อยที่สุดตามลำดับที่ต้องการ 1) LESS 2) SMALL 3) MIN 4) SORT|ข้อ 2 =SMALL(number1,...) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการหาค่าเฉลี่ยของตัวเลขใน Column ทั้งหมด ใช้สูตรพื้นฐานใดใน Excel 1) SUM 2) SUMIF 3) COUNT 4) AVERAGE|ข้อ 4 =AVERAGE() | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เกิด #DIV/0! ใน Excel แก้ไขได้ด้วยวิธีใด 1) แก้ไขเซลล์ที่อ้างอิงให้ถูกต้อง 2) ตรวจสอบชื่อเซลล์ต่าง ๆ ที่ใช้ให้ถูกต้อง 3) ตรวจสอบตัวหารทุกตัวที่อยู่ในสูตรคำนวณ 4) แก้ไขสูตรในการคำนวณให้ถูกประเภท|ข้อ 3 ตรวจสอบตัวหารทุกตัวในสูตรคำนวณ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ใน Excel ต้องการเริ่มใช้สูตร ต้องเริ่มต้นด้วยเครื่องหมายใด 1) # 2) ; 3) @ 4) =|ข้อ 4 เครื่องหมาย = | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] UPPER บน Excel มีหน้าที่ทำอะไร 1) เป็นการรวมเซลล์ที่อยู่ในแนวแถวเท่านั้น ใช้สำหรับขยายขนาดของเซลล์ 2) เป็นการรวมเซลล์ที่ถูกเลือกให้เป็นเซลล์เดียวกัน 3) ใช้แปลงข้อความตัวอักษรให้เป็นตัวพิมพ์ใหญ่ 4) ใช้แปลงข้อความตัวอักษรให้เป็นตัวพิมพ์เล็ก|ข้อ 3 แปลงข้อความตัวอักษรในเซลล์ให้เป็นตัวพิมพ์ใหญ่ | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการเชื่อมข้อความ 2 ข้อความเข้าด้วยกัน ต้องใช้สูตรอะไรใน Excel 1) =CONCATE(text1, [text2], ...) 2) =CONCNATE(text1, [text2], ...) 3) =CONCATENATE(text1, [text2], ...) 4) =CONNATE(text1, [text2], ...)|ข้อ 3 =CONCATENATE(text1, [text2], ...) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการหาผลรวมของคอลัมน์ B, C และ D ควรใช้สูตรใด 1) SUM(BCD) 2) SUM(B:C:D) 3) SUM(B:D) 4) SUM(B:C)|ข้อ 3 =SUM(B:D) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ฟังก์ชันที่แสดงวัน เดือน ปี และเวลาปัจจุบันของระบบใน Excel 1) TODAY() 2) NOW() 3) TIME() 4) DDMMYYTT()|ข้อ 2 =NOW() (TODAY() แสดงเฉพาะวันที่) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ข้อใดใช้ฟังก์ชัน SUM ได้ถูกต้อง 1) C1_C10 2) C1;C10 3) C1--C10 4) C1:C10|ข้อ 4 =SUM(C1:C10) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ข้อใดเป็นสูตรที่มีการอ้างอิงเซลล์ใน Excel 1) SUM(10,20,30) 2) SUM(A1:A10) 3) AVERAGE(5,10,15) 4) MAX(70,90,110)|ข้อ 2 =SUM(A1:A10) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] พิมพ์สูตร =50-20>25 ใน Excel จะแสดงผลอย่างไร 1) TRUE 2) FALSE 3) 38>30 4) 40-2>30|ข้อ 1 TRUE (50-20=30 มากกว่า 25) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ตัวเลขหรือผลคำนวณยาวเกินที่จะแสดงในเซลล์ จะปรากฏ Error ใดบน Excel 1) ##### 2) #VALUE 3) #N/A 4) #DIV/0|ข้อ 1 ##### (แก้โดยขยายความกว้างคอลัมน์) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] หมวดฟังก์ชัน SUM, ROUND, INT, SQRT, SIN, COS, TAN อยู่ในเครื่องมือใด 1) AutoSum 2) Maths & Trig 3) Logical 4) Date & Time|ข้อ 2 Maths & Trig | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เมนูใดใน Excel ใช้เรียกดูหมวดฟังก์ชัน Financial, Logical, Text, Date & Time 1) Home 2) Insert 3) Formulas 4) Data|ข้อ 3 Formulas | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ถ้าต้องการสร้างแผนผังองค์กรใน Excel ต้องใช้เครื่องมือใด 1) List 2) Process 3) Cycle 4) Hierarchy|ข้อ 4 SmartArt (แท็บ Insert) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] โปรแกรมนำเสนอที่ติดตั้งมาในคอมพิวเตอร์ส่วนบุคคลคือโปรแกรมใด 1) Paint 2) Windows Media Player 3) Microsoft PowerPoint 4) Calendar|ข้อ 3 Microsoft PowerPoint | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ข้อใดถูกต้องที่สุดเกี่ยวกับวิธีใช้โปรแกรมนำเสนอที่ดี 1) ใช้ข้อความจำนวนมากในแต่ละสไลด์เพื่อให้ครบถ้วน 2) ใส่เอฟเฟกต์ทุกจุดเพื่อให้ดูน่าสนใจ 3) ใช้พื้นหลังหลากหลายสีในทุกสไลด์ 4) นำเสนอเป็นรูปภาพ หรือ Infographic ช่วยให้เข้าใจง่ายและจดจำได้ดี|ข้อ 4 นำเสนอเป็นรูปภาพหรือ Infographic ช่วยให้เข้าใจง่ายและจดจำได้ดี (ไม่ควรใส่ข้อความมาก เอฟเฟกต์ทุกจุด หรือสีพื้นหลังหลากหลาย) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] แท็บใดใน PowerPoint รวมคำสั่งเกี่ยวกับการเคลื่อนไหวของภาพ 1) Design 2) Transitions 3) Animations 4) Slide Show|ข้อ 3 Animations | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ตั้งค่าขนาดของสไลด์ (Slide) ต้องเลือกแท็บใดใน PowerPoint 1) Design 2) Insert 3) Animations 4) Transition|ข้อ 1 Design (Slide Size) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการให้สไลด์มีชื่อหน่วยงานติดอยู่ทุกหน้า ต้องเลือกคำสั่งใด 1) Design>Slide Sorter 2) Design>Slide Master 3) View>Slide Sorter 4) View>Slide Master|ข้อ 4 แถบ View >> Slide Master | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ขั้นตอนการใส่อักษรศิลป์ใน PowerPoint 1) Insert>WordArt 2) Home>WordArt 3) Draw>WordArt 4) Design>WordArt|ข้อ 1 แท็บ Insert > WordArt | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] แทรกรูปภาพใน PowerPoint ต้องใช้คำสั่งใด 1) Home>Pictures 2) Insert>Pictures 3) Design>Shapes 4) Layout>Shapes|ข้อ 2 Insert > Pictures | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] กำหนดระยะเวลาการเล่นภาพเคลื่อนไหว (Animation) ใน PowerPoint ใช้คำสั่งใด 1) Delay 2) Trigger 3) Duration 4) Animation Pane|ข้อ 3 Duration | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] การจัดรูปแบบพื้นหลังใน PowerPoint ต้องใช้คำสั่งใด 1) เมนู Design > Themes 2) เมนู Transitions > Themes 3) เมนู Insert > Themes 4) เมนู Slide Show > Themes|ข้อ 1 เมนู Design (Themes / Format Background) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] แถบที่รวบรวมรูปแบบการเปลี่ยนแผ่นสไลด์ขณะนำเสนอ เรียกว่าอะไร 1) Design 2) Transition 3) Animations 4) Slide Show|ข้อ 2 Transitions | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] การกลับภาพให้เป็นแนวนอนในสไลด์ ไปเครื่องมือใด 1) คลิก Rotate Objects >> Rotate Right 90 2) คลิก Rotate Objects >> Rotate Left 90 3) คลิก Rotate Objects >> Flip Vertical 4) คลิก Rotate Objects >> Flip Horizontal|ข้อ 4 Rotate Objects >> Flip Horizontal | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] Ctrl + Shift + ลูกศรขึ้น ใน PowerPoint ทำหน้าที่อะไร 1) ย้ายสไลด์ที่ต้องการลงไปล่างสุด 2) ย้ายสไลด์ที่ต้องการขึ้นไปบนสุด 3) ย้ายสไลด์ที่ต้องการลงไป 1 สไลด์ 4) ย้ายสไลด์ที่ต้องการขึ้นไป 1 สไลด์|ข้อ 2 ย้ายสไลด์ที่ต้องการขึ้นไปบนสุด | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ตั้งค่าให้สไลด์เลื่อนเองโดยไม่ต้องกดคลิก ทำอย่างไร 1) เมนู Transitions >> Timing >> After >> ใส่เวลา 2) เมนู Transitions >> Timing >> Duration >> ใส่เวลา 3) เมนู Animations >> Timing >> After >> ใส่เวลา 4) เมนู Animations >> Timing >> Duration >> ใส่เวลา|ข้อ 1 เมนู Transitions >> Timing >> After >> ใส่เวลา | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ขณะนำเสนอ ถ้าต้องการเปลี่ยนไปสไลด์หน้าที่ 5 กดปุ่มใด 1) 5+Alt 2) 5+Enter 3) Shift+5 4) Ctrl+5|ข้อ 2 กด 5 + Enter | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] แทรกวิดีโอที่อยู่ในอินเทอร์เน็ตมาใส่ในสไลด์ ต้องไปที่คำสั่งใด 1) Insert >> คลิกปุ่ม Video >> Movie from File 2) Insert >> คลิกปุ่ม Video >> Stock Video 3) Insert >> คลิกปุ่ม Video >> Online Video 4) Insert >> คลิกปุ่ม Video >> Bing Online|ข้อ 3 Insert >> Video >> Online Video | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ข้อใดไม่ใช่แถบ Ribbon ใน PowerPoint 1) Insert 2) Record 3) Transiter 4) Review|ข้อ 3 Transiter (ที่ถูกคือ Transitions) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] วิธีแทรกวิดีโอสดจากกล้องคอมพิวเตอร์ลงในสไลด์ ทำให้เห็นหน้าผู้นำเสนอขณะนำเสนอ 1) Insert>Audio 2) Insert>Cameo 3) Insert>Shapes 4) Insert>Video|ข้อ 2 Insert >> Cameo | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] ต้องการให้ตัวอักษรชิดกันมากขึ้น ควรเลือก Option ใน Character Spacing ใด 1) Loose 2) Very Loose 3) Tight 4) Bold|ข้อ 3 Tight | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+8|[ข้อสอบ] เครื่องมือใดใช้เขียนสคริปต์ช่วยจำผู้สอน 1) Slide Sorter 2) Notes Pane 3) Slide Master 4) Handout Master|ข้อ 2 Notes Pane | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] สำนักงานตำรวจแห่งชาติประชาสัมพันธ์ข้อมูลแก่ประชาชนผ่านโทรทัศน์ เป็นการใช้สื่อประเภทใด 1) Print Media 2) Specialized Media 3) Mass Media 4) Social Media|ข้อ 3 Mass Media | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] ข้อใดเป็น Social Media แบบ Media Networks 1) Facebook 2) Instagram 3) Wongnai 4) Twitter|ข้อ 2 Instagram | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] ข้อใดเป็น Social Network แบบ Peer to Peer (P2P) 1) Line 2) TikTok 3) Instagram 4) Google Maps|ข้อ 1 Line | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] Pinterest เป็น Social Network แบบใด 1) Identity 2) Creative 3) Interested 4) Collaboration|ข้อ 3 Interested Network (ความสนใจตรงกัน) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] บริการจาก Google ที่สร้างและแก้ไขงานนำเสนอ 1) Meet 2) Slides 3) Sites 4) Sheets|ข้อ 2 Google Slides | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] บริการจาก Google ที่สำรวจว่าคนทั้งโลกกำลังค้นหาอะไร 1) Trends 2) Search 3) Chrome 4) Analytics|ข้อ 1 Google Trends | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] โปรแกรมใดใช้ทำงานเอกสารได้ 1) Google Docs 2) Adobe Photoshop 3) Spotify 4) VLC Media Player|ข้อ 1 Google Docs | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] Google Sites เป็นบริการแบบใด 1) ค้นหาข้อมูล ติดตาม รับข่าวสาร 2) เป็นการสำรวจว่าคนทั้งโลกกำลังค้นหาอะไร 3) เป็นบริการสำหรับการสร้างและแก้ไขงานนำเสนอ 4) เป็นบริการสำหรับการสร้างและแก้ไขหน้าเว็บได้ สามารถสร้างเว็บไซต์เองตั้งแต่ต้นหรือสร้างจากเทมเพลตก็ได้|ข้อ 4 สร้างและแก้ไขหน้าเว็บ สร้างเว็บไซต์เองตั้งแต่ต้นหรือจากเทมเพลต | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] เปิดแท็บที่ปิดก่อนหน้านี้กลับมาอีกครั้งใน Google Chrome ใช้คีย์ลัดใด 1) Ctrl+T 2) Ctrl+Tab 3) Ctrl+Shift+T 4) Ctrl+Shift+Tab|ข้อ 3 Ctrl + Shift + T | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] Ctrl + Shift + N ใน Google Chrome ทำอะไร 1) ข้ามไปยังแท็บที่เปิดอยู่ถัดไป 2) ข้ามไปยังแท็บที่เปิดก่อนหน้า 3) เปิดแท็บใหม่แล้วข้ามไปยังแท็บนั้น 4) เปิดหน้าต่างใหม่ในโหมดไม่ระบุตัวตน|ข้อ 4 เปิดหน้าต่างใหม่ในโหมดไม่ระบุตัวตน | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] บริการใดเหมาะกับองค์กรที่ต้องการเช่าเซิร์ฟเวอร์และพื้นที่จัดเก็บข้อมูลโดยไม่ต้องซื้อฮาร์ดแวร์เอง 1) SaaS 2) IaaS 3) PaaS 4) DBaaS|ข้อ 2 IaaS | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] ต้องการแนบไฟล์ Word, PDF หรือรูปภาพไปกับอีเมล ต้องใช้ส่วนใด 1) To 2) Subject 3) Attachment 4) Cc|ข้อ 3 Attachment | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] ข้อใดกล่าวถึง Blockchain ไม่ถูกต้อง 1) Blockchain ทำงานบนเครือข่าย Peer-to-Peer 2) Blockchain เป็นเทคโนโลยีเก็บข้อมูลแบบกระจายศูนย์ 3) สามารถเปลี่ยนแปลง แก้ไข หรือลบข้อมูลบน Blockchain ได้ 4) Blockchain มีความโปร่งใส น่าเชื่อถือและสามารถตรวจสอบได้|ข้อ 3 ที่ว่าเปลี่ยนแปลง แก้ไข หรือลบข้อมูลบน Blockchain ได้ (ผิด) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] เหรียญเงินดิจิทัลแรกที่ถูกสร้างบน Blockchain คือสกุลเงินใด 1) BNB 2) BTC 3) ETH 4) USDT|ข้อ 2 BTC (Bitcoin) | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+9|[ข้อสอบ] กระบวนการที่ AI นำข้อมูลมาวิเคราะห์เพื่อสร้างรูปแบบหรือกฎสำหรับการตัดสินใจ เรียกว่าอะไร 1) Hardware 2) Algorithms 3) Network 4) Storage|ข้อ 2 Algorithms | (เฉลยโดย Claude วิเคราะห์จากเนื้อหา ในหนังสือไม่มีเฉลย)
+3|[ข้อสอบ ชุด 1 ข้อ 1] คอมพิวเตอร์ประเภทใดประมวลผลข้อมูลและคำนวณเส้นทางการบินที่แม่นยำสำหรับขีปนาวุธ เพื่อโจมตีเป้าหมาย 1) Supercomputer 2) Mainframe 3) Microcomputer 4) Mid-range|ข้อ 1 Supercomputer | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 1 ข้อ 2] ข้อมูลที่ผ่านการรวบรวม วิเคราะห์ หรือบันทึกไว้โดยผู้อื่นมาก่อน แล้วนำมาใช้อ้างอิงหรือศึกษาต่อ เป็นข้อมูลประเภทใด 1) ปฐมภูมิ 2) ทุติยภูมิ 3) เชิงปริมาณ 4) เชิงคุณภาพ|ข้อ 2 ข้อมูลทุติยภูมิ (Secondary Data) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 1 ข้อ 3] ข้อใดเป็นทั้งอุปกรณ์นำเข้าข้อมูลและส่งออกข้อมูลในเวลาเดียวกัน 1) Keyboard 2) Printer 3) Touchscreen 4) Mouse|ข้อ 3 Touchscreen | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 1 ข้อ 4] อุปกรณ์ฮาร์ดแวร์ข้อใดจัดอยู่ในอุปกรณ์ประเภทเก็บข้อมูล 1) Monitor 2) Touchscreen 3) Scanner 4) Floppy Disk|ข้อ 4 Floppy Disk | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 1 ข้อ 5] ข้อใดใช้ซอฟต์แวร์ที่ทำหน้าที่ประสานงานระหว่างผู้ใช้ โปรแกรมประยุกต์ และฮาร์ดแวร์ 1) Compiler 2) ระบบปฏิบัติการ (OS) 3) ตัวแปลภาษา 4) Utility|ข้อ 2 ระบบปฏิบัติการ (Operating System) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 1 ข้อ 6] โปรแกรมต้นฉบับหรือรหัสต้นฉบับที่ผู้เขียนพัฒนาและบันทึกไว้ก่อนแปลงเป็นภาษาคอมพิวเตอร์ เรียกว่าอะไร 1) Open Source 2) Source Code 3) Compiler 4) Executable File|ข้อ 2 ซอร์สโค้ด (Source Code) | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 1 ข้อ 7] ไฟล์ตารางข้อมูลขนาดเล็กที่นิยมนำไปวิเคราะห์ข้อมูลต่อ คือข้อใด 1) .xlsx 2) .csv 3) .pdf 4) .bmp|ข้อ 2 .csv | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 1 ข้อ 8] ข้อใดต่อไปนี้เป็นข้อดีของผังงาน (Flowchart) ที่ถูกต้อง 1) ช่วยให้โปรแกรมทำงานเร็วขึ้นโดยอัตโนมัติ 2) ช่วยให้เห็นกระบวนการทำงานทั้งหมดของระบบได้ชัดเจน 3) ช่วยลดขนาดหน่วยความจำ 4) ใช้แทนภาษาโปรแกรมได้โดยไม่ต้องเขียนโค้ด|ข้อ 2 ช่วยให้เห็นกระบวนการทำงานทั้งหมดของระบบได้ชัดเจน | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 1 ข้อ 9] สถานีตำรวจมีคอมพิวเตอร์ 8 เครื่องและเครื่องพิมพ์ 3 เครื่อง ต้องการเชื่อมต่อเข้ากับเครือข่าย ควรใช้เครือข่ายใด 1) PAN 2) LAN 3) MAN 4) WAN|ข้อ 2 LAN | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 1 ข้อ 10] อุปกรณ์ทำหน้าที่เชื่อมต่อเครือข่ายหลายเครือข่ายเข้าด้วยกัน เช่น เชื่อมเครือข่ายภายในบ้านเข้ากับอินเทอร์เน็ต ต้องใช้อุปกรณ์ใด 1) การ์ด LAN 2) Router 3) Bridge 4) Gateway|ข้อ 2 Router | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 1 ข้อ 11] การเชื่อมต่อแบบใดต้องเชื่อมต่ออุปกรณ์ตัวกลางตัวหนึ่ง ทำหน้าที่เป็นศูนย์กลางและควบคุมเส้นทางสื่อสารทั้งหมด 1) Ring 2) Star 3) Mesh 4) Bus|ข้อ 2 Star Topology | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 1 ข้อ 12] การเข้าถึงเว็บไซต์อีกครั้งได้อย่างรวดเร็วโดยไม่ต้องพิมพ์ URL ใหม่ เรียกว่าอะไร 1) History 2) Bookmark 3) Refresh 4) Homepage|ข้อ 2 Bookmark | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 1 ข้อ 13] Home Page มีความหมายตรงกับข้อใด 1) แหล่งข้อมูลเว็บ 2) หน้าหลักหรือหน้าแรกเมื่อเข้าเว็บไซต์ 3) โปรแกรมเปิดเว็บ 4) เครื่องให้บริการเว็บ|ข้อ 2 หน้าหลักหรือหน้าแรกเมื่อเข้าเว็บไซต์ | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 1 ข้อ 14] บลูทูธ (Bluetooth) ใช้หลักการใดในการรับ-ส่งข้อมูลระหว่างอุปกรณ์อิเล็กทรอนิกส์ 1) คลื่นอินฟราเรด 2) คลื่นไมโครเวฟ 3) คลื่นวิทยุ 4) สายสัญญาณไฟฟ้า|ข้อ 3 คลื่นวิทยุ (ระยะสั้น) | (เฉลยตามเอกสารข้อสอบ GURU)
+6|[ข้อสอบ ชุด 1 ข้อ 15] ข้อใดไม่ใช่ตัวอย่างของพาณิชย์อิเล็กทรอนิกส์ (E-Commerce) 1) สั่งซื้อสินค้าใน Shopee 2) ชำระเงินผ่าน Mobile Banking 3) ซื้อสินค้าผ่านร้านสะดวกซื้อ 4) จองตั๋วเครื่องบินออนไลน์|ข้อ 3 การซื้อสินค้าผ่านร้านสะดวกซื้อ | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 1 ข้อ 16] ไวรัสที่แอบติดตั้งในเครื่องโดยเราไม่รู้ตัว เพื่อเก็บรวบรวมข้อมูลส่วนตัวหรือข้อมูลการใช้งานเครื่อง เพื่อเอาความลับ เสมือนบุคคลที่สาม 1) Spyware 2) Pharming 3) Phishing 4) Worm|ข้อ 1 Spyware | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 1 ข้อ 17] อุปกรณ์หรือซอฟต์แวร์ใดทำหน้าที่เป็น ด่านตรวจสอบและควบคุมการรับ-ส่งข้อมูล ระหว่างเครือข่ายภายในกับภายนอก เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต 1) Router 2) Firewall 3) VPN 4) Protocol|ข้อ 2 Firewall | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 18] ข้อใดเป็นโปรแกรมประยุกต์เกี่ยวกับการจัดการเอกสาร 1) Microsoft Word 2) PowerPoint 3) Excel 4) Access|ข้อ 1 Microsoft Word | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 19] เครื่องมือใน Word ที่ใช้อ่านคำออกเสียง และสร้างสารบัญอัตโนมัติ ตามลำดับ 1) Speak และ Index 2) Spelling and Grammar และ SmartArt 3) Read Aloud และ Table of Contents 4) Read Mode และ References Panel|ข้อ 3 Read Aloud และ Table of Contents | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 20] คีย์ลัด Ctrl + F ใช้สำหรับทำสิ่งใด 1) เปิดหน้าต่างค้นหาข้อความภายในเอกสาร 2) คัดลอกข้อความที่เลือก 3) เปิดไฟล์เอกสารใหม่ 4) บันทึกไฟล์ปัจจุบัน|ข้อ 1 เปิดหน้าต่างค้นหาข้อความภายในเอกสาร | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 21] ถ้าป้อนสูตร =COUNT(A1:A5) โดย A1 = 10, A2 = รายงาน, A3 = 50%, A4 = เซลล์ว่าง, A5 = 200 ผลลัพธ์เป็นเท่าไร 1) 2 2) 5 3) 3 4) 4|ข้อ 3 เท่ากับ 3 เพราะ COUNT นับเฉพาะเซลล์ที่เป็นตัวเลข (10, 50%, 200) | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 22] สูตรใน A1 คือ =SUMME(B1:B5) และ Excel แสดง #NAME? หมายความว่าอย่างไร 1) ผลลัพธ์ใหญ่เกินจะแสดง 2) ชื่อฟังก์ชันที่ป้อนสะกดผิดหรือไม่รู้จัก 3) เซลล์ B1 ถึง B5 ถูกลบไปแล้ว 4) มีค่าที่ไม่ใช่ตัวเลขใน B1 ถึง B5|ข้อ 2 ชื่อฟังก์ชันสะกดผิดหรือไม่รู้จัก | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 23] ต้องการเริ่มนำเสนอภาพนิ่งจากสไลด์ปัจจุบันที่กำลังทำงานอยู่ใน PowerPoint ควรใช้แป้นลัดใด 1) Ctrl+P 2) F5 3) Shift+F5 4) Esc|ข้อ 3 Shift + F5 (ส่วน F5 เริ่มจากสไลด์แรก) | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 1 ข้อ 24] ข้อใดถูกต้องที่สุดเกี่ยวกับวิธีการใช้โปรแกรมนำเสนอที่ดี 1) ใช้ข้อความจำนวนมากในแต่ละสไลด์เพื่อให้ครบถ้วน 2) ใส่เอฟเฟกต์ทุกจุดเพื่อให้ดูน่าสนใจ 3) ใช้พื้นหลังหลากหลายสีในทุกสไลด์ 4) นำเสนอเป็นรูปภาพ หรือ Infographic ช่วยให้เข้าใจง่ายและจดจำได้ดี|ข้อ 4 นำเสนอเป็นรูปภาพหรือ Infographic ช่วยให้เข้าใจง่ายและจดจำได้ดี | (เฉลยตามเอกสารข้อสอบ GURU)
+9|[ข้อสอบ ชุด 1 ข้อ 25] ปรากฏการณ์ Viral Content ในสื่อสังคมออนไลน์เกิดขึ้นจากปัจจัยใดเป็นสำคัญ 1) การที่ผู้สร้างใช้โปรแกรม Photoshop ในการแก้ไขภาพที่มีความละเอียดสูง 2) การส่งข้อความนั้นผ่านช่องทางอีเมลอย่างเดียวเท่านั้น 3) การที่หน่วยงานรัฐบาลอนุมัติเนื้อหานั้นให้เผยแพร่ได้ 4) การที่เนื้อหานั้นถูกแชร์ ถูกคัดลอก และถูกสร้างซ้ำ โดยผู้ใช้จำนวนมากภายในช่วงเวลาสั้น ๆ|ข้อ 4 เนื้อหานั้นถูกแชร์ ถูกคัดลอก และถูกสร้างซ้ำ โดยผู้ใช้จำนวนมากภายในช่วงเวลาสั้นๆ | (เฉลยตามเอกสารข้อสอบ GURU)
+1|[ข้อสอบ ชุด 2 ข้อ 1] ข้อใดเรียงลำดับจากขนาดเล็กไปใหญ่ของเครื่องคอมพิวเตอร์ได้ถูกต้อง 1) เมนเฟรมคอมพิวเตอร์ < ซูเปอร์คอมพิวเตอร์ < มินิคอมพิวเตอร์ < ไมโครคอมพิวเตอร์ 2) มินิคอมพิวเตอร์ < ไมโครคอมพิวเตอร์ < เมนเฟรมคอมพิวเตอร์ < ซูเปอร์คอมพิวเตอร์ 3) ไมโครคอมพิวเตอร์ < มินิคอมพิวเตอร์ < เมนเฟรมคอมพิวเตอร์ < ซูเปอร์คอมพิวเตอร์ 4) ไมโครคอมพิวเตอร์ < มินิคอมพิวเตอร์ < ซูเปอร์คอมพิวเตอร์ < เมนเฟรมคอมพิวเตอร์|ข้อ 3 ไมโครคอมพิวเตอร์ < มินิคอมพิวเตอร์ < เมนเฟรมคอมพิวเตอร์ < ซูเปอร์คอมพิวเตอร์ | (เฉลยตามเอกสารข้อสอบ GURU)
+1|[ข้อสอบ ชุด 2 ข้อ 2] ข้อใดเป็น IoT ประเภท Smart City 1) ร้านค้าให้จ่ายเงินด้วยเงินสด 2) สวนทุเรียนใช้เซ็นเซอร์วัดความชื้น 3) ตั๋วสวนสนุกโดยใช้บัตรกระดาษ 4) ห้างสรรพสินค้าให้เข้าโดยบัตรพนักงาน|ข้อ 2 สวนทุเรียนใช้เซ็นเซอร์วัดความชื้น | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 2 ข้อ 3] ข้อใดคือระบบสนับสนุนการตัดสินใจ 1) MIS 2) GDSS 3) TPS 4) DSS|ข้อ 4 DSS | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 2 ข้อ 4] หน่วยเก็บข้อมูลที่จุได้มากเป็นเทราไบต์ 1) RAM 2) SSD 3) CD-ROM 4) Floppy Disk|ข้อ 2 SSD | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 2 ข้อ 5] ซอฟต์แวร์ที่ออกแบบมาเพื่อช่วยผู้ใช้ทำงานเฉพาะด้านตามความต้องการ 1) OS 2) Application Software 3) Utility 4) Compiler|ข้อ 2 ซอฟต์แวร์ประยุกต์ (Application Software) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 2 ข้อ 6] ข้อใดคือระบบปฏิบัติการ (Operating System) 1) Microsoft Word 2) Windows 3) Google Chrome 4) Adobe Photoshop|ข้อ 2 Windows | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 2 ข้อ 7] ข้อใดเรียงลำดับโครงสร้างของข้อมูลจากเล็กไปใหญ่ได้ถูกต้อง 1) Bit >> Byte >> Field >> Record >> File >> Database 2) Bit >> Byte >> Field >> File >> Record >> Database 3) Bit >> Byte >> File >> Record >> Field >> Database 4) Bit >> Byte >> Record >> File >> Field >> Database|ข้อ 1 Bit >> Byte >> Field >> Record >> File >> Database | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 2 ข้อ 8] ข้อใดต่อไปนี้เป็นข้อดีของผังงาน (Flowchart) 1) ช่วยทำให้หาข้อผิดพลาดของโปรแกรมได้ง่ายขึ้น 2) ช่วยให้คอมพิวเตอร์ใช้พลังงานน้อยลง 3) ผู้ใช้ไม่ต้องเรียนรู้ตรรกะ 4) นำไปรันคำสั่งแทนโปรแกรมจริงได้ทันที|ข้อ 1 ช่วยทำให้หาข้อผิดพลาดของโปรแกรมได้ง่ายขึ้น | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 2 ข้อ 9] อุปกรณ์ใดในคอมพิวเตอร์ที่ใช้เชื่อมต่อด้วยสายเพื่อเข้าถึงอินเทอร์เน็ต 1) Router 2) Switch 3) LAN Card ใช้สาย Ethernet 4) Bluetooth|ข้อ 3 การ์ดแลน (LAN Card) โดยใช้สาย Ethernet | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 2 ข้อ 10] ระบบเครือข่ายแบบใดสามารถเชื่อมต่อข้อมูลระหว่างเครื่องได้ระยะไกลที่สุด 1) PAN 2) LAN 3) MAN 4) WAN|ข้อ 4 WAN (Wide Area Network) | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 2 ข้อ 11] ในเครือข่ายคอมพิวเตอร์รูปแบบใด หากมีเครื่องเชื่อมต่อมากเกินไป อาจเกิดการชนกันของข้อมูลระหว่างการส่ง (Data Collision) ได้บ่อย 1) Bus 2) Ring 3) Star 4) Mesh|ข้อ 1 โครงสร้างแบบบัส (Bus Topology) | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 2 ข้อ 12] ข้อใดคือโปรโตคอล (Protocol) ที่เป็นองค์ประกอบของ URL 1) .com 2) http:// 3) www. 4) ถูกทุกข้อ|ข้อ 2 http:// แจกแจงแต่ละข้อ: | ข้อ 1 ผิด = .com คือโดเมนระดับบนสุด (Top-Level Domain) | ข้อ 2 ถูก = http:// คือโปรโตคอลที่ใช้รับ-ส่งข้อมูลเว็บ | ข้อ 3 ผิด = www. คือชื่อโฮสต์หรือซับโดเมน | ข้อ 4 ผิด เพราะมีเพียงข้อ 2 ที่ถูก | (เฉลยตามเอกสารข้อสอบ GURU เฉพาะคำตอบ ส่วนการแจกแจงเพิ่มโดย Claude)
+4|[ข้อสอบ ชุด 2 ข้อ 13] การส่งสัญญาณข้อมูลแบบใดที่ใช้หลายช่องสัญญาณพร้อมกัน ทำให้ส่งข้อมูลได้หลายชุดในเวลาเดียวกัน 1) Baseband 2) Narrowband 3) Broadband 4) Multiband|ข้อ 3 Broadband | (เฉลยตามเอกสารข้อสอบ GURU)
+6|[ข้อสอบ ชุด 2 ข้อ 14] ข้อใดเป็นระบบที่เกี่ยวข้องกับการจัดซื้อจัดจ้างผ่านเครือข่ายอินเทอร์เน็ต 1) E-Learning 2) E-Government 3) E-Procurement 4) E-filing|ข้อ 3 E-Procurement | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 2 ข้อ 15] ข้อใดเป็นการปลอมแปลงใบหน้าและเสียง ซึ่งถือเป็นการหลอกลวงทางอินเทอร์เน็ต 1) Phishing 2) Pharming 3) Deep Fake 4) Spyware|ข้อ 3 Deep Fake | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 2 ข้อ 16] เมื่อเราเข้าใช้งานเว็บไซต์ มักมีการบันทึกไฟล์ข้อมูลขนาดเล็กไว้ในเครื่อง เพื่อจดจำการตั้งค่าหรือสถานะการใช้งาน ไฟล์ข้อมูลนี้เรียกว่าอะไร 1) Spyware 2) Cache 3) Cookie 4) Bookmark|ข้อ 3 Cookie | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 17] ถ้าแทรกรูปภาพใน Word ครั้งแรก รูปภาพจะอยู่ในรูปแบบใดของ Wrap Text 1) In line with text 2) In front of text 3) Square 4) Tight|ข้อ 1 In line with text | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 18] ข้อใดเป็นเครื่องมือใน Word ที่ใช้สำหรับสร้างจดหมายเวียน และแทรกรูปภาพ ตามลำดับ 1) Mail Merge และ Insert Picture 2) Page Setup และ Clip Art 3) Track Changes และ Screenshot 4) Insert Chart และ SmartArt|ข้อ 1 Mail Merge และ Insert Picture | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 19] ถ้าต้องการสรุปข้อมูลจำนวนอุบัติเหตุ 7 วันอันตราย โปรแกรมใดเหมาะกับการประมวลผล 1) Word 2) PowerPoint 3) Excel 4) Access|ข้อ 3 Microsoft Excel | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 20] หากตัวเลขหรือผลคำนวณยาวเกินที่จะแสดงในเซลล์ จะปรากฏ Error ใดบน Excel 1) ##### 2) #VALUE 3) #N/A 4) #DIV/0|ข้อ 1 ##### | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 21] เครื่องมือใดที่ช่วยให้แสดงเฉพาะแถวที่มีข้อมูลตรงตามเงื่อนไขที่กำหนดไว้ และซ่อนแถวที่ไม่เกี่ยวข้องทั้งหมดไว้ชั่วคราว 1) Subtotal 2) Conditional Formatting 3) Data Validation 4) Filter|ข้อ 4 Filter | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 22] ต้องการทำแผนภูมิโครงสร้างองค์กรใน PowerPoint ควรเลือก SmartArt ประเภทใด 1) Cycle 2) Process 3) Relationship 4) Hierarchy|ข้อ 4 Hierarchy | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 2 ข้อ 23] โปรแกรมนำเสนอที่ติดตั้งมาในคอมพิวเตอร์ส่วนบุคคล คือโปรแกรมใด 1) Paint 2) Windows Media Player 3) Microsoft PowerPoint 4) Calendar|ข้อ 3 Microsoft PowerPoint | (เฉลยตามเอกสารข้อสอบ GURU)
+9|[ข้อสอบ ชุด 2 ข้อ 24] สำนักงานตำรวจแห่งชาติ ต้องการประชาสัมพันธ์ข้อมูลแก่ประชาชนผ่านโทรทัศน์ เป็นการใช้สื่อประเภทใด 1) Print Media 2) Specialized Media 3) Mass Media 4) Social Media|ข้อ 3 Mass Media | (เฉลยตามเอกสารข้อสอบ GURU)
+9|[ข้อสอบ ชุด 2 ข้อ 25] เทคโนโลยีใดเกี่ยวข้องกับการประมวลผลข้อมูลขนาดใหญ่ เพื่อใช้วิเคราะห์และตัดสินใจ 1) Cloud Computing 2) Artificial Intelligence 3) Big Data 4) Internet of Things|ข้อ 3 Big Data | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 3 ข้อ 1] คอมพิวเตอร์ชนิดใดมีความสามารถในการพยากรณ์อากาศหรืองานวิจัยต่างๆ ได้ 1) Supercomputers 2) Mainframe 3) Minicomputers 4) Microcomputers|ข้อ 1 Supercomputers | (เฉลยตามเอกสารข้อสอบ GURU)
+1|[ข้อสอบ ชุด 3 ข้อ 2] บุคคลใดได้รับการยกย่องให้เป็นบิดาแห่งเครื่องคอมพิวเตอร์ 1) วิลเลียม ออตเทรต 2) จอห์น เนเปียร์ 3) ชาร์ลส์ แบบเบจ 4) เลดี้ เอดา ออกุสตา เลิฟเลซ|ข้อ 3 ชาร์ลส์ แบบเบจ (Charles Babbage) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 3 ข้อ 3] ข้อใดเป็นหน่วยเก็บข้อมูลแบบแม่เหล็ก (Magnetic Storage) 1) HDD 2) CD 3) DVD 4) SSD|ข้อ 1 HDD | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 3 ข้อ 4] CPU มีขั้นตอนการทำงานกับคำสั่งหนึ่งคำสั่งอย่างเป็นลำดับกระบวนการ เรียงลำดับถูกต้องตามข้อใด 1) Decode -> Fetch -> Execute -> Store 2) Fetch -> Decode -> Execute -> Store 3) Fetch -> Execute -> Decode -> Store 4) Decode -> Execute -> Fetch -> Store|ข้อ 2 Fetch -> Decode -> Execute -> Store | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 3 ข้อ 5] ข้อใดต่อไปนี้เป็นองค์ประกอบของคอมพิวเตอร์ 1) ฮาร์ดแวร์ (Hardware) และซอฟต์แวร์ (Software) 2) บุคลากร (Peopleware) 3) ข้อมูล (Data) และสารสนเทศ (Information) 4) ถูกต้องทุกข้อ|ข้อ 4 ถูกต้องทุกข้อ แจกแจงแต่ละข้อ: | ข้อ 1 ถูก = ฮาร์ดแวร์ (ตัวเครื่อง อุปกรณ์) และซอฟต์แวร์ (ชุดคำสั่ง โปรแกรม) เป็นองค์ประกอบหลัก | ข้อ 2 ถูก = บุคลากร (Peopleware) คือผู้ใช้ ผู้พัฒนา ผู้ดูแลระบบ | ข้อ 3 ถูก = ข้อมูลและสารสนเทศเป็นสิ่งที่คอมพิวเตอร์รับเข้า ประมวลผล และส่งออก | องค์ประกอบครบ 5 อย่าง = ฮาร์ดแวร์ ซอฟต์แวร์ บุคลากร ข้อมูล และกระบวนการทำงาน (Procedure) | (เฉลยตามเอกสารข้อสอบ GURU เฉพาะข้อ 4 ส่วนการแจกแจงเพิ่มโดย Claude)
+3|[ข้อสอบ ชุด 3 ข้อ 6] ซอฟต์แวร์พื้นฐานที่ถูกติดตั้งอยู่บนชิปของเมนบอร์ด ทำหน้าที่ตรวจสอบอุปกรณ์ภายในเครื่องและเริ่มต้นการทำงานของระบบทันทีเมื่อเปิดเครื่อง คือข้อใด 1) ระบบปฏิบัติการ 2) โปรแกรมประยุกต์ 3) โปรแกรมอรรถประโยชน์ (Utility) 4) ไบออส (BIOS)|ข้อ 4 BIOS | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 3 ข้อ 7] เที่ยวบิน TG910 จัดเป็นหน่วยข้อมูลประเภทใด 1) Bit 2) Byte 3) Field 4) Record|ข้อ 3 Field | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 3 ข้อ 8] สัญลักษณ์ Flowchart รูปสี่เหลี่ยมมุมมน มีชื่อเรียกว่าอะไร 1) Connector 2) Display 3) Terminator 4) Decision|ข้อ 3 Terminator | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 3 ข้อ 9] ต้องการส่งข้อมูลวิดีโอขนาดใหญ่และต้องการความเร็วสูง ควรเลือกใช้สายใด 1) VGA 2) USB2.0 3) HDMI 4) DVI|ข้อ 3 HDMI | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 3 ข้อ 10] อุปกรณ์ที่รวมสัญญาณจากอุปกรณ์รับส่งอื่นๆ หลายเครื่องเข้าด้วยกัน และสามารถกระจายได้หลายช่องทาง คือข้อใด 1) การ์ด LAN 2) Gateway 3) Repeater 4) Hub|ข้อ 4 ฮับ (Hub) | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 3 ข้อ 11] การสื่อสารผ่านวิทยุสื่อสาร (Walkie Talkie) ลักษณะการสื่อสารนี้เรียกว่าอะไร 1) Simplex 2) Half Duplex 3) Full Duplex 4) Multiplex|ข้อ 2 Half Duplex | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 3 ข้อ 12] ข้อใดไม่ใช่โปรแกรมสำหรับใช้ท่องเว็บหรือดูข้อมูลในเว็บไซต์ 1) Google Chrome 2) Outlook 3) Firefox 4) Safari|ข้อ 2 Outlook | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 3 ข้อ 13] อุปกรณ์ใดในระบบเครือข่ายไร้สาย (Wi-Fi) ทำหน้าที่กระจายสัญญาณเพื่อให้อุปกรณ์ต่างๆ เชื่อมต่อเข้าสู่เครือข่ายได้ 1) Router 2) Switch 3) Access Point (AP) 4) Repeater|ข้อ 3 Access Point (AP) | (เฉลยตามเอกสารข้อสอบ GURU)
+6|[ข้อสอบ ชุด 3 ข้อ 14] ผู้ใช้รายหนึ่งประกาศขายโทรศัพท์มือถือมือสองให้ผู้ใช้รายอื่นผ่าน Facebook Marketplace เหตุการณ์นี้จัดเป็นธุรกิจอิเล็กทรอนิกส์รูปแบบใด 1) C2C 2) B2C 3) G2C 4) B2B|ข้อ 1 C2C (Consumer to Consumer) | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 3 ข้อ 15] เทคโนโลยีที่ช่วยสร้างการเชื่อมต่ออินเทอร์เน็ตที่ปลอดภัยและเป็นส่วนตัวผ่านเครือข่ายสาธารณะ เหมือนการสร้างอุโมงค์ข้อมูล 1) Firewall 2) VPN 3) HTTPS 4) Router|ข้อ 2 VPN | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 3 ข้อ 16] ข้อใดคือโปรแกรมป้องกันไวรัส 1) MySQL 2) Chrome 3) OneNote 4) Windows Defender|ข้อ 4 Windows Defender | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 17] ถ้าต้องการให้เอกสารทำลายน้ำ (Watermark) ใน Word ต้องไปที่แถบเครื่องมือใด 1) Design 2) View 3) Insert 4) Draw|ข้อ 1 Design | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 18] การตั้งค่าหน้ากระดาษให้เป็นแนวนอนหรือแนวตั้งใน Word ใช้คำสั่งใด 1) คลิกแท็บ Layout >> Margins 2) คลิกแท็บ Layout >> Orientation 3) คลิกแท็บ Layout >> Size 4) คลิกแท็บ Layout >> Columns|ข้อ 2 คลิกแท็บ Layout >> Orientation | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 19] ข้อใดต่อไปนี้เป็นสูตรที่มีการอ้างอิงเซลล์ใน Excel 1) =SUM(10,20,30) 2) =SUM(A1:A10) 3) =AVERAGE(5,10,15) 4) =MAX(70,90,110)|ข้อ 2 =SUM(A1:A10) | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 20] เมื่อเกิดข้อผิดพลาด #DIV/0! ใน Excel เกิดจากสาเหตุใดเป็นหลัก 1) สูตรอ้างอิงเซลล์ที่ถูกลบไปแล้ว 2) ป้อนค่าที่ไม่ใช่ตัวเลขในสูตรที่ต้องการตัวเลข 3) ชื่อฟังก์ชันสะกดผิด 4) หารตัวเลขด้วยศูนย์หรือเซลล์ว่าง|ข้อ 4 หารตัวเลขด้วยศูนย์หรือเซลล์ว่าง | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 21] ต้องการหาค่าเปอร์เซ็นต์สูงสุดของการจับกุมในเดือนหนึ่งจากตารางข้อมูล ควรใช้ฟังก์ชันใด 1) =MIN 2) =COUNT 3) =AVERAGE 4) =MAX|ข้อ 4 =MAX | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 22] เมื่อเปิด PowerPoint ขึ้นมาสร้างงานนำเสนอใหม่และยังไม่ได้บันทึกไฟล์ ชื่อไฟล์ที่โปรแกรมกำหนดให้อัตโนมัติคือชื่อใด 1) SlideShow1 2) Workbook1 3) Presentation1 4) Document1|ข้อ 3 Presentation1 | (เฉลยตามเอกสารข้อสอบ GURU)
+8|[ข้อสอบ ชุด 3 ข้อ 23] ข้อใดคือการตั้งค่าเวลาให้สไลด์เลื่อนได้เองโดยไม่ต้องกดคลิก 1) เมนู Transitions >> Timing >> After >> ใส่เวลา 2) เมนู Transitions >> Timing >> Duration >> ใส่เวลา 3) เมนู Animations >> Timing >> After >> ใส่เวลา 4) เมนู Animations >> Timing >> Duration >> ใส่เวลา|ข้อ 1 เมนู Transitions >> Timing >> After >> ใส่เวลา | (เฉลยตามเอกสารข้อสอบ GURU)
+9|[ข้อสอบ ชุด 3 ข้อ 24] โปรแกรมใดสามารถใช้ในการทำงานเอกสารได้ 1) Google Docs 2) Adobe Photoshop 3) Illustrator 4) VLC Media Player|ข้อ 1 Google Docs | (เฉลยตามเอกสารข้อสอบ GURU)
+9|[ข้อสอบ ชุด 3 ข้อ 25] เทคโนโลยีใดเกี่ยวข้องกับการจำลองวัตถุเสมือนให้แสดงผลในโลกจริง 1) Augmented Reality (AR) 2) Virtual Reality (VR) 3) Cloud Computing 4) Internet of Things|ข้อ 1 Augmented Reality (AR) | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 4 ข้อ 1] เมื่อผู้ใช้ถอนเงินผ่านตู้ ATM ระบบตรวจสอบยอดเงินและปรับปรุงยอดเงินคงเหลือทันทีหลังทำรายการสำเร็จ ลักษณะดังกล่าวเป็นการประมวลผลแบบใด 1) Batch Processing 2) Manual Processing 3) Distributed Processing 4) Real-Time Processing|ข้อ 4 Real-Time Processing (ประมวลผลทันทีที่มีรายการเข้ามา) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 4 ข้อ 2] ข้อใดเป็นอุปกรณ์นำเข้าข้อมูล (Input Devices) ทั้งหมด 1) MICR, Monitor, Mouse 2) Keyboard, OMR, Speaker 3) Touchpad, Printer, Webcam 4) OMR, MICR, Barcode Scanner|ข้อ 4 OMR, MICR, Barcode Scanner (ข้ออื่นมี Monitor / Speaker / Printer ซึ่งเป็นอุปกรณ์แสดงผล) | (เฉลยตามเอกสารข้อสอบ GURU)
+2|[ข้อสอบ ชุด 4 ข้อ 3] ข้อใดเรียงลำดับขั้นตอนการทำงานของคอมพิวเตอร์ได้ถูกต้อง 1) Input > Processing > Storage > Memory > Output 2) Input > Processing > Memory > Storage > Output 3) Input > Memory > Output > Processing > Storage 4) Processing > Input > Storage > Memory > Output|ข้อ 2 Input > Processing > Memory > Storage > Output | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 4 ข้อ 4] ข้อใดต่อไปนี้เป็นหน่วยความจำที่ไม่สามารถลบเลือนได้ (Non-volatile Memory) 1) ROM 2) Memory Card 3) SSD 4) ถูกทุกข้อ|ข้อ 4 ถูกทุกข้อ แจกแจงแต่ละข้อ: | ข้อ 1 ถูก = ROM เก็บข้อมูลถาวร ปิดเครื่องแล้วไม่หาย | ข้อ 2 ถูก = Memory Card เป็นหน่วยความจำแฟลช ปิดไฟแล้วข้อมูลยังอยู่ | ข้อ 3 ถูก = SSD เป็นหน่วยความจำแฟลช ปิดไฟแล้วข้อมูลยังอยู่ | ส่วน RAM เป็น Volatile ปิดเครื่องแล้วข้อมูลหาย | (เฉลยตามเอกสารข้อสอบ GURU เฉพาะข้อ 4 ส่วนการแจกแจงเพิ่มโดย Claude)
+3|[ข้อสอบ ชุด 4 ข้อ 5] หากโปรแกรมในระบบปฏิบัติการ Windows ค้างและไม่ตอบสนอง ผู้ใช้งานต้องการตรวจสอบการใช้ CPU และ RAM พร้อมสั่งยุติการทำงานของโปรแกรมดังกล่าว ควรเลือกใช้เครื่องมือใด 1) Device Manager 2) Disk Cleanup 3) Task Manager 4) Windows Security|ข้อ 3 Task Manager (เปิดด้วย Ctrl+Shift+Esc หรือ Ctrl+Alt+Del) | (เฉลยตามเอกสารข้อสอบ GURU)
+3|[ข้อสอบ ชุด 4 ข้อ 6] ตัวแปลภาษาชนิดใดทำหน้าที่แปลและประมวลผลโปรแกรมทีละคำสั่ง โดยไม่ต้องรอให้แปลโปรแกรมทั้งหมดเสร็จก่อนจึงเริ่มทำงาน 1) Compiler 2) Assembler 3) Interpreter 4) Linker|ข้อ 3 Interpreter (แปลและทำงานทีละคำสั่ง ส่วน Compiler แปลทั้งโปรแกรมก่อน) | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 4 ข้อ 7] ข้อใดไม่ใช่องค์ประกอบพื้นฐานของระบบการสื่อสารข้อมูล 1) ผู้ส่งข้อมูล (Sender) 2) ข้อมูลข่าวสาร (Message) 3) ไฟร์วอลล์ (Firewall) 4) สื่อกลางในการส่งข้อมูล (Transmission Medium)|ข้อ 3 ไฟร์วอลล์ (Firewall) เป็นเครื่องมือรักษาความปลอดภัย ไม่ใช่องค์ประกอบพื้นฐาน | (เฉลยตามเอกสารข้อสอบ GURU)
+5|[ข้อสอบ ชุด 4 ข้อ 8] จากที่อยู่เว็บไซต์ https://www.policeadmission.go.th ส่วนประกอบที่เป็น "policeadmission" จัดอยู่ในส่วนประกอบใดของโครงสร้างชื่อโดเมน 1) Subdomain หรือ Hostname 2) Top-Level Domain 3) Third-Level Domain 4) Protocol|ข้อ 3 Third-Level Domain | (เฉลยตามเอกสารข้อสอบ GURU)
+4|[ข้อสอบ ชุด 4 ข้อ 9] ขณะค้นหาเครือข่าย Wi-Fi ภายใน สน.ลาดพร้าว ผู้ใช้งานพบชื่อ "LatPhrao_Police_WiFi" ปรากฏในรายการเครือข่ายให้เลือกเชื่อมต่อ ชื่อดังกล่าวเรียกว่าอะไร 1) MAC Address 2) SSID 3) IP Address 4) Domain Name|ข้อ 2 SSID (Service Set Identifier ชื่อเครือข่าย Wi-Fi) | (เฉลยตามเอกสารข้อสอบ GURU)
+7|[ข้อสอบ ชุด 4 ข้อ 10] ตามพระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ. 2550 และที่แก้ไขเพิ่มเติม พฤติกรรมของบุคคลใดเข้าข่ายเป็นความผิด 1) มีนาลบไฟล์รูปภาพของตนเองที่ไม่ต้องการใช้งานแล้ว 2) ต้นแก้ไขไฟล์รายงานให้เพื่อนตามที่เพื่อนร้องขอและอนุญาต 3) ฟ้าสำรองไฟล์งานของตนเองไว้ในอุปกรณ์จัดเก็บข้อมูลภายนอก 4) ภูมิจงใจลบไฟล์งานของเพื่อนโดยไม่ได้รับอนุญาตจนข้อมูลสูญหาย|ข้อ 4 ภูมิลบไฟล์ของเพื่อนโดยไม่ได้รับอนุญาต เป็นการทำให้ข้อมูลเสียหายโดยมิชอบ | (เฉลยตามเอกสารข้อสอบ GURU)
+`.trim().split("\n").map((l,i)=>{const p1=l.indexOf("|"),p2=l.indexOf("|",p1+1);return{id:i,c:+l.slice(0,p1),q:l.slice(p1+1,p2),a:l.slice(p2+1).split(" | ").join("\n")}});
+// split on the first two pipes only handled above
+let cat=0,hide=false,order=[],i=0,known=new Set();
+try{known=new Set(JSON.parse(localStorage.getItem("fc_known")||"[]"))}catch(e){}
+const $=id=>document.getElementById(id),card=$("card");
+function save(){try{localStorage.setItem("fc_known",JSON.stringify([...known]))}catch(e){}}
+function build(){order=D.filter(d=>(cat==0||(cat==3?d.c==3||d.c==4:cat==1?d.c==1:cat==2?d.c==2:0)||0)).map(d=>d);}
+const MAP=[null,[1],[2],[3],[4],[5],[6],[7],[8],[9]];
+function pool(){let p=D.filter(d=>cat==0||(cat==10?d.q.startsWith("[ข้อสอบ"):MAP[cat].includes(d.c)));if(hide)p=p.filter(d=>!known.has(d.id));return p}
+function fillQ(d){const fo=$("fo"),mc=parseMC(d.q),cm=d.a.match(/^ข้อ\s*(\d)/),ok=mc&&cm?+cm[1]:0;fo.textContent="";
+if(!(mc&&ok&&ok<=mc.opts.length)){$("q").textContent=d.q;card.classList.remove("mc");return}
+card.classList.add("mc");$("q").textContent=mc.stem;const bs=[];
+mc.opts.forEach((t,k)=>{const b=document.createElement("button");b.className="fopt";b.textContent=(k+1)+") "+t;bs.push(b);
+b.onkeydown=e=>e.stopPropagation();
+b.onclick=e=>{e.stopPropagation();bs.forEach((x,j)=>{x.disabled=true;if(j+1==ok)x.classList.add("right");else if(j==k)x.classList.add("wrong")});
+const r=document.createElement("div");r.className="fres";r.textContent=(k+1==ok?"✓ ตอบถูก":"✗ ตอบผิด เฉลยคือข้อ "+ok)+" · แตะพื้นที่ว่างของการ์ดเพื่อดูคำอธิบาย";fo.appendChild(r)};
+fo.appendChild(b)})}
+function show(){const p=pool();if(!p.length){$("q").textContent="จำได้ครบแล้ว";$("tg").textContent="";$("a").textContent="กด เริ่มใหม่ เพื่อทบทวนอีกรอบ";card.classList.remove("f");$("pos").textContent="";}else{i=(i+p.length)%p.length;const d=p[i];card.classList.remove("f");$("tg").textContent=CHL[d.c];fillQ(d);$("a").textContent=d.a;$("pos").textContent=(i+1)+" / "+p.length}
+const all=D.filter(d=>cat==0||(cat==10?d.q.startsWith("[ข้อสอบ"):MAP[cat].includes(d.c)));const k=all.filter(d=>known.has(d.id)).length;$("kn").textContent="จำได้ "+k+" / "+all.length;$("pb").style.width=(all.length?k/all.length*100:0)+"%";updRv()}
+function mark(v){const p=pool();if(!p.length)return;const d=p[i];if(v){known.add(d.id);srs[d.id]={b:1,d:Date.now()+DAY}}else{known.delete(d.id);delete srs[d.id]}save();saveS();if(hide&&v){show()}else{i++;show()}}
+const CHL=["ทั้งหมด","1 วิวัฒนาการ","2-3 ข้อมูล/IPOS","4 องค์ประกอบ","5 เครือข่าย","6 อินเทอร์เน็ต","7 พาณิชย์ฯ","8 ความปลอดภัย","9-11 Office","12 โซเชียล/คลาวด์","ข้อสอบท้ายบท"];
+CHL.forEach((n,k)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>{cat=k;i=0;[...$("chips").children].forEach((x,j)=>x.classList.toggle("on",j==k));show()};if(!k)b.className="on";$("chips").appendChild(b)});
+card.onclick=()=>card.classList.toggle("f");
+card.onkeydown=e=>{if(e.key==" "||e.key=="Enter"){e.preventDefault();card.classList.toggle("f")}};
+$("yes").onclick=()=>mark(true);$("no").onclick=()=>mark(false);
+$("prev").onclick=()=>{i--;show()};
+$("shuf").onclick=()=>{for(let k=D.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[D[k],D[j]]=[D[j],D[k]]}i=0;show()};
+$("hide").onclick=()=>{hide=!hide;$("hide").classList.toggle("on",hide);i=0;show()};
+$("rst").onclick=()=>{known.clear();srs={};save();saveS();i=0;show()};
+const DAY=864e5,IV=[0,1,3,7,14,30];
+let srs={};try{srs=JSON.parse(localStorage.getItem("fc_srs")||"{}")}catch(e){}
+function saveS(){try{localStorage.setItem("fc_srs",JSON.stringify(srs))}catch(e){}}
+function inCat(d){return cat==0||(cat==10?d.q.startsWith("[ข้อสอบ"):MAP[cat].includes(d.c))}
+function dueNow(all){const n=Date.now();return D.filter(d=>known.has(d.id)&&inCat(d)&&(all||!srs[d.id]||srs[d.id].d<=n))}
+function updRv(){const k=D.filter(d=>known.has(d.id)&&inCat(d)).length;$("rvc").textContent="ถึงเวลา "+dueNow(false).length+" · จำได้ "+k+" ใบ";$("rvnc").textContent=D.filter(d=>!known.has(d.id)&&inCat(d)).length+" ใบ · สุ่มทีละ 20"}
+let rq=[],ri=0,rst={ok:0,bad:0},retry=[],rmode=false;
+const rv=$("rv"),rb=$("rvbody");
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function rvStart(list,isRetry){rq=list.slice();for(let k=rq.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[rq[k],rq[j]]=[rq[j],rq[k]]}ri=0;rmode=!!isRetry;if(!isRetry){rst={ok:0,bad:0};retry=[]}rv.hidden=false;rvShow()}
+function parseMC(q){const m=q.split(/\s+(?=[1-4]\) )/);if(m.length<3)return null;for(let k=1;k<m.length;k++)if(!m[k].startsWith(k+") "))return null;return{stem:m[0],opts:m.slice(1).map(x=>x.slice(3))}}
+function rvShow(){rb.textContent="";
+if(!rq.length){rb.appendChild(el("div","box","ยังไม่มีการ์ดที่ถึงเวลาทบทวน กลับไปกด จำได้แล้ว ที่การ์ดก่อน หรือเลือกทบทวนทั้งหมดที่จำได้"));const a=el("button","big","ทบทวนทั้งหมดที่จำได้ในหมวดนี้");a.onclick=()=>rvStart(dueNow(true));rb.appendChild(a);return}
+if(ri>=rq.length){const t=rst.ok+rst.bad;rb.appendChild(el("div","box","จบรอบทบทวน\nจำได้ "+rst.ok+" / "+t+" ใบ ("+(t?Math.round(rst.ok/t*100):0)+"%)\nลืม "+rst.bad+" ใบ (กลับไปอยู่ในกลุ่มยังไม่จำ)"));
+if(retry.length){const a=el("button","big","ทบทวนซ้ำเฉพาะที่ลืม ("+retry.length+")");a.onclick=()=>{const l=retry;retry=[];rvStart(l,true)};rb.appendChild(a)}
+const c=el("button","big","ปิดและกลับไปหน้าการ์ด");c.onclick=()=>{rv.hidden=true;show()};rb.appendChild(c);return}
+const d=rq[ri];rb.appendChild(el("div","hint","ใบที่ "+(ri+1)+" / "+rq.length+(rmode?" (ทบทวนซ้ำ)":"")));
+const M=mcFor(d),mc=M,ok=M.key;
+const bx=el("div","box");bx.appendChild(el("div","tag",CHL[d.c]));bx.appendChild(el("div","q",mc&&ok?mc.stem:d.q));rb.appendChild(bx);
+function grades(){rb.appendChild(el("div","hint","ประเมินตัวเองตามจริง ระบบจะนัดทบทวนใหม่ให้ (1, 3, 7, 14, 30 วัน)"));
+const g=el("div","grade");[["ลืม / ตอบผิด","g0",0],["นึกนาน / ไม่มั่นใจ","g1",1],["จำได้ชัวร์","g2",2]].forEach(([t,c,v])=>{const b=el("button",c,t);b.onclick=()=>rate(v);g.appendChild(b)});rb.appendChild(g)}
+if(mc&&ok&&ok<=mc.opts.length){
+rb.appendChild(el("div","hint","เลือกคำตอบที่ถูกต้อง"));
+const ow=el("div","opts"),bs=[];
+mc.opts.forEach((t,k)=>{const b=el("button","opt",(k+1)+") "+t);bs.push(b);b.onclick=()=>{bs.forEach((x,j)=>{x.disabled=true;if(j+1==ok)x.classList.add("right");else if(j==k)x.classList.add("wrong")});
+rb.appendChild(el("div","hint",(k+1==ok?"ตอบถูก":"ตอบผิด ข้อที่ถูกคือข้อ "+ok)));
+const ab=el("div","box ans");ab.appendChild(el("div","a",d.a));rb.appendChild(ab);grades()};ow.appendChild(b)});
+rb.appendChild(ow);return}
+rb.appendChild(el("div","hint","ลองนึกคำตอบหรือพิมพ์จากความจำก่อน แล้วค่อยกดดูเฉลย"));
+const ta=el("textarea");ta.placeholder="พิมพ์คำตอบของคุณ (ไม่บังคับ)";rb.appendChild(ta);
+const rev=el("button","big","ดูเฉลย");rb.appendChild(rev);
+rev.onclick=()=>{rev.remove();ta.disabled=true;const ab=el("div","box ans");if(ta.value.trim())ab.appendChild(el("div","mine","คำตอบของคุณ: "+ta.value.trim()));ab.appendChild(el("div","a",d.a));rb.appendChild(ab);grades()}}
+function rate(v){const d=rq[ri],n=Date.now();let s=srs[d.id]||{b:1,d:n};
+if(v==0){s={b:1,d:n+6e5};known.delete(d.id);rst.bad++;retry.push(d)}
+else{if(rmode)known.add(d.id);if(v==1){s.d=n+DAY}else{s.b=Math.min(5,(s.b||1)+1);s.d=n+IV[s.b]*DAY}rst.ok++}
+srs[d.id]=s;save();saveS();ri++;rvShow()}
+$("rvn").onclick=()=>{$("rvt").textContent="ทบทวนที่ยังจำไม่ได้";const l=D.filter(d=>!known.has(d.id)&&inCat(d));if(!l.length){$("rvnc").textContent="ไม่มีการ์ดที่ยังจำไม่ได้ 🎉";return}rvStart(shuf(l).slice(0,20))};
+$("rvb").onclick=()=>{$("rvt").textContent="ทบทวนด้วย Active Recall";rvStart(dueNow(false))};
+
+/* ===== แบบทดสอบท้ายบท (สร้างช้อยส์จากเนื้อหาแฟลชการ์ด + ข้อสอบเดิม) ===== */
+function shuf(a){a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+let QP=null;
+function qPairs(){if(QP)return QP;QP=[];D.forEach(d=>{if(d.q.startsWith("[ข้อสอบ"))return;const ls=d.a.split("\n");
+if(ls.length==1&&!/ = /.test(ls[0])&&ls[0].length>=8&&ls[0].length<=120){QP.push({c:d.c,t:d.q,def:ls[0],ctx:"",src:d})}
+ls.forEach(l=>{const m=l.indexOf(" = ");if(m<2)return;const t=l.slice(0,m).trim(),df=l.slice(m+3).trim();if(t.length>40||df.length<6||df.length>110||t.length<3||/^[\d.\s]+$/.test(t))return;QP.push({c:d.c,t:t,def:df,ctx:d.q,src:d})})});return QP}
+function qBuild(cs,n,incl){const P=qPairs(),out=[];
+const mine=P.filter(p=>cs.includes(p.c));
+shuf(mine).forEach(p=>{const pool=P.filter(x=>x!==p&&x.c==p.c&&x.def!==p.def&&!x.def.includes(p.def)&&!p.def.includes(x.def));
+let others=pool.length>=3?pool:P.filter(x=>x!==p&&cs.includes(x.c)&&x.def!==p.def&&!x.def.includes(p.def)&&!p.def.includes(x.def));
+if(others.length<3)return;
+const rev=Math.random()<.25&&p.ctx&&p.t.length>=4;
+let stem,ok,ds;
+if(rev){stem="ข้อใดคือคำที่ตรงกับความหมายนี้ ("+p.ctx+"): "+p.def;ok=p.t;ds=shuf(others.filter(x=>x.ctx==p.ctx&&x.t!==p.t)).slice(0,3);
+if(ds.length<3)ds=ds.concat(shuf(others.filter(x=>x.t!==p.t&&!ds.includes(x))).slice(0,3-ds.length));ds=ds.map(x=>x.t)}
+else{stem=(p.ctx?p.ctx+" : ":"")+"«"+p.t+"» หมายถึงข้อใด";ok=p.def;
+const L=p.def.length;ds=shuf(others).slice(0,12).sort((x,y)=>Math.abs(x.def.length-L)-Math.abs(y.def.length-L)).slice(0,3).map(x=>x.def)}
+if(new Set(ds.concat([ok])).size<4)return;
+const opts=shuf(ds.concat([ok]));out.push({stem:stem,opts:opts,key:opts.indexOf(ok)+1,exp:p.src.q+"\n"+p.src.a,c:p.c})});
+if(incl)D.forEach(d=>{if(!d.q.startsWith("[ข้อสอบ")||!cs.includes(d.c))return;const mc=parseMC(d.q),cm=d.a.match(/^ข้อ\s*(\d)/);if(!mc||!cm||+cm[1]>mc.opts.length)return;out.push({stem:mc.stem,opts:mc.opts,key:+cm[1],exp:d.a,c:d.c,ex:1})});
+return shuf(out).slice(0,n)}
+function qMake(p,cs){const P=qPairs();
+const pool=P.filter(x=>x!==p&&x.c==p.c&&x.def!==p.def&&!x.def.includes(p.def)&&!p.def.includes(x.def));
+let others=pool.length>=3?pool:P.filter(x=>x!==p&&cs.includes(x.c)&&x.def!==p.def&&!x.def.includes(p.def)&&!p.def.includes(x.def));
+if(others.length<3)return null;
+const L=p.def.length,ds=shuf(others).slice(0,12).sort((x,y)=>Math.abs(x.def.length-L)-Math.abs(y.def.length-L)).slice(0,3).map(x=>x.def);
+if(new Set(ds.concat([p.def])).size<4)return null;
+const opts=shuf(ds.concat([p.def]));return{stem:(p.ctx?p.ctx+" : ":"")+"«"+p.t+"» หมายถึงข้อใด",opts:opts,key:opts.indexOf(p.def)+1}}
+function short(a){const t=a.split("\n").filter(x=>!x.startsWith("(เฉลย")).join(" / ");return t.length>120?t.slice(0,117)+"...":t}
+function mcFor(d){const mc=parseMC(d.q),cm=d.a.match(/^ข้อ\s*(\d)/);
+if(mc&&cm&&+cm[1]<=mc.opts.length)return{stem:mc.stem,opts:mc.opts,key:+cm[1]};
+const ps=shuf(qPairs().filter(p=>p.src===d));for(const p of ps){const r=qMake(p,[d.c]);if(r)return r}
+const ok=short(d.a);let pool=D.filter(x=>x!==d&&x.c==d.c&&!x.q.startsWith("[ข้อสอบ")&&short(x.a)!==ok);if(pool.length<3)pool=D.filter(x=>x!==d&&!x.q.startsWith("[ข้อสอบ"));
+const ds=shuf(pool).slice(0,12).map(x=>short(x.a)).sort((x,y)=>Math.abs(x.length-ok.length)-Math.abs(y.length-ok.length)).slice(0,3);
+const opts=shuf(ds.concat([ok]));return{stem:d.q+" : ข้อใดอธิบายได้ถูกต้องที่สุด",opts:opts,key:opts.indexOf(ok)+1}}
+let qs=[],qi=0,qsc=0,qwr=[],qcfg={cat:0,n:10,incl:true};
+function qSetup(){$("rvt").textContent="แบบทดสอบท้ายบท (ช้อยส์)";rv.hidden=false;rb.textContent="";
+rb.appendChild(el("div","hint","เลือกบทที่ต้องการสอบ ข้อสอบสร้างจากเนื้อหาในแฟลชการ์ด ตัวเลือกหลอกสุ่มจากหัวข้อในบทเดียวกัน"));
+const cw=el("div","opts");[0,1,2,3,4,5,6,7,8,9].forEach(k=>{const b=el("button","opt",k?CHL[k]:"ทุกบท");if(qcfg.cat==k)b.classList.add("right");b.onclick=()=>{qcfg.cat=k;qSetup()};cw.appendChild(b)});rb.appendChild(cw);
+const nw=el("div","grade");[10,20,30].forEach(n=>{const b=el("button",qcfg.n==n?"g2":"g1",n+" ข้อ");b.onclick=()=>{qcfg.n=n;qSetup()};nw.appendChild(b)});rb.appendChild(nw);
+const ib=el("button","opt",(qcfg.incl?"☑ ":"☐ ")+"รวมข้อสอบเดิมของบทนี้ (ข้อสอบท้ายบท / ชุด GURU)");ib.style.marginTop="10px";ib.onclick=()=>{qcfg.incl=!qcfg.incl;qSetup()};rb.appendChild(ib);
+const go=el("button","big","เริ่มทำแบบทดสอบ");go.onclick=()=>qStart(qBuild(qcfg.cat?[qcfg.cat]:[1,2,3,4,5,6,7,8,9],qcfg.n,qcfg.incl));rb.appendChild(go)}
+function qStart(list){if(!list.length){rb.appendChild(el("div","hint","บทนี้ยังสร้างข้อสอบไม่ได้"));return}qs=list;qi=0;qsc=0;qwr=[];qShow()}
+function qShow(){rb.textContent="";
+if(qi>=qs.length){const t=qs.length,p=Math.round(qsc/t*100);rb.appendChild(el("div","box","จบแบบทดสอบ\nได้ "+qsc+" / "+t+" ข้อ ("+p+"%)\n"+(p>=80?"ยอดเยี่ยม":p>=60?"พอใช้ ทบทวนอีกนิด":"ควรทบทวนเนื้อหาอีกรอบ")));
+qwr.forEach(w=>{const b=el("div","box ans");b.appendChild(el("div","mine","ข้อที่ผิด: "+w.stem));b.appendChild(el("div","a","เฉลย: "+w.opts[w.key-1]+"\nคุณตอบ: "+w.opts[w.pick-1]));rb.appendChild(b)});
+if(qwr.length){const r=el("button","big","ทำซ้ำเฉพาะข้อที่ผิด ("+qwr.length+")");r.onclick=()=>qStart(shuf(qwr.map(w=>({stem:w.stem,opts:w.opts,key:w.key,exp:w.exp,c:w.c}))));rb.appendChild(r)}
+const a=el("button","big","เลือกบท / ทำชุดใหม่");a.onclick=qSetup;rb.appendChild(a);return}
+const q=qs[qi];rb.appendChild(el("div","hint","ข้อ "+(qi+1)+" / "+qs.length+" · คะแนน "+qsc));
+const bx=el("div","box");bx.appendChild(el("div","tag",CHL[q.c]+(q.ex?" · ข้อสอบเดิม":"")));bx.appendChild(el("div","q",q.stem));rb.appendChild(bx);
+const ow=el("div","opts"),bs=[];
+q.opts.forEach((t,k)=>{const b=el("button","opt",(k+1)+") "+t);bs.push(b);b.onclick=()=>{bs.forEach((x,j)=>{x.disabled=true;if(j+1==q.key)x.classList.add("right");else if(j==k)x.classList.add("wrong")});
+if(k+1==q.key){qsc++;rb.appendChild(el("div","hint","✓ ตอบถูก"))}else{qwr.push({stem:q.stem,opts:q.opts,key:q.key,pick:k+1,exp:q.exp,c:q.c});rb.appendChild(el("div","hint","✗ ตอบผิด เฉลยคือข้อ "+q.key))}
+const ab=el("div","box ans");ab.appendChild(el("div","a",q.exp));rb.appendChild(ab);
+const nx=el("button","big",qi+1>=qs.length?"ดูคะแนน":"ข้อต่อไป");nx.onclick=()=>{qi++;qShow()};rb.appendChild(nx)};ow.appendChild(b)});rb.appendChild(ow)}
+$("qzb").onclick=qSetup;
+
+$("rvx").onclick=()=>{rv.hidden=true;show()};
+show();
+</script></body></html>
+
+</body></html>
